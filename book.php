@@ -3,6 +3,8 @@
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
   <title>Книга</title>
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/foundation.min.css">
+  <link rel="stylesheet" href="css/foundstiling.css">
   <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?34"></script>  
 </head>
 <body>
@@ -14,9 +16,11 @@
             </div>
             <div class="nav">
               <ul>
+
                 <li><a href=""><img src="images/list.png" alt=""></a></li>
                 <li><a href=""><img src="images/grid.png" alt=""></a></li>
                 <li><a href="logout.php"><img src="images/exit.png" alt=""></a></li>
+                <li><a href="index.php"><-</a></li>
               </ul>
             </div>
          </div>';
@@ -29,15 +33,23 @@
     }else{
       for($k = 0; $k<count($booksjson->books); $k++){
         if ($_GET['book'] == $booksjson->books[$k]->id_book){
-          echo $booksjson->books[$k]->id_book;
-          echo '<img src="covers/'.$booksjson->books[$k]->cover.'" alt="">' ;
-          echo $booksjson->books[$k]->author;
-          echo $booksjson->books[$k]->title;
-
+          
+          echo '<div class="block">';
+            echo '<img src="covers/'.$booksjson->books[$k]->cover.'" alt="">' ;
+            echo $booksjson->books[$k]->author;
+            echo $booksjson->books[$k]->title;
+          echo '</div>';
+          echo '<div class="block-info">';
+          echo $booksjson->books[$k]->id_book;  
           for($a = 0; $a<count($booksjson->books[$k]->coments); $a++){
+            echo '<div>';
+            
             echo $booksjson->books[$k]->coments[$a]->userid;
             echo $booksjson->books[$k]->coments[$a]->comment;
+            echo '</div>';
           }
+          echo '</div>';
+          
         }
       }
     }

@@ -3,6 +3,8 @@
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
   <title>Главная</title>
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/foundation.min.css">
+  <link rel="stylesheet" href="css/foundstiling.css">
   <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?34"></script>
 </head>
 <body>
@@ -56,18 +58,24 @@ class Users {
     $file = file_get_contents("database/books.json");
     $json = json_decode($file);
     echo '<div class="wrap">';
-    for($i = 0; $i <count($json->books); $i++){
-      for($k = 0; $k<count($json->books[$i]->ids); $k++){
-        if ($_COOKIE['uid'] == $json->books[$i]->ids[$k]){
-          echo '<a href="book.php?book='.$json->books[$i]->id_book.'">';
-          echo '<img src="covers/'.$json->books[$i]->cover.'" alt="">' ;
-          echo $json->books[$i]->author;
-          echo $json->books[$i]->title;
-          echo'</a>';
+      echo '<div id="content">';
+        echo '<div class="row">';
+        for($i = 0; $i <count($json->books); $i++){
+          for($k = 0; $k<count($json->books[$i]->ids); $k++){
+            if ($_COOKIE['uid'] == $json->books[$i]->ids[$k]){
+              echo '<div class="block">';
+                echo '<img src="covers/',$json->books[$i]->cover,'" alt="">';
+                echo '<a class="info" href="book.php?book=',$json->books[$i]->id_book,'">';
+                  echo '<h4>',$json->books[$i]->title,'</h4>';
+                  echo '<h5>',$json->books[$i]->author,  '</h5>';
+                echo'</a>';
+              echo '</div>';
+            }
+          }
         }
-      }
-    }
-    echo'</div>';
+        echo'</div>';
+      echo '</div>';
+    echo '</div>';
   }else{
    echo '<div class="header">
            <div class="wrap">
