@@ -7,24 +7,40 @@
 </head>
 <body>
 <?php 
+class Users {
+  var $uid;
+  var $fio;
+  function setUID($par){
+   $this->uid = $par;
+  }
+  function setFIO($par){
+   $this->fio = $par;
+  }
+}
   $userexist=false;
   if (isset($_COOKIE['log'])) {
     $usersfile = file_get_contents("database/users.json");
-    $jsonusersfile = json_decode($usersfile);
+    $usersjson = json_decode($usersfile);
 
-    for($p = 0; $p <count($jsonusersfile->users); $p++){
-      echo $_COOKIE['uid'];
-      echo $jsonusersfile->users[$p]->userid;
-      if ($_COOKIE['uid'] == $jsonusersfile->users[$p]->userid){
+    for($i = 0; $i <count($usersjson->users); $i++){
+      if ($_COOKIE['uid'] === $usersjson->users[$i]->uid){
         $userexist=true;
       }
     }
+
     if(!$userexist){
-      $obj->id = $_COOKIE['uid'];
-      $obj->fio= $_COOKIE['first_name']. $_COOKIE['last_name'];
-      array_push($jsonusersfile['users'],$obj);
-      echo $obj;
+      $userobject = new Users;
+      $userobject->setUID($_COOKIE['uid']);
+      $userobject->setFIO($_COOKIE['first_name']." ". $_COOKIE['last_name']);
+      array_push($usersjson->users, $userobject);
+      fwrite(fopen('database/users.json', 'w'), json_encode($usersjson));
+
+      $statsfile = file_get_contents("database/stats.json");
+      $statsjson = json_decode($statsfile);
+      $statsjson->users = $statsjson->users + 1;
+      fwrite(fopen('database/stats.json', 'w'), json_encode($statsjson));
     }
+
     echo '<div class="header">
             <div class="wrap">
               <h1>Shelf</h1>
@@ -37,16 +53,14 @@
             </ul>
           </div>
          </div>';
-    echo $obj->id = $_COOKIE['uid'];
     $file = file_get_contents("database/books.json");
     $json = json_decode($file);
-
     echo '<div class="wrap">';
     for($i = 0; $i <count($json->books); $i++){
       for($k = 0; $k<count($json->books[$i]->ids); $k++){
         if ($_COOKIE['uid'] == $json->books[$i]->ids[$k]){
-          echo'<a href="book.php?book='.$json->books[$i]->id_book.'">';
-          echo '<img src="cover/'.$json->books[$i]->cover.'" alt="">' ;
+          echo '<a href="book.php?book='.$json->books[$i]->id_book.'">';
+          echo '<img src="covers/'.$json->books[$i]->cover.'" alt="">' ;
           echo $json->books[$i]->author;
           echo $json->books[$i]->title;
           echo'</a>';
@@ -72,7 +86,7 @@
   }
 ?>
     <script type="text/javascript">
-        VK.init({apiId: 5197194});
+        VK.init({apiId: 5204968});
         VK.Widgets.Auth("vk_auth", {width: "300px",authUrl: '/login.php'});
     </script>
 </div> 

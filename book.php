@@ -14,9 +14,9 @@
             </div>
             <div class="nav">
               <ul>
-                <li><a href=""><img src="list.png" alt=""></a></li>
-                <li><a href=""><img src="grid.png" alt=""></a></li>
-                <li><a href="logout.php"><img src="exit.png" alt=""></a></li>
+                <li><a href=""><img src="images/list.png" alt=""></a></li>
+                <li><a href=""><img src="images/grid.png" alt=""></a></li>
+                <li><a href="logout.php"><img src="images/exit.png" alt=""></a></li>
               </ul>
             </div>
          </div>';
@@ -27,12 +27,14 @@
     if(empty($_GET['book'])){
       echo 'Error';
     }else{
-      for($k = 0; $k<count($booksjson->books[$k]); $k++){
-        if ($_GET['book']== $booksjson->books[$k]->id_book){
+      for($k = 0; $k<count($booksjson->books); $k++){
+        if ($_GET['book'] == $booksjson->books[$k]->id_book){
+          echo $booksjson->books[$k]->id_book;
           echo '<img src="covers/'.$booksjson->books[$k]->cover.'" alt="">' ;
           echo $booksjson->books[$k]->author;
           echo $booksjson->books[$k]->title;
-          for($a = 0; $a<count($booksjson->books[$k]->coments[$a]); $a++){
+
+          for($a = 0; $a<count($booksjson->books[$k]->coments); $a++){
             echo $booksjson->books[$k]->coments[$a]->userid;
             echo $booksjson->books[$k]->coments[$a]->comment;
           }

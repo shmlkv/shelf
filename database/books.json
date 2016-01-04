@@ -1,34 +1,12 @@
 {
   "books": [
     { 
-      "id_book": 1234656,
-      "title": "bible",
-      "cover":"дары.jpg",
-      "author": "god",
-      "ids": [
-        12345,
-        151805674,
-        1234
-      ],
-      "coments": [
-        {
-          "userid": "12345",
-          "comment": "lorem"
-        },
-        {
-          "userid": "q12345",
-          "comment": "lorem"
-        },
-        {
-          "userid": "q12345",
-          "comment": "lorem"
-        }
-      ]
+      "id_book": 0
     },{ 
-      "id_book": 1234656,
+      "id_book": 1,
       "title": "bible",
       "author": "god",
-      "cover":"дары.jpg",
+      "cover":"1.jpg",
       "ids": [
         151805674,
         123456,
@@ -49,12 +27,12 @@
         }
       ]
     },{ 
-      "id_book": 1234656,
+      "id_book": 2,
       "title": "bible",
       "author": "god",
       "cover":"дары.jpg",
       "ids": [
-        12345,
+        151805674,
         123456,
         1234
       ],
