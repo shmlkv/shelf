@@ -10,24 +10,28 @@
 <body>
 <?php
   if (isset($_COOKIE['log'])) {
-    echo '<div class="header">
+    echo '<header>
             <div class="wrap">
-              <h1>Shelf</h1>
+                <div class="nav">
+                  <ul class="left">
+                    <li class="logo"><a href="">Shelf</a></li>
+                    <li><a href="">Моя полка</a></li>
+                    <li><a href="">Пользователи</a></li>
+                    <li><a href="">Книги</a></li>
+                    <li><a href="">Знаменитости</a></li>
+                  </ul>
+                  <ul class="right">
+                    <li><a href="">Профиль</a></li>
+                    <li><a href="logout.php">Выход</li> 
+                  </ul>
+                </div>
             </div>
-            <div class="nav">
-              <ul>
-
-                <li><a href=""><img src="images/list.png" alt=""></a></li>
-                <li><a href=""><img src="images/grid.png" alt=""></a></li>
-                <li><a href="logout.php"><img src="images/exit.png" alt=""></a></li>
-                <li><a href="index.php"><-</a></li>
-              </ul>
-            </div>
-         </div>';
+         </header>';
     $booksfile = file_get_contents("database/books.json");
     $booksjson = json_decode($booksfile);
 
-    echo '<div class="wrap">';
+    echo '<div id="content">';
+      echo '<div class="wrap">';
     if(empty($_GET['book'])){
       echo 'Error';
     }else{
@@ -54,6 +58,7 @@
       }
     }
     echo'</div>';
+     echo'</div>';
   }else{
     echo '<div class="header">
             <div class="wrap">

@@ -3,17 +3,18 @@
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
   <title>Главная</title>
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/foundation.min.css">
-  <link rel="stylesheet" href="css/foundstiling.css">
   <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?34"></script>
 </head>
 <body>
+          
+           
+            
 <?php 
-class Users {
-  var $uid;
-  var $fio;
-  function setUID($par){
-   $this->uid = $par;
+  class Users {
+    var $uid;
+    var $fio;
+    function setUID($par){
+     $this->uid = $par;
   }
   function setFIO($par){
    $this->fio = $par;
@@ -42,30 +43,34 @@ class Users {
       $statsjson->users = $statsjson->users + 1;
       fwrite(fopen('database/stats.json', 'w'), json_encode($statsjson));
     }
-
-    echo '<div class="header">
+    echo '<header>
             <div class="wrap">
-              <h1>Shelf</h1>
+                <div class="nav">
+                  <ul class="left">
+                    <li class="logo"><a href="">Shelf</a></li>
+                    <li class="active"><a href="">Моя полка</a></li>
+                    <li><a href="">Пользователи</a></li>
+                    <li><a href="">Книги</a></li>
+                    <li><a href="">Знаменитости</a></li>
+                  </ul>
+                  <ul class="right">
+                    <li><a href="">Профиль</a></li>
+                    <li><a href="logout.php">Выход</a></li> 
+                  </ul>
+                </div>
             </div>
-          <div class="nav">
-            <ul>
-            <li><a href=""><img src="images/list.png" alt=""></a></li>
-            <li><a href=""><img src="images/grid.png" alt=""></a></li>
-            <li><a href="logout.php"><img src="images/exit.png" alt=""></a></li>
-            </ul>
-          </div>
-         </div>';
+         </header>';
+         //<img src="images/exit.png" alt="">exit</a>
     $file = file_get_contents("database/books.json");
     $json = json_decode($file);
-    echo '<div class="wrap">';
-      echo '<div id="content">';
-        echo '<div class="row">';
+    echo '<div id="content">';
+      echo '<div class="wrap">';
         for($i = 0; $i <count($json->books); $i++){
           for($k = 0; $k<count($json->books[$i]->ids); $k++){
             if ($_COOKIE['uid'] == $json->books[$i]->ids[$k]){
               echo '<div class="block">';
                 echo '<img src="covers/',$json->books[$i]->cover,'" alt="">';
-                echo '<a class="info" href="book.php?book=',$json->books[$i]->id_book,'">';
+                echo '<a href="book.php?book=',$json->books[$i]->id_book,'">';
                   echo '<h4>',$json->books[$i]->title,'</h4>';
                   echo '<h5>',$json->books[$i]->author,  '</h5>';
                 echo'</a>';
@@ -73,19 +78,22 @@ class Users {
             }
           }
         }
-        echo'</div>';
       echo '</div>';
     echo '</div>';
   }else{
-   echo '<div class="header">
+   echo '<header>
            <div class="wrap">
-             <h1>Shelf</h1>
+               <div class="nav">
+                 <ul class="left">
+                   <li class="logo"><a href="">Shelf</a></li>
+                   <li><a href="">Пользователи</a></li>
+                   <li><a href="">Книги</a></li>
+                   <li><a href="">Знаменитости</a></li>
+                 </ul>
+               </div>
            </div>
-           <div class="nav">
-          
-           </div>
-         </div>
-         <div class="window">
+        </header>';
+   echo '<div class="window">
              <h2>Здравствуй</h2>
            <div class="wrap">
              <div id="vk_auth"></div>
