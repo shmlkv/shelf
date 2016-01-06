@@ -2,6 +2,7 @@
 *{
 	padding: 0;
 	margin: 0;
+	box-sizing: border-box;
 }
 body{
 	background: #afa8a8;
@@ -64,17 +65,41 @@ header{
 	margin-top: 50px;
 	padding: 20px;
 }
-img.book-img {
+.book-img{
 	max-width: 300px;
 	display: inline-block;
-	padding-right: 20px;
-}
-.book-img{
-	width: 320px;
 }
 .book-info{
+	max-width: 600px;
+	min-width: 100px;
 	display: inline-block;
 	vertical-align: top;
+	padding: 0 10px 10px 10px;
+}
+.book-img .rating{
+	width: 100%;
+	height: 20px;
+	display: block;
+	background: #000;
+}
+.comment{
+	display: block;
+	width: 100%;
+	min-height: 80px;
+}
+.comment img{
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	float: left;
+	margin-right: 10px;
+}
+.comment-text{
+	float: left;
+	padding: 10px;
+	padding-top: 0;
+	border: 1px solid #44A754;
+	border-radius: 3px;
 }
 @media(max-width:1024px){
 	.nav ul li{
