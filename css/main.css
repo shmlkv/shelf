@@ -44,13 +44,13 @@ header{
 	display: inline-block;
 	padding: 16px;
 }
-.nav ul li.logo{
+.nav ul li.bold{
 	background: #1e1e1e;
 }
-.nav ul li.logo:hover{
+.nav ul li.bold:hover{
 	background: #121212;
 }
-.nav ul li.logo a:hover{
+.nav ul li.bold a:hover{
 	border-bottom: none;
 }
 .nav ul li.active a{

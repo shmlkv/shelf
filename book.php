@@ -17,7 +17,7 @@
     echo '<div id="content">';
       echo '<div class="wrap">';
     if(empty($_GET['book'])){
-      echo 'Error';
+      echo 'List of books';
     }else{
       for($k = 0; $k<count($booksjson->books); $k++){
         if ($_GET['book'] == $booksjson->books[$k]->id_book){
