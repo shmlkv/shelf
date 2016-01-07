@@ -21,21 +21,23 @@
     }else{
       for($k = 0; $k<count($booksjson->books); $k++){
         if ($_GET['book'] == $booksjson->books[$k]->id_book){
-          
-          echo '<div class="block">';
-            echo '<img src="covers/'.$booksjson->books[$k]->cover.'" alt="">' ;
-            echo $booksjson->books[$k]->author;
-            echo $booksjson->books[$k]->title;
-          echo '</div>';
-          echo '<div class="block-info">';
-          echo $booksjson->books[$k]->id_book;  
-          for($a = 0; $a<count($booksjson->books[$k]->coments); $a++){
-            echo '<div>';
-            
-            echo $booksjson->books[$k]->coments[$a]->userid;
-            echo $booksjson->books[$k]->coments[$a]->comment;
+          echo '<div class="book-img">
+                  <img class="book-img" src="covers/'.$booksjson->books[$k]->cover.'" alt="">
+                  <div class="rating"></div>
+                </div>';
+          echo '<div class="book-info">
+                  <h2>'.$booksjson->books[$k]->title.'</h2>
+                  <h3>'.$booksjson->books[$k]->author.'</h3>
+                  <p>desc, </p>
+                  <div id="comments">';
+                  for($a = 0; $a<count($booksjson->books[$k]->coments); $a++){
+                    echo '<div class="comment">
+                            <img src="covers/дары.jpg" alt="">
+                            <div class="comment-text"><p>'.$booksjson->books[$k]->coments[$a]->userid.'</p>'.$booksjson->books[$k]->coments[$a]->comment.'</div>
+                          </div>
+                        </div>';
+                  }
             echo '</div>';
-          }
           echo '</div>';
           
         }

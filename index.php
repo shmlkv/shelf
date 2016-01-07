@@ -17,7 +17,6 @@
    $this->fio = $par;
   }
 }
-
   include 'modules/header.php';
   $userexist=false;
   if (isset($_COOKIE['log'])) {
@@ -64,12 +63,12 @@
       echo '</div>';
     echo '</div>';
   }else{
-   echo '<div class="window">
-             <h2>Здравствуй</h2>
-           <div class="wrap">
-             <div id="vk_auth"></div>
-           </div>
-         </div>';
+   echo '<div id="content">';
+        echo '<div class="wrap">';
+        echo '<h1 class="text-center">Здравствуй!</h1>';
+        echo '<div style="margin:10px auto" id="vk_auth"></div>';
+        echo '</div>
+            </div>';
   } 
   include 'modules/footer.php';
 ?>

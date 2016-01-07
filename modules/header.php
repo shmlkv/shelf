@@ -23,16 +23,16 @@ if (isset($_COOKIE['log'])) {
            <div class="wrap">
                <div class="nav">
                  <ul class="left">
-                   <li class="logo"><a href="">Shelf</a></li>
+                   <li class="bold"><a href="">Shelf</a></li>
                    <li><a href="">Пользователи</a></li>
                    <li><a href="">Книги</a></li>
                    <li><a href="">Знаменитости</a></li>
                  </ul>
                  <ul class="right">
-                    <li><a href="">VK Войти</a></li> 
-                  </ul>
+                    <li class="bold blue"><a href="">VK Войти</a></li> 
+                 </ul>
                </div>
            </div>
         </header>';
-         }
-         ?>
+  }
+?>
