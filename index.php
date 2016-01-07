@@ -6,9 +6,6 @@
   <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?34"></script>
 </head>
 <body>
-          
-           
-            
 <?php 
   class Users {
     var $uid;
@@ -20,6 +17,8 @@
    $this->fio = $par;
   }
 }
+
+  include 'modules/header.php';
   $userexist=false;
   if (isset($_COOKIE['log'])) {
     $usersfile = file_get_contents("database/users.json");
@@ -43,23 +42,7 @@
       $statsjson->users = $statsjson->users + 1;
       fwrite(fopen('database/stats.json', 'w'), json_encode($statsjson));
     }
-    echo '<header>
-            <div class="wrap">
-                <div class="nav">
-                  <ul class="left">
-                    <li class="logo"><a href="">Shelf</a></li>
-                    <li class="active"><a href="">Моя полка</a></li>
-                    <li><a href="">Пользователи</a></li>
-                    <li><a href="">Книги</a></li>
-                    <li><a href="">Знаменитости</a></li>
-                  </ul>
-                  <ul class="right">
-                    <li><a href="">Профиль</a></li>
-                    <li><a href="logout.php">Выход</a></li> 
-                  </ul>
-                </div>
-            </div>
-         </header>';
+    
          //<img src="images/exit.png" alt="">exit</a>
     $file = file_get_contents("database/books.json");
     $json = json_decode($file);
@@ -81,25 +64,14 @@
       echo '</div>';
     echo '</div>';
   }else{
-   echo '<header>
-           <div class="wrap">
-               <div class="nav">
-                 <ul class="left">
-                   <li class="logo"><a href="">Shelf</a></li>
-                   <li><a href="">Пользователи</a></li>
-                   <li><a href="">Книги</a></li>
-                   <li><a href="">Знаменитости</a></li>
-                 </ul>
-               </div>
-           </div>
-        </header>';
    echo '<div class="window">
              <h2>Здравствуй</h2>
            <div class="wrap">
              <div id="vk_auth"></div>
            </div>
          </div>';
-  }
+  } 
+  include 'modules/footer.php';
 ?>
     <script type="text/javascript">
         VK.init({apiId: 5204968});

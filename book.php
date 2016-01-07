@@ -9,24 +9,8 @@
 </head>
 <body>
 <?php
+  include 'modules/header.php';
   if (isset($_COOKIE['log'])) {
-    echo '<header>
-            <div class="wrap">
-                <div class="nav">
-                  <ul class="left">
-                    <li class="logo"><a href="">Shelf</a></li>
-                    <li><a href="">Моя полка</a></li>
-                    <li><a href="">Пользователи</a></li>
-                    <li><a href="">Книги</a></li>
-                    <li><a href="">Знаменитости</a></li>
-                  </ul>
-                  <ul class="right">
-                    <li><a href="">Профиль</a></li>
-                    <li><a href="logout.php">Выход</li> 
-                  </ul>
-                </div>
-            </div>
-         </header>';
     $booksfile = file_get_contents("database/books.json");
     $booksjson = json_decode($booksfile);
 
@@ -60,15 +44,7 @@
     echo'</div>';
      echo'</div>';
   }else{
-    echo '<div class="header">
-            <div class="wrap">
-              <h1>Shelf</h1>
-            </div>
-            <div class="nav">
-           
-            </div>
-          </div>
-          <div class="window">
+    echo '<div class="window">
               <h2>Здравствуй</h2>
             <div class="wrap">
               <div id="vk_auth"></div>
