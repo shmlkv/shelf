@@ -6,6 +6,7 @@
       "id_book": 1,
       "title": "Над пропастью во ржи",
       "author": "Сэлинджер Джером",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, deserunt explicabo, quis nisi maxime ducimus. Veritatis, possimus dignissimos qui vel.",
       "cover":"https://i.livelib.ru/boocover/1000528468/o/8d9d/Dzherom_Selindzher__Nad_propastyu_vo_rzhi.jpeg",
       "ids": [
         121935185
@@ -13,21 +14,22 @@
       "coments": [
         {
           "userid": "12345",
-          "comment": "lorem"
+          "comment": "Очень интересно, я прям кокнул"
         },
         {
           "userid": "q12345",
-          "comment": "lorem"
+          "comment": "Очень интересно, я прям кукнул"
         },
         {
           "userid": "q12345",
-          "comment": "lorem"
+          "comment": "Очень интересно, я прям кекнул"
         }
       ]
     },{ 
       "id_book": 2,
       "title": "Над пропастью во ржи",
       "author": "Сэлинджер Джером",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, voluptatum!",
       "cover":"https://i.livelib.ru/boocover/1000528468/o/8d9d/Dzherom_Selindzher__Nad_propastyu_vo_rzhi.jpeg",
       "ids": [
         121935185
@@ -50,6 +52,7 @@
       "id_book": 3,
       "title": "Над пропастью во ржи",
       "author": "Сэлинджер Джером",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, voluptatum!",
       "cover":"https://i.livelib.ru/boocover/1000528468/o/8d9d/Dzherom_Selindzher__Nad_propastyu_vo_rzhi.jpeg",
       "ids": [
         121935185
@@ -72,6 +75,7 @@
       "id_book": 4,
       "title": "Над пропастью во ржи",
       "author": "Сэлинджер Джером",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, voluptatum!",
       "cover":"https://i.livelib.ru/boocover/1000528468/o/8d9d/Dzherom_Selindzher__Nad_propastyu_vo_rzhi.jpeg",
       "ids": [
         121935185
@@ -94,6 +98,7 @@
       "id_book": 5,
       "title": "Над пропастью во ржи",
       "author": "Сэлинджер Джером",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, voluptatum!",
       "cover":"https://i.livelib.ru/boocover/1000528468/o/8d9d/Dzherom_Selindzher__Nad_propastyu_vo_rzhi.jpeg",
       "ids": [
         121935185
@@ -116,6 +121,7 @@
       "id_book": 6,
       "title": "Над пропастью во ржи",
       "author": "Сэлинджер Джером",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, voluptatum!",
       "cover":"https://i.livelib.ru/boocover/1000528468/o/8d9d/Dzherom_Selindzher__Nad_propastyu_vo_rzhi.jpeg",
       "ids": [
         151805674,
