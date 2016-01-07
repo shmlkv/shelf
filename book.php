@@ -22,7 +22,7 @@
       for($k = 0; $k<count($booksjson->books); $k++){
         if ($_GET['book'] == $booksjson->books[$k]->id_book){
           echo '<div class="book-img">
-                  <img class="book-img" src="covers/'.$booksjson->books[$k]->cover.'" alt="">
+                  <img class="book-img" src="'.$booksjson->books[$k]->cover.'" alt="">
                   <div class="rating"></div>
                 </div>';
           echo '<div class="book-info">

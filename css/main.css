@@ -69,6 +69,32 @@ header{
 	padding: 20px;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
+.book-block{
+	box-sizing: border-box;
+	display: inline-block;
+	text-align: center;
+	padding: 0 20px 20px;
+	max-width: 184px;
+}
+.book-block a{
+	text-decoration: none;
+	color: black;
+	max-width: 184px;
+}
+.book-block img{
+	max-width: 144px;
+}
+.book-block span.title, span.author{
+	display: block;
+	font-weight: 400;
+}
+.book-block span.title{
+	font-size: 18px;
+	font-weight: 500;
+}
+.book-block span.author{
+	font-size: 14px;
+}
 .book-img{
 	max-width: 300px;
 	display: inline-block;

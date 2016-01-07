@@ -50,11 +50,11 @@
         for($i = 0; $i <count($json->books); $i++){
           for($k = 0; $k<count($json->books[$i]->ids); $k++){
             if ($_COOKIE['uid'] == $json->books[$i]->ids[$k]){
-              echo '<div class="block">';
-                echo '<img src="covers/',$json->books[$i]->cover,'" alt="">';
-                echo '<a href="book.php?book=',$json->books[$i]->id_book,'">';
-                  echo '<h4>',$json->books[$i]->title,'</h4>';
-                  echo '<h5>',$json->books[$i]->author,  '</h5>';
+              echo '<div class="book-block">';
+                  echo '<a href="book.php?book=',$json->books[$i]->id_book,'">';
+                  echo '<span class="title">',$json->books[$i]->title,'</span>';
+                  echo '<span class="author">',$json->books[$i]->author,  '</span>';
+                  echo '<img src="',$json->books[$i]->cover,'" alt="">';
                 echo'</a>';
               echo '</div>';
             }
