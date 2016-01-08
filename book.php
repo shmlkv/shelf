@@ -20,7 +20,7 @@
       echo 'List of books';
     }else{
       for($k = 0; $k<count($booksjson->books); $k++){
-        if ($_GET['book'] == $booksjson->books[$k]->id_book){
+        if ($_GET['book'] == $booksjson->books[$k]->id){
           echo '<div class="book-img">
                   <img class="book-img" src="'.$booksjson->books[$k]->cover.'" alt="">
                   <div class="rating"></div>
@@ -28,13 +28,13 @@
           echo '<div class="book-info">
                   <h2>'.$booksjson->books[$k]->title.'</h2>
                   <h3>'.$booksjson->books[$k]->author.'</h3>
-                  <p>'.$booksjson->books[$k]->id_book.'</p>
+                  <p>'.$booksjson->books[$k]->id.'</p>
                   <p>'.$booksjson->books[$k]->desc.'</p>
                   <div id="comments">';
                   for($a = 0; $a<count($booksjson->books[$k]->coments); $a++){
                     echo '<div class="comment">
                             <img src="covers/дары.jpg" alt="">
-                            <div class="comment-text"><h4>'.$booksjson->books[$k]->coments[$a]->userid.'</h4>'.$booksjson->books[$k]->coments[$a]->comment.'</div>
+                            <div class="comment-text"><h4>'.$booksjson->books[$k]->coments[$a]->uid.'</h4>'.$booksjson->books[$k]->coments[$a]->comment.'</div>
                           </div>';
                   }
             echo '</div>';

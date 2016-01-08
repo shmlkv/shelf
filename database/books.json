@@ -1,129 +1,129 @@
 {
   "books": [
     { 
-      "id_book": 0
+      "id": 0
     },{ 
-      "id_book": 1,
+      "id": 1,
       "title": "Над пропастью во ржи",
       "author": "Сэлинджер Джером",
       "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, deserunt explicabo, quis nisi maxime ducimus. Veritatis, possimus dignissimos qui vel.",
       "cover":"covers/Dzherom_Selindzher__Nad_propastyu_vo_rzhi.jpeg",
-      "ids": [
+      "readed": [
         121935185
       ],
       "coments": [
         {
-          "userid": "12345",
+          "uid": "12345",
           "comment": "Очень интересно, я прям кокнулОчень интересно, я прям кокнулОчень интересно, я прям кокнулОчень интересно, я прям кокнулОчень интересно, я прям кокнулОчень интересно, я прям кокнул"
         },
         {
-          "userid": "q12345",
+          "uid": "q12345",
           "comment": "Очень интересно, я прям кукнул"
         },
         {
-          "userid": "q12345",
+          "uid": "q12345",
           "comment": "Очень интересно, я прям кекнул"
         }
       ]
     },{ 
-      "id_book": 2,
+      "id": 2,
       "title": "Над пропастью во ржи",
       "author": "Сэлинджер Джером",
       "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, voluptatum!",
       "cover":"covers/Dzherom_Selindzher__Nad_propastyu_vo_rzhi.jpeg",
-      "ids": [
+      "readed": [
         121935185
       ],
       "coments": [
         {
-          "userid": "12345",
+          "uid": "12345",
           "comment": "lorem"
         },
         {
-          "userid": "q12345",
+          "uid": "q12345",
           "comment": "lorem"
         },
         {
-          "userid": "q12345",
+          "uid": "q12345",
           "comment": "lorem"
         }
       ]
     },{ 
-      "id_book": 3,
+      "id": 3,
       "title": "Над пропастью во ржи",
       "author": "Сэлинджер Джером",
       "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, voluptatum!",
       "cover":"covers/Dzherom_Selindzher__Nad_propastyu_vo_rzhi.jpeg",
-      "ids": [
+      "readed": [
         121935185
       ],
       "coments": [
         {
-          "userid": "12345",
+          "uid": "12345",
           "comment": "lorem"
         },
         {
-          "userid": "q12345",
+          "uid": "q12345",
           "comment": "lorem"
         },
         {
-          "userid": "q12345",
+          "uid": "q12345",
           "comment": "lorem"
         }
       ]
     },{ 
-      "id_book": 4,
+      "id": 4,
       "title": "Над пропастью во ржи",
       "author": "Сэлинджер Джером",
       "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, voluptatum!",
       "cover":"covers/Dzherom_Selindzher__Nad_propastyu_vo_rzhi.jpeg",
-      "ids": [
+      "readed": [
         121935185
       ],
       "coments": [
         {
-          "userid": "12345",
+          "uid": "12345",
           "comment": "lorem"
         },
         {
-          "userid": "q12345",
+          "uid": "q12345",
           "comment": "lorem"
         },
         {
-          "userid": "q12345",
+          "uid": "q12345",
           "comment": "lorem"
         }
       ]
     },{ 
-      "id_book": 5,
+      "id": 5,
       "title": "Над пропастью во ржи",
       "author": "Сэлинджер Джером",
       "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, voluptatum!",
       "cover":"covers/Dzherom_Selindzher__Nad_propastyu_vo_rzhi.jpeg",
-      "ids": [
+      "readed": [
         121935185
       ],
       "coments": [
         {
-          "userid": "12345",
+          "uid": "12345",
           "comment": "lorem"
         },
         {
-          "userid": "q12345",
+          "uid": "q12345",
           "comment": "lorem"
         },
         {
-          "userid": "q12345",
+          "uid": "q12345",
           "comment": "lorem"
         }
       ]
     },{ 
-      "id_book": 6,
+      "id": 6,
       "title": "Над пропастью во ржи",
       "author": "Сэлинджер Джером",
       "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, voluptatum!",
       "cover":"covers/Dzherom_Selindzher__Nad_propastyu_vo_rzhi.jpeg",
-      "ids": [
+      "readed": [
         151805674,
         123456,
         1234,
@@ -131,24 +131,24 @@
       ],
       "coments": [
         {
-          "userid": "12345",
+          "uid": "12345",
           "comment": "lorem"
         },
         {
-          "userid": "q12345",
+          "uid": "q12345",
           "comment": "lorem"
         },
         {
-          "userid": "q12345",
+          "uid": "q12345",
           "comment": "lorem"
         }
       ]
     },{ 
-      "id_book": 7,
+      "id": 7,
       "title": "bible",
       "author": "god",
       "cover":"covers/Dzherom_Selindzher__Nad_propastyu_vo_rzhi.jpeg",
-      "ids": [
+      "readed": [
         151805674,
         123456,
         1234,
@@ -156,15 +156,15 @@
       ],
       "coments": [
         {
-          "userid": "12345",
+          "uid": "12345",
           "comment": "lorem"
         },
         {
-          "userid": "q12345",
+          "uid": "q12345",
           "comment": "lorem"
         },
         {
-          "userid": "q12345",
+          "uid": "q12345",
           "comment": "lorem"
         }
       ]

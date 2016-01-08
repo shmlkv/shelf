@@ -11,12 +11,13 @@
     var $uid;
     var $fio;
     function setUID($par){
-     $this->uid = $par;
+      $this->uid = $par;
+    }
+    function setFIO($par){
+      $this->fio = $par;
+    }
   }
-  function setFIO($par){
-   $this->fio = $par;
-  }
-}
+  
   include 'modules/header.php';
   $userexist=false;
   if (isset($_COOKIE['log'])) {
@@ -34,12 +35,12 @@
       $userobject->setUID($_COOKIE['uid']);
       $userobject->setFIO($_COOKIE['first_name']." ". $_COOKIE['last_name']);
       array_push($usersjson->users, $userobject);
-      fwrite(fopen('database/users.json', 'w'), json_encode($usersjson));
+      fwrite(fopen('database/users.json', 'w'), json_encode($usersjson, JSON_UNESCAPED_UNICODE));
 
       $statsfile = file_get_contents("database/stats.json");
       $statsjson = json_decode($statsfile);
       $statsjson->users = $statsjson->users + 1;
-      fwrite(fopen('database/stats.json', 'w'), json_encode($statsjson));
+      fwrite(fopen('database/stats.json', 'w'), json_encode($statsjson, JSON_UNESCAPED_UNICODE));
     }
     
          //<img src="images/exit.png" alt="">exit</a>
@@ -48,10 +49,10 @@
     echo '<div id="content">';
       echo '<div class="wrap">';
         for($i = 0; $i <count($json->books); $i++){
-          for($k = 0; $k<count($json->books[$i]->ids); $k++){
-            if ($_COOKIE['uid'] == $json->books[$i]->ids[$k]){
+          for($k = 0; $k<count($json->books[$i]->readed); $k++){
+            if ($_COOKIE['uid'] == $json->books[$i]->readed[$k]){
               echo '<div class="book-block">';
-                  echo '<a href="book.php?book=',$json->books[$i]->id_book,'">';
+                  echo '<a href="book.php?book=',$json->books[$i]->id,'">';
                   echo '<span class="title">',$json->books[$i]->title,'</span>';
                   echo '<span class="author">',$json->books[$i]->author,  '</span>';
                   echo '<img src="',$json->books[$i]->cover,'" alt="">';
