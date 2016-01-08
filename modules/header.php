@@ -11,7 +11,7 @@ if (isset($_COOKIE['log'])) {
                     <li><a href="/celebrities.php">Знаменитости</a></li>
                   </ul>
                   <ul class="right">
-                    <li class="bold blue"><a href="">Добавить книгу</a></li>
+                    <li class="bold blue"><a href="#addbook">Добавить книгу</a></li>
                     <li><a href="/profile.php">Профиль</a></li>
                     <li><a href="logout.php">Выход</a></li> 
                   </ul>

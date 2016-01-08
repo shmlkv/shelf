@@ -1,4 +1,13 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500&subset=latin,cyrillic);
+/* @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500&subset=latin,cyrillic); */
+@font-face {
+    font-family: "HelveticaRegular";
+    src: url("../fonts/HelveticaRegular/HelveticaRegular.eot");
+    src: url("../fonts/HelveticaRegular/HelveticaRegular.eot?#iefix")format("embedded-opentype"),
+    url("../fonts/HelveticaRegular/HelveticaRegular.woff") format("woff"),
+    url("../fonts/HelveticaRegular/HelveticaRegular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
 *{
 	padding: 0;
 	margin: 0;
@@ -6,7 +15,7 @@
 }
 body{
 	background: #afa8a8;
-	font-family: 'Roboto', sans-serif;
+	font-family: "HelveticaRegular";
 }
 a{
 	text-decoration: none;
@@ -40,7 +49,7 @@ header{
 .nav ul li{
 	color: white;
 	display: inline-block;
-	padding: 16px;
+	padding: 16px 0;
 }
 .nav ul li.bold{
 	background: #1e1e1e;
@@ -53,7 +62,7 @@ header{
 	background: rgba(70, 80, 88, .8);
 }
 .nav ul li.blue:hover{
-	background: rgb(70, 80, 88)
+	background: rgb(70, 80, 88);
 }
 .nav ul li.active a{
 	border-bottom: 1px solid white;
@@ -106,6 +115,25 @@ header{
 	vertical-align: top;
 	padding: 0 10px 10px 10px;
 }
+.book-info p{
+	line-height: 40px;
+}
+h1{
+	font-size: 36px;
+    line-height: 40px;
+}
+h2{
+	    font-size: 30px;
+    line-height: 40px;
+}
+h3{
+	    font-size: 24px;
+    line-height: 40px;
+}
+h4{
+	    font-size: 18px;
+    line-height: 20px;
+}
 .book-img .rating{
 	width: 100%;
 	height: 20px;
@@ -116,6 +144,7 @@ header{
 	display: block;
 	width: 100%;
 	min-height: 80px;
+
 }
 .comment img{
 	width: 40px;
@@ -143,6 +172,8 @@ header{
 	padding-top: 0;
 	border: 1px solid #44A754;
 	border-radius: 3px;
+	max-width: 530px;
+	margin: 10px 0px;	
 }
 .text-center{text-align: center;}
 footer{
@@ -170,4 +201,58 @@ header ul li a{
 	width: 100%;
 	text-align: center;
 } */
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  max-width: 500px;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+.popup #content{
+	max-width: 450px;
+}
+.popup  input[type="text"], .popup  input[type="submit"], .popup  input[type="file"]{
+	width: 100%;
+	padding: 7px;
+	margin: 5px;
+}
+.popup-comment{
+	padding-bottom: 60px !important;
+}
+.popup .close {
+	text-decoration: none;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  
+  color: rgb(70, 80, 88);
+}
+.popup .close:hover {
+  border-bottom: none;
+  text-decoration: none;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
 }

@@ -69,13 +69,15 @@
         echo '<div style="margin:10px auto" id="vk_auth"></div>';
         echo '</div>
             </div>';
+  echo '<script type="text/javascript">
+        VK.init({apiId: 5204968});
+        VK.Widgets.Auth("vk_auth", {width: "300px",authUrl: "/login.php"});
+    </script>';
   } 
+  include 'modules/popup.php';
   include 'modules/footer.php';
 ?>
-    <script type="text/javascript">
-        VK.init({apiId: 5204968});
-        VK.Widgets.Auth("vk_auth", {width: "300px",authUrl: '/login.php'});
-    </script>
+    
 </div> 
 </body>
 </html>

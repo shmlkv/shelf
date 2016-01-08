@@ -34,7 +34,7 @@
                   for($a = 0; $a<count($booksjson->books[$k]->coments); $a++){
                     echo '<div class="comment">
                             <img src="covers/дары.jpg" alt="">
-                            <div class="comment-text"><p>'.$booksjson->books[$k]->coments[$a]->userid.'</p>'.$booksjson->books[$k]->coments[$a]->comment.'</div>
+                            <div class="comment-text"><h4>'.$booksjson->books[$k]->coments[$a]->userid.'</h4>'.$booksjson->books[$k]->coments[$a]->comment.'</div>
                           </div>';
                   }
             echo '</div>';
@@ -45,13 +45,15 @@
     }
     echo'</div>';
      echo'</div>';
+     include 'modules/footer.php';
+     include 'modules/popup.php';
   }else{
-    echo '<div class="window">
-              <h2>Здравствуй</h2>
-            <div class="wrap">
-              <div id="vk_auth"></div>
-            </div>
-          </div>';
+    echo '<div id="content">';
+        echo '<div class="wrap">';
+        echo '<h1 class="text-center">Здравствуй!</h1>';
+        echo '<div style="margin:10px auto" id="vk_auth"></div>';
+        echo '</div>
+            </div>';
   }
 ?>
     <script type="text/javascript">
