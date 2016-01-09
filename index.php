@@ -7,16 +7,7 @@
 </head>
 <body>
 <?php 
-  class Users {
-    var $uid;
-    var $fio;
-    function setUID($par){
-      $this->uid = $par;
-    }
-    function setFIO($par){
-      $this->fio = $par;
-    }
-  }
+ 
   
   include 'modules/header.php';
   $userexist=false;
@@ -31,9 +22,7 @@
     }
 
     if(!$userexist){
-      $userobject = new Users;
-      $userobject->setUID($_COOKIE['uid']);
-      $userobject->setFIO($_COOKIE['first_name']." ". $_COOKIE['last_name']);
+      $userobject = array('uid' => $_COOKIE['uid'], 'fio' => $_COOKIE['first_name']." ". $_COOKIE['last_name'], 'pic' => $_COOKIE['photo']);
       array_push($usersjson->users, $userobject);
       fwrite(fopen('database/users.json', 'w'), json_encode($usersjson, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
 

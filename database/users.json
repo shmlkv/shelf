@@ -1,1 +1,9 @@
-{"users":[{"uid":"151805674","fio":"\u0414\u043c\u0438\u0442\u0440\u0438\u0439 \u041b\u0443\u043a\u0430\u0448\u043e\u0432"},{"uid":"121935185","fio":"Andrey Shmelkov"}]}
+{
+    "users": [
+        {
+            "uid": "121935185",
+            "fio": "Andrey Shmelkov",
+            "pic": "https:\/\/pp.vk.me\/c421330\/v421330185\/368e\/ERPmb5Ho04I.jpg"
+        }
+    ]
+}

@@ -9,11 +9,11 @@
 		$cover = $_POST['cover'];
 	}
 	if($_POST['comment']){
-		$comments = array('uid' => $_POST['uid'], 'comment' => $_POST['comment']);
+		$comments[0] = array('uid' => $_POST['uid'], 'comment' => $_POST['comment'], 'rating' => 0);
 	}else{
 		$comments;
 	}
-	$obj = array('id' => count($booksArray->books), 'title' => $_POST['title'],'author' => $_POST['author'],'cover' => $cover,'readed' => array($_POST['uid']),'comments' => );
+	$obj = array('id' => count($booksArray->books), 'title' => $_POST['title'],'author' => $_POST['author'],'cover' => $cover,'readed' => array($_POST['uid']),'comments' => $comments);
 	array_push($booksArray->books, $obj);
 	fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
 

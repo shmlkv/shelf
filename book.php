@@ -34,18 +34,21 @@
                   <p>'.$booksjson->books[$k]->id.'</p>
                   <p>'.$booksjson->books[$k]->desc.'</p>
                   <div id="comments">';
-                  for($a = 0; $a<count($booksjson->books[$k]->coments); $a++){
+                  for($a = 0; $a<count($booksjson->books[$k]->comments); $a++){
+                    for($l = 0; $l<count($usersjson->users); $l++){
+                      if($usersjson->users[$l]->uid == $booksjson->books[$k]->comments[$a]->uid){
+                        $commentfio = $usersjson->users[$l]->fio;
+                        $commentpic =$usersjson->users[$l]->pic;
+                      }
+                    }
                     echo '<div class="comment">
-                            <img src="covers/дары.jpg" alt="">
+                            <img src="'.$commentpic.'" alt="">
+                            <div class="comment-head">
+                              <h4>'.$commentfio.'</h4>
+                              <div class="comment-head-rating">↑ '.$booksjson->books[$k]->comments[$a]->rating.' ↓</div>
+                            </div>
                             <div class="comment-text">
-                              <h4>';
-                                  for($l = 0; $l<count($usersjson->users); $l++){
-                                      if($usersjson->users[$l]->uid == $booksjson->books[$k]->coments[$a]->uid){
-                                        echo $usersjson->users[$l]->fio;
-                                      }
-                                  }
-                              echo '</h4>
-                              <p>'.$booksjson->books[$k]->coments[$a]->comment.'</p>
+                              <p>'.$booksjson->books[$k]->comments[$a]->comment.'</p>
                             </div>
                           </div>';
                   }

@@ -114,26 +114,26 @@ header a:hover{
 	min-width: 100px;
 	display: inline-block;
 	vertical-align: top;
-	padding: 0 10px 10px 10px;
+	padding: 0 10px 10px 20px;
 }
 .book-info p{
-	line-height: 40px;
+	line-height: 30px;
 }
 h1{
 	font-size: 36px;
-    line-height: 40px;
+	line-height: 40px;
 }
 h2{
-	    font-size: 30px;
-    line-height: 40px;
+	font-size: 30px;
+	line-height: 40px;
 }
 h3{
-	    font-size: 24px;
-    line-height: 40px;
+	font-size: 24px;
+	line-height: 40px;
 }
 h4{
-	    font-size: 18px;
-    line-height: 20px;
+	font-size: 18px;
+	line-height: 20px;
 }
 .book-img .rating{
 	width: 100%;
@@ -141,41 +141,34 @@ h4{
 	display: block;
 	background: #000;
 }
+#comments{
+	margin-top: 20px;
+}
 .comment{
 	display: block;
 	width: 100%;
 	min-height: 80px;
-
 }
 .comment img{
-	width: 40px;
-	height: 40px;
+	width: 50px;
+	height: 50px;
 	border-radius: 50%;
-	float: left;
-	margin-right: 10px;
-}
-.comment-text{
-	position: relative;
-	float: left;
-	padding: 10px;
-	padding-top: 0;
-	border: 1px solid #44A754;
+	display: inline-block;
 	display: block;
-	border-radius: 0 3px 3px;
-	max-width: 500px;
-	margin: 0 5px;
+	float: left;
 }
-.comment-text:after{
-	border: 10px solid transparent;
-	border-right: 10px solid #44A754;
-	border-top: 10px solid #44A754;
-	display: block;
-	width: 0;
-	height: 0;
-	content: '';
-	left:-20px;
-	top:-1px;
-	position: absolute;
+.comment-head h4{
+	display: inline-block;
+	padding: 0 10px;
+}
+.comment-head-rating{
+	float: right;
+}
+.comment-text {
+	padding-left: 51px;
+}
+.comment-text p{
+	padding: 7px;
 }
 .text-center{text-align: center;}
 footer{
@@ -193,6 +186,9 @@ footer a{
 
 }
 @media(max-width:768px){
+	.comment-text{
+		padding: 99px 13px 6px 13px;
+	}
 /* 	header ul.right{
 	float: left;
 }
