@@ -35,12 +35,12 @@
       $userobject->setUID($_COOKIE['uid']);
       $userobject->setFIO($_COOKIE['first_name']." ". $_COOKIE['last_name']);
       array_push($usersjson->users, $userobject);
-      fwrite(fopen('database/users.json', 'w'), json_encode($usersjson, JSON_UNESCAPED_UNICODE));
+      fwrite(fopen('database/users.json', 'w'), json_encode($usersjson, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
 
       $statsfile = file_get_contents("database/stats.json");
       $statsjson = json_decode($statsfile);
       $statsjson->users = $statsjson->users + 1;
-      fwrite(fopen('database/stats.json', 'w'), json_encode($statsjson, JSON_UNESCAPED_UNICODE));
+      fwrite(fopen('database/stats.json', 'w'), json_encode($statsjson, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
     }
     
          //<img src="images/exit.png" alt="">exit</a>

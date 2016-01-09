@@ -1,27 +1,26 @@
 <?php
-
+	
 	$booksFile = file_get_contents("../database/books.json");
 	$booksArray = json_decode($booksFile);
-	//echo $booksArray->books[0]->id;
-	//$bookObject = new Book;
-	//$bookObject->setParams(count($booksArray->books), $_POST['title'], $_POST['author'], $_POST['comment'], $_POST['cover'], $_POST['uid']);
-	$c =  array('uid' => $_POST['uid'], 'comment' => $_POST['comment']);
-	$obj = array('id' => count($booksArray->books), 'title' => $_POST['title'],'author' => $_POST['author'],'cover' => $_POST['cover'],'readed' => array($_POST['uid']),'comments' => $c);
-	array_push($booksArray->books, $obj);
-	echo $booksArray->books[3]->id;
-	fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray));
-	echo json_encode($bookObject);
-	//echo $_POST['title'].'<br>';
-	//echo $_POST['author'].'<br>';
-	//echo $_POST['comment'].'<br>';
-	//echo $_POST['file'].'<br>';
-	//echo $_POST['uid'].'<br>';
-	
-	//echo count($booksjson->books);
 
-	//for($i = 0; $i <count($books->users); $i++){
-	//  if ($_COOKIE['uid'] === $usersjson->users[$i]->uid){
-	//    $userexist=true;
-	//  }
-	//}
+	if(!$_POST['cover']){
+		$cover = 'covers/no-book.jpg';
+	}else{
+		$cover = $_POST['cover'];
+	}
+	if($_POST['comment']){
+		$comments = array('uid' => $_POST['uid'], 'comment' => $_POST['comment']);
+	}else{
+		$comments;
+	}
+	$obj = array('id' => count($booksArray->books), 'title' => $_POST['title'],'author' => $_POST['author'],'cover' => $cover,'readed' => array($_POST['uid']),'comments' => );
+	array_push($booksArray->books, $obj);
+	fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
+
+	$statsFile = file_get_contents("../database/stats.json");
+	$stastArray = json_decode($statsFile);
+	$stastArray->books = count($booksArray->books);
+	fwrite(fopen('../database/stats.json', 'w'), json_encode($stastArray, JSON_PRETTY_PRINT));
+
+	header("Location: ../index.php");
 ?>

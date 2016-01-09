@@ -14,6 +14,9 @@
     $booksfile = file_get_contents("database/books.json");
     $booksjson = json_decode($booksfile);
 
+    $usersfile = file_get_contents("database/users.json");
+    $usersjson = json_decode($usersfile);
+
     echo '<div id="content">';
       echo '<div class="wrap">';
     if(empty($_GET['book'])){
@@ -34,7 +37,16 @@
                   for($a = 0; $a<count($booksjson->books[$k]->coments); $a++){
                     echo '<div class="comment">
                             <img src="covers/дары.jpg" alt="">
-                            <div class="comment-text"><h4>'.$booksjson->books[$k]->coments[$a]->uid.'</h4>'.$booksjson->books[$k]->coments[$a]->comment.'</div>
+                            <div class="comment-text">
+                              <h4>';
+                                  for($l = 0; $l<count($usersjson->users); $l++){
+                                      if($usersjson->users[$l]->uid == $booksjson->books[$k]->coments[$a]->uid){
+                                        echo $usersjson->users[$l]->fio;
+                                      }
+                                  }
+                              echo '</h4>
+                              <p>'.$booksjson->books[$k]->coments[$a]->comment.'</p>
+                            </div>
                           </div>';
                   }
             echo '</div>';
