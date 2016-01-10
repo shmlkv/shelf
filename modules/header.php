@@ -4,7 +4,7 @@ if (isset($_COOKIE['log'])) {
             <div class="wrap">
                 <div class="nav">
                   <ul class="left">
-                    <li class="bold"><a href="/">Shelf</a></li>
+                    <li class="bold"><a href="/"><span class="icon-books"></span>Книжная полка</a></li>
                     <li class="active"><a href="/">Моя полка</a></li>
                     <li><a href="/users.php">Пользователи</a></li>
                     <li><a href="/book.php">Книги</a></li>
@@ -23,13 +23,13 @@ if (isset($_COOKIE['log'])) {
            <div class="wrap">
                <div class="nav">
                  <ul class="left">
-                   <li class="bold"><a href="">Shelf</a></li>
+                   <li class="bold"><a href=""><span class="icon-books"></span>Книжная полка</a></li>
                    <li><a href="">Пользователи</a></li>
                    <li><a href="">Книги</a></li>
                    <li><a href="">Знаменитости</a></li>
                  </ul>
                  <ul class="right">
-                    <li class="bold blue"><a href="">VK Войти</a></li> 
+                    <li class="bold blue"><a href=""><span class="icon-vk"></span> Войти</a></li> 
                  </ul>
                </div>
            </div>

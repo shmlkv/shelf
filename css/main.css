@@ -8,6 +8,16 @@
     font-style: normal;
     font-weight: normal;
 }
+@font-face {
+    font-family: 'icomoon';
+    src:    url('../fonts/icons/icomoon.eot?uu1ul9');
+    src:    url('../fonts/icons/icomoon.eot?uu1ul9#iefix') format('embedded-opentype'),
+        url('../fonts/icons/icomoon.ttf?uu1ul9') format('truetype'),
+        url('../fonts/icons/icomoon.woff?uu1ul9') format('woff'),
+        url('../fonts/icons/icomoon.svg?uu1ul9#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 *{
 	padding: 0;
 	margin: 0;
@@ -29,10 +39,6 @@ header{
 }
 header a{
 	text-decoration: none;
-}
-header a:hover{
-	border-bottom: 1px solid white;
-	-webkit-transition: .2s ease-out;
 }
 .wrap{
 	margin: 0 auto;
@@ -71,6 +77,9 @@ header a:hover{
 .nav ul li a{
 	color:white;
 	padding: 15px;
+}
+.nav ul li a:hover{
+	background: rgba(30, 30, 30, .2);
 }
 #content .wrap{
 	max-width: 960px;
@@ -257,4 +266,57 @@ header ul li a{
 .popup .content {
   max-height: 30%;
   overflow: auto;
+}
+
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+	padding: 0px 4px 0 0;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-log-out:before {
+    content: "\e900";
+}
+.icon-login:before {
+    content: "\e901";
+}
+.icon-chevron-down:before {
+    content: "\e902";
+}
+.icon-thumbs-down:before {
+    content: "\e903";
+}
+.icon-chevron-up:before {
+    content: "\e904";
+}
+.icon-thumbs-up:before {
+    content: "\e905";
+}
+.icon-facebook-square:before {
+    content: "\e906";
+}
+.icon-vk:before {
+    content: "\e907";
+}
+.icon-books:before {
+    content: "\e908";
+}
+.icon-menu:before {
+    content: "\e909";
+}
+.icon-enter:before {
+    content: "\e90a";
+}
+.icon-exit:before {
+    content: "\e90b";
 }

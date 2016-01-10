@@ -7,9 +7,8 @@
 </head>
 <body>
 <?php 
- 
-  
   include 'modules/header.php';
+
   $userexist=false;
   if (isset($_COOKIE['log'])) {
     $usersfile = file_get_contents("database/users.json");
@@ -35,8 +34,8 @@
          //<img src="images/exit.png" alt="">exit</a>
     $file = file_get_contents("database/books.json");
     $json = json_decode($file);
-    echo '<div id="content">';
-      echo '<div class="wrap">';
+    echo '<div id="content">
+            <div class="wrap">';
         for($i = 0; $i <count($json->books); $i++){
           for($k = 0; $k<count($json->books[$i]->readed); $k++){
             if ($_COOKIE['uid'] == $json->books[$i]->readed[$k]){
@@ -50,19 +49,19 @@
             }
           }
         }
-      echo '</div>';
-    echo '</div>';
+      echo '</div>
+        </div>';
   }else{
-   echo '<div id="content">';
-        echo '<div class="wrap">';
-        echo '<h1 class="text-center">Здравствуй!</h1>';
-        echo '<div style="margin:10px auto" id="vk_auth"></div>';
-        echo '</div>
-            </div>';
-  echo '<script type="text/javascript">
-        VK.init({apiId: 5204968});
-        VK.Widgets.Auth("vk_auth", {width: "300px",authUrl: "/login.php"});
-    </script>';
+    echo '<div id="content">
+            <div class="wrap">
+            <h1 class="text-center">Здравствуй!</h1>
+            <div style="margin:10px auto" id="vk_auth"></div>
+            </div>
+          </div>';
+    echo '<script type="text/javascript">
+            VK.init({apiId: 5204968});
+            VK.Widgets.Auth("vk_auth", {width: "300px",authUrl: "/login.php"});
+          </script>';
   } 
   include 'modules/popup.php';
   include 'modules/footer.php';
