@@ -26,7 +26,6 @@
         if ($_GET['book'] == $booksjson->books[$k]->id){
           echo '<div class="book-img">
                   <img class="book-img" src="'.$booksjson->books[$k]->cover.'" alt="">
-                  
                 </div>';
           echo '<div class="book-info">
                   <h2>'.$booksjson->books[$k]->title.'</h2>
@@ -34,6 +33,7 @@
                   <p>'.$booksjson->books[$k]->desc.'</p>
                   <p>Людей прочитало книгу: '.count($booksjson->books[$k]->readed).'</p>
                   <p>Cредний рейтинг: '.$booksjson->books[$k]->averagerating.'</p>
+                  <p><a href="scripts/toread.php?book='.$booksjson->books[$k]->id.'" class="addbook">Хочу прочитать<span class="icon-plus"></span></a></p>
                   <div id="comments">';
                   for($a = 0; $a<count($booksjson->books[$k]->comments); $a++){
                     for($l = 0; $l<count($usersjson->users); $l++){

@@ -27,7 +27,7 @@
 
       $statsfile = file_get_contents("database/stats.json");
       $statsjson = json_decode($statsfile);
-      $statsjson->users = $statsjson->users + 1;
+      $statsjson->users = count($usersjson->users);
       fwrite(fopen('database/stats.json', 'w'), json_encode($statsjson, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
     }
     

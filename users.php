@@ -10,8 +10,8 @@
   $usersfile = file_get_contents("database/users.json");
   $usersjson = json_decode($usersfile);
 	include 'modules/header.php';
-  if(($_GET['book'])){
-      echo 'List of books';
+  if(($_GET['user'])){
+      echo 'user info';
     }else{
 	echo '<div id="content">';
       echo '<div class="wrap">';
