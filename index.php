@@ -21,7 +21,7 @@
     }
 
     if(!$userexist){
-      $userobject = array('uid' => $_COOKIE['uid'], 'fio' => $_COOKIE['first_name']." ". $_COOKIE['last_name'], 'pic' => $_COOKIE['photo']);
+      $userobject = array('uid' => $_COOKIE['uid'], 'fio' => $_COOKIE['first_name']." ". $_COOKIE['last_name'], 'pic' => $_COOKIE['photo'], 'rating' => '0');
       array_push($usersjson->users, $userobject);
       fwrite(fopen('database/users.json', 'w'), json_encode($usersjson, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
 
@@ -60,7 +60,7 @@
           </div>';
     echo '<script type="text/javascript">
             VK.init({apiId: 5204968});
-            VK.Widgets.Auth("vk_auth", {width: "300px",authUrl: "/login.php"});
+            VK.Widgets.Auth("vk_auth", {width: "300px",authUrl: "login.php"});
           </script>';
   } 
   include 'modules/popup.php';

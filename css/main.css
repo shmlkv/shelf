@@ -240,7 +240,7 @@ header ul li a{
 .popup #content{
 	max-width: 450px;
 }
-.popup  input[type="text"], .popup  input[type="submit"], .popup  input[type="file"]{
+.popup  input[type="text"], .popup input[type="range"], .popup  input[type="submit"], .popup  input[type="file"]{
 	width: 100%;
 	padding: 7px;
 	margin: 5px;
@@ -283,40 +283,47 @@ header ul li a{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+header [class*="icon-"]{
 
-.icon-log-out:before {
+}
+.icon-facebook:before {
     content: "\e900";
 }
-.icon-login:before {
+.icon-vk:before {
     content: "\e901";
 }
-.icon-chevron-down:before {
-    content: "\e902";
-}
-.icon-thumbs-down:before {
+.icon-chevron-up:before {
     content: "\e903";
 }
-.icon-chevron-up:before {
+.icon-thumbs-up:before {
     content: "\e904";
 }
-.icon-thumbs-up:before {
+.icon-chevron-down:before {
     content: "\e905";
 }
-.icon-facebook-square:before {
+.icon-thumbs-down:before {
     content: "\e906";
 }
-.icon-vk:before {
+.icon-plus:before {
+    content: "\e902";
+}
+.icon-user:before {
+    content: "\e90b";
+}
+.icon-th-menu:before {
     content: "\e907";
 }
 .icon-books:before {
     content: "\e908";
 }
-.icon-menu:before {
+.icon-enter:before {
     content: "\e909";
 }
-.icon-enter:before {
+.icon-exit:before {
     content: "\e90a";
 }
-.icon-exit:before {
-    content: "\e90b";
+
+.auth_widget_head, .flat_button{
+	background:rgba(32, 38, 41, .8) !important;
 }
+.flat_button{}

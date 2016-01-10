@@ -8,5 +8,5 @@ if ($_REQUEST['hash']==md5('5204968'.$_REQUEST['uid'].'QjdRt1xAokptMQ0xBPqi')) {
 	setcookie('photo_rec',$_REQUEST['photo_rec']);
 	setcookie('log',true);
 }
-header("Location: /index.php");
+header("Location: index.php");
 ?>

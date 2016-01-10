@@ -26,26 +26,26 @@
         if ($_GET['book'] == $booksjson->books[$k]->id){
           echo '<div class="book-img">
                   <img class="book-img" src="'.$booksjson->books[$k]->cover.'" alt="">
-                  <div class="rating"></div>
+                  
                 </div>';
           echo '<div class="book-info">
                   <h2>'.$booksjson->books[$k]->title.'</h2>
                   <h3>'.$booksjson->books[$k]->author.'</h3>
-                  <p>'.$booksjson->books[$k]->id.'</p>
                   <p>'.$booksjson->books[$k]->desc.'</p>
+                  <p>Людей прочитало книгу: '.count($booksjson->books[$k]->readed).'</p>
+                  <p>Cредний рейтинг: '.$booksjson->books[$k]->averagerating.'</p>
                   <div id="comments">';
                   for($a = 0; $a<count($booksjson->books[$k]->comments); $a++){
                     for($l = 0; $l<count($usersjson->users); $l++){
                       if($usersjson->users[$l]->uid == $booksjson->books[$k]->comments[$a]->uid){
-                        $commentfio = $usersjson->users[$l]->fio;
-                        $commentpic =$usersjson->users[$l]->pic;
+                        $userObj = $usersjson->users[$l];
                       }
                     }
                     echo '<div class="comment">
-                            <img src="'.$commentpic.'" alt="">
+                            <img src="'.$userObj->pic.'" alt="">
                             <div class="comment-head">
-                              <h4>'.$commentfio.'</h4>
-                              <div class="comment-head-rating">↑ '.$booksjson->books[$k]->comments[$a]->rating.' ↓</div>
+                              <h4>'.$userObj->fio.'</h4>
+                              <div class="comment-head-rating"><span class="icon-thumbs-up"></span> '.$booksjson->books[$k]->comments[$a]->rating.' <span class="icon-thumbs-down"></span></div>
                             </div>
                             <div class="comment-text">
                               <p>'.$booksjson->books[$k]->comments[$a]->comment.'</p>

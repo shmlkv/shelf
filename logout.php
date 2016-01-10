@@ -1,4 +1,4 @@
 <?php
 	setcookie('log',false);
-	header("Location: /index.php");
+	header("Location: index.php");
 ?>

@@ -20,8 +20,9 @@
   </div>
 </div>
 <?php
-  include 'modules/popup.php';
+  
   include 'modules/footer.php';
+  include 'modules/popup.php';
 ?>
     
 </div> 
