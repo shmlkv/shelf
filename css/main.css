@@ -187,6 +187,10 @@ footer a{
 	text-decoration: none;
 	color: rgb(70, 80, 88);
 }
+a.dontdecorate{
+	text-decoration: none;
+	color: black;
+}
 @media(max-width:1024px){
 	.nav ul li{
 		padding-right: 5px;
