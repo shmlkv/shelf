@@ -34,11 +34,23 @@
                   <p>Людей прочитало книгу: '.count($booksjson->books[$k]->readers).'</p>
                   <p>Людей хотят прочитать книгу: '.count($booksjson->books[$k]->toread).'</p>
                   <p>Cредний рейтинг: '.$booksjson->books[$k]->averagerating.'</p>';
-                  if (in_array($_COOKIE['uid'], $booksjson->books[$k]->toread)) {
-                    echo '<p><a href="scripts/toread.php?book='.$booksjson->books[$k]->id.'" class="addbook">[х] Не хочу прочитать</a></p>';
-                  }else{
-                    echo '<p><a href="scripts/toread.php?book='.$booksjson->books[$k]->id.'" class="addbook">[+] Хочу прочитать</a></p>';
+                  $idreadedbook = false;
+                  for($i = 0; $i<count($booksjson->books[$k]->readers[$i]); $i++){
+                      if($_COOKIE['uid'] === $booksjson->books[$k]->readers[$i]->uid){
+                        $idreadedbook = true;
+                      }
                   }
+
+                  if(!$idreadedbook){
+                    if (in_array($_COOKIE['uid'], $booksjson->books[$k]->toread)) {
+                      echo '<p><a href="scripts/toread.php?book='.$booksjson->books[$k]->id.'" class="addbook">[х] Не хочу прочитать</a></p>';
+                    }else{
+                     
+                    }
+                  }else{
+                     echo '<p><a href="" class="addbook">Вы читали эту книгу</a></p>';
+                  }
+                  
                   //}
                   echo '<div id="comments">';
                   for($a = 0; $a<count($booksjson->books[$k]->comments); $a++){

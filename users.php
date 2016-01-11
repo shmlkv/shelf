@@ -7,32 +7,50 @@
 </head>
 <body>
 <?php
+  include 'modules/header.php';
+
   $usersfile = file_get_contents("database/users.json");
   $usersjson = json_decode($usersfile);
-	include 'modules/header.php';
-  
+
 	echo '<div id="content">';
       echo '<div class="wrap">';
       if($_GET['user']){
+
         $booksfile = file_get_contents("database/books.json");
         $booksjson = json_decode($booksfile);
+
         for($k = 0; $k<count($usersjson->users); $k++){
           if($_GET['user'] == $usersjson->users[$k]->uid){
             $userobj = $usersjson->users[$k];
           }
         }
-
+        $booksread = 0;
+        $bookstoread = 0;
+        for($i = 0; $i<count($booksjson->books); $i++){
+          for($j = 0; $j<count($booksjson->books[$i]->readers); $j++){
+            if($_GET['user'] == $booksjson->books[$i]->readers[$j]->uid){
+              $booksread = $booksread + 1;
+            }
+          }
+          for($j = 0; $j<count($booksjson->books[$i]->toread); $j++){
+            if($_GET['user'] == $booksjson->books[$i]->toread[$j]){
+              $bookstoread = $bookstoread + 1;
+            }
+          }
+        }
         echo '<div class="comment">
                 <img src="'.$userobj->pic.'" alt="">
                 <div class="comment-head">
                   <h4>'.$userobj->fio.'</h4></div>
                 <div class="comment-text">
                   <p>Рейтинг: '.$userobj->rating.'</p>
+                  <p>Книг прочитал: '.$booksread.'</p>
+                  <p>Книг хочет прочитать: '.$bookstoread.'</p>
                 </div>
               </div>';
         for($i = 0; $i <count($booksjson->books); $i++){
-          for($k = 0; $k<count($booksjson->books[$i]->readers); $k++){
-            if ($_GET['user']  == $booksjson->books[$i]->readers[$k]->uid){
+          for($j = 0; $j<count($booksjson->books[$i]->readers); $j++){
+            if ($_GET['user']  == $booksjson->books[$i]->readers[$j]->uid){
               echo '<div class="book-block">';
                   echo '<a href="book.php?book=',$booksjson->books[$i]->id,'">';
                   echo '<span class="title">',$booksjson->books[$i]->title,'</span>';
@@ -45,8 +63,8 @@
         }
       }else{
       echo '<div class="users">';
-      for($k = 0; $k<count($usersjson->users); $k++){
-        $userobj = $usersjson->users[$k];
+      for($i = 0; $i<count($usersjson->users); $i++){
+        $userobj = $usersjson->users[$i];
         echo '<div class="comment">
                 <a class="dontdecorate" href="users.php?user='.$userobj->uid.'">
                 <img src="'.$userobj->pic.'" alt="">
