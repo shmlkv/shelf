@@ -37,8 +37,8 @@
     echo '<div id="content">
             <div class="wrap">';
         for($i = 0; $i <count($json->books); $i++){
-          for($k = 0; $k<count($json->books[$i]->readed); $k++){
-            if ($_COOKIE['uid'] == $json->books[$i]->readed[$k]){
+          for($k = 0; $k<count($json->books[$i]->readers); $k++){
+            if ($_COOKIE['uid'] == $json->books[$i]->readers[$k]->uid){
               echo '<div class="book-block">';
                   echo '<a href="book.php?book=',$json->books[$i]->id,'">';
                   echo '<span class="title">',$json->books[$i]->title,'</span>';
@@ -51,6 +51,7 @@
         }
       echo '</div>
         </div>';
+    include 'modules/popup.php';    
   }else{
     echo '<div id="content">
             <div class="wrap">
@@ -63,7 +64,7 @@
             VK.Widgets.Auth("vk_auth", {width: "300px",authUrl: "login.php"});
           </script>';
   } 
-  include 'modules/popup.php';
+  
   include 'modules/footer.php';
 ?>
     

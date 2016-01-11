@@ -13,7 +13,7 @@
 	}else{
 		$comments;
 	}
-	$obj = array('id' => count($booksArray->books), 'title' => $_POST['title'],'author' => $_POST['author'],'cover' => $cover,'readed' => array($_POST['uid']), 'averagerating' => $_POST['rating'], 'comments' => $comments);
+	$obj = array('id' => count($booksArray->books), 'title' => $_POST['title'],'author' => $_POST['author'],'cover' => $cover,'readers' => array('uid' => $_POST['uid'], 'rating' => $_POST['rating']), 'averagerating' => $_POST['rating'], 'comments' => $comments);
 	array_push($booksArray->books, $obj);
 	fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
 

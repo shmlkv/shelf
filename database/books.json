@@ -9,13 +9,16 @@
             "author": "\u0421\u044d\u043b\u0438\u043d\u0434\u0436\u0435\u0440 \u0414\u0436\u0435\u0440\u043e\u043c",
             "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, deserunt explicabo, quis nisi maxime ducimus. Veritatis, possimus dignissimos qui vel.",
             "cover": "covers\/Dzherom_Selindzher__Nad_propastyu_vo_rzhi.jpeg",
-            "readed": [
-                121935185
-            ],
-            "toread": [
-                "2"
+            "readers":[
+                {
+                    "uid": "121935185",
+                    "rating": "0"
+                }
             ],
             "averagerating": "0",
+            "toread": [
+                
+            ],
             "comments": [
                 {
                     "uid": "121935185",
@@ -39,8 +42,12 @@
             "title": "\u041b\u044e\u0431\u043b\u044e",
             "author": "\u0412\u044b\u0441\u043e\u0446\u043a\u0438\u0439",
             "cover": "https:\/\/i.livelib.ru\/boocover\/1000221950\/o\/013e\/Vladimir_Mayakovskij__Lyublyu.jpeg",
-            "readed": [
+            "readers": [
                 "121935185"
+                {
+                    "uid": "121935185",
+                    "rating": "0"
+                }
             ],
             "toread": [],
             "averagerating": "0",
@@ -57,8 +64,11 @@
             "title": "\u0423\u0431\u0438\u0442\u044c \u043f\u0435\u0440\u0435\u0441\u043c\u0435\u0448\u043d\u0438\u043a\u0430",
             "author": "\u0425\u0430\u0440\u043f\u0435\u0440 \u041b\u0438",
             "cover": "http:\/\/cv3.litres.ru\/static\/bookimages\/10\/26\/34\/10263439.bin.dir\/10263439.cover.jpg",
-            "readed": [
-                "121935185"
+            "readers": [
+                {
+                    "uid": "121935185",
+                    "rating": "0"
+                }
             ],
             "toread": [],
             "averagerating": "0",
@@ -75,8 +85,11 @@
             "title": "\u041f\u0440\u0435\u0432\u0440\u0430\u0449\u0435\u043d\u0438\u0435",
             "author": "\u041a\u0430\u0444\u043a\u0430",
             "cover": "https:\/\/i.livelib.ru\/boocover\/1000337543\/o\/bf98\/Frants_Kafka__Prevraschenie._Rasskazy._Aforizmy.jpeg",
-            "readed": [
-                "121935185"
+            "readers": [
+                {
+                    "uid": "121935185",
+                    "rating": "0"
+                }
             ],
             "toread": [],
             "averagerating": "0",
@@ -93,8 +106,11 @@
             "title": "\u044b\u044b",
             "author": "\u044b\u044b",
             "cover": "covers\/no-book.jpg",
-            "readed": [
-                "121935185"
+            "readers": [
+                {
+                    "uid": "121935185",
+                    "rating": "0"
+                }
             ],
             "toread": [],
             "averagerating": "0",
@@ -111,8 +127,11 @@
             "title": "\u041a\u043e\u043b\u044b\u0431\u0435\u043b\u044c \u0434\u043b\u044f \u043a\u043e\u0448\u043a\u0438",
             "author": "\u041a\u0443\u0440\u0442 \u0412\u043e\u043d\u043d\u0435\u0433\u0443\u0442",
             "cover": "https:\/\/i.livelib.ru\/boocover\/1000943387\/o\/83ae\/Kurt_Vonnegut__Kolybel_dlya_koshki.jpeg",
-            "readed": [
-                "121935185"
+            "readers": [
+                {
+                    "uid": "121935185",
+                    "rating": "8"
+                }
             ],
             "toread": [],
             "averagerating": "8",
@@ -129,8 +148,11 @@
             "title": "\u0414\u044c\u044f\u0432\u043e\u043b\u0438\u0430\u0434\u0430",
             "author": "\u041c\u0438\u0445\u0430\u0438\u043b \u0411\u043b\u0443\u0433\u0430\u043a\u043e\u0432",
             "cover": "https:\/\/assets1.bookmate.com\/assets\/documents-covers\/bb\/7d\/HsXajcMQ-large.jpg?1429028388&w=462&h=720",
-            "readed": [
-                "104534912"
+            "readers": [
+                {
+                    "uid": "104534912",
+                    "rating": "10"
+                }
             ],
             "averagerating": "10",
             "comments": [

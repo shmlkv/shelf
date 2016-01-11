@@ -31,13 +31,13 @@
                 </div>
               </div>';
         for($i = 0; $i <count($booksjson->books); $i++){
-          for($k = 0; $k<count($booksjson->books[$i]->readed); $k++){
-            if ($_GET['user']  == $booksjson->books[$i]->readed[$k]){
+          for($k = 0; $k<count($booksjson->books[$i]->readers); $k++){
+            if ($_GET['user']  == $booksjson->books[$i]->readers[$k]->uid){
               echo '<div class="book-block">';
                   echo '<a href="book.php?book=',$booksjson->books[$i]->id,'">';
                   echo '<span class="title">',$booksjson->books[$i]->title,'</span>';
                   echo '<span class="author">',$booksjson->books[$i]->author,  '</span>';
-                  echo '<img src="',$booksjson->books[$i]->cover,'" alt="">';
+                  echo '<img src="', $booksjson->books[$i]->cover,'" alt="">';
                 echo'</a>';
               echo '</div>';
             }
