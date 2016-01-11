@@ -20,7 +20,15 @@
     echo '<div id="content">';
       echo '<div class="wrap">';
     if(empty($_GET['book'])){
-      echo 'List of books';
+      for($i = 1; $i <count($booksjson->books); $i++){
+        echo '<div class="book-block">';
+            echo '<a href="book.php?book=',$booksjson->books[$i]->id,'">';
+              echo '<span class="title">',$booksjson->books[$i]->title,'</span>';
+              echo '<span class="author">',$booksjson->books[$i]->author,  '</span>';
+              echo '<img src="',$booksjson->books[$i]->cover,'" alt="">';
+            echo'</a>';
+        echo '</div>';
+      }
     }else{
       for($k = 0; $k<count($booksjson->books); $k++){
         if ($_GET['book'] == $booksjson->books[$k]->id){
@@ -45,7 +53,7 @@
                     if (in_array($_COOKIE['uid'], $booksjson->books[$k]->toread)) {
                       echo '<p><a href="scripts/toread.php?book='.$booksjson->books[$k]->id.'" class="addbook">[х] Не хочу прочитать</a></p>';
                     }else{
-                     
+                      echo '<p><a href="scripts/toread.php?book='.$booksjson->books[$k]->id.'" class="addbook">[+] Хочу прочитать</a></p>';
                     }
                   }else{
                      echo '<p><a href="" class="addbook">Вы читали эту книгу</a></p>';
@@ -80,14 +88,7 @@
      echo'</div>';
      include 'modules/footer.php';
      include 'modules/popup.php';
-  }else{
-    echo '<div id="content">';
-        echo '<div class="wrap">';
-        echo '<h1 class="text-center">Здравствуй!</h1>';
-        echo '<div style="margin:10px auto" id="vk_auth"></div>';
-        echo '</div>
-            </div>';
-  }
+   }
 ?>
     <script type="text/javascript">
         VK.init({apiId: 5197194}); //второй
