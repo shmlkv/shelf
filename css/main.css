@@ -1,5 +1,6 @@
 /* @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500&subset=latin,cyrillic); */
 @import url("fonts.css");
+@import url("popup.css");
 *{
 	padding: 0;
 	margin: 0;
@@ -169,12 +170,13 @@ a.dontdecorate{
 }
 footer{
 	background: #333;
-  bottom: 0px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  padding: 20px;
-  color: wheat;
+	bottom: 0px;
+	position: relative;
+	left: 0;
+	right: 0;
+	padding: 20px;
+	color: wheat;
+	margin-top: 40px;
 }
 footer a{
 	color: white;
@@ -186,118 +188,9 @@ footer a{
 		padding-right: 5px;
 		padding-left: 5px;
 	}
-
 }
 @media(max-width:768px){
 	.comment-text{
 		padding: 99px 13px 6px 13px;
 	}
 }
-
-.overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
-  visibility: hidden;
-  opacity: 0;
-}
-.overlay:target {
-  visibility: visible;
-  opacity: 1;
-}
-.popup {
-  margin: 70px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 5px;
-  max-width: 500px;
-  position: relative;
-  transition: all 5s ease-in-out;
-}
-.popup #content{
-	max-width: 450px;
-}
-.popup  input[type="text"],
-.popup input[type="range"],
-.popup  input[type="submit"],
-.popup  input[type="file"]{
-	width: 100%;
-	padding: 7px;
-	margin: 5px;
-}
-.popup-comment{
-	padding-bottom: 60px !important;
-}
-.popup .close {
-	text-decoration: none;
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  transition: all 200ms;
-  font-size: 30px;
-  font-weight: bold;
-  color: rgb(70, 80, 88);
-}
-.popup .close:hover {
-  border-bottom: none;
-  text-decoration: none;
-}
-.popup .content {
-  max-height: 30%;
-  overflow: auto;
-}
-[class^="icon-"], [class*=" icon-"] {
-    /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'icomoon' !important;
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-	padding: 0px 4px 0 0;
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-.icon-facebook:before {
-    content: "\e900";
-}
-.icon-vk:before {
-    content: "\e901";
-}
-.icon-chevron-up:before {
-    content: "\e903";
-}
-.icon-thumbs-up:before {
-    content: "\e904";
-}
-.icon-chevron-down:before {
-    content: "\e905";
-}
-.icon-thumbs-down:before {
-    content: "\e906";
-}
-.icon-plus:before {
-    content: "\e902";
-}
-.icon-user:before {
-    content: "\e90b";
-}
-.icon-th-menu:before {
-    content: "\e907";
-}
-.icon-books:before {
-    content: "\e908";
-}
-.icon-enter:before {
-    content: "\e909";
-}
-.icon-exit:before {
-    content: "\e90a";
-}
-	

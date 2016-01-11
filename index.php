@@ -6,20 +6,19 @@
   <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?34"></script>
 </head>
 <body>
-<?php 
+<?php
   include 'modules/header.php';
 
   $userexist=false;
   if (isset($_COOKIE['log'])) {
     $usersfile = file_get_contents("database/users.json");
     $usersjson = json_decode($usersfile);
-
     for($i = 0; $i <count($usersjson->users); $i++){
       if ($_COOKIE['uid'] === $usersjson->users[$i]->uid){
         $userexist=true;
       }
     }
-
+    
     if(!$userexist){
       $userobject = array('uid' => $_COOKIE['uid'], 'fio' => $_COOKIE['first_name']." ". $_COOKIE['last_name'], 'pic' => $_COOKIE['photo'], 'rating' => '0');
       array_push($usersjson->users, $userobject);
@@ -31,27 +30,31 @@
       fwrite(fopen('database/stats.json', 'w'), json_encode($statsjson, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
     }
     
-         //<img src="images/exit.png" alt="">exit</a>
     $file = file_get_contents("database/books.json");
     $json = json_decode($file);
     echo '<div id="content">
-            <div class="wrap">';
+            <div class="wrap">
+              <div class="tabs">
+                <a href="" class="tab">Прочитанные</a>
+                <a href="" class="tab">Желаемые</a>
+                <a href="" class="tab">tab</a>
+              </div>';
         for($i = 0; $i <count($json->books); $i++){
           for($k = 0; $k<count($json->books[$i]->readers); $k++){
             if ($_COOKIE['uid'] == $json->books[$i]->readers[$k]->uid){
               echo '<div class="book-block">';
                   echo '<a href="book.php?book=',$json->books[$i]->id,'">';
-                  echo '<span class="title">',$json->books[$i]->title,'</span>';
-                  echo '<span class="author">',$json->books[$i]->author,  '</span>';
-                  echo '<img src="',$json->books[$i]->cover,'" alt="">';
-                echo'</a>';
+                    echo '<span class="title">',$json->books[$i]->title,'</span>';
+                    echo '<span class="author">',$json->books[$i]->author,  '</span>';
+                    echo '<img src="',$json->books[$i]->cover,'" alt="">';
+                  echo'</a>';
               echo '</div>';
             }
           }
         }
       echo '</div>
         </div>';
-    include 'modules/popup.php';    
+    include 'modules/popup.php';
   }else{
     echo '<div id="content">
             <div class="wrap">
