@@ -1,5 +1,6 @@
 <?php
 	if($_COOKIE['uid']){
+		$today = date("j.m.y");
 		$booksFile = file_get_contents("../database/books.json");
 		$booksArray = json_decode($booksFile);
 		$userbookexist = false;
@@ -11,9 +12,9 @@
 		if($_POST['bookid']){
 			if(!$userbookexist){
 				if($_POST['comment']){
-					array_push($booksArray->books[$_POST['bookid']]->readers,  array('uid' => $_COOKIE['uid'], 'rating' => $_POST['rating'], 'comment' => $_POST['comment'], 'commentrating' => 0));
+					array_push($booksArray->books[$_POST['bookid']]->readers,  array('uid' => $_COOKIE['uid'], 'date' => $today, 'rating' => $_POST['rating'], 'comment' => $_POST['comment'], 'commentrating' => 0));
 				}else{
-					array_push($booksArray->books[$_POST['bookid']]->readers,  array('uid' => $_COOKIE['uid'], 'rating' => $_POST['rating']));
+					array_push($booksArray->books[$_POST['bookid']]->readers,  array('uid' => $_COOKIE['uid'], 'date' => $today, 'rating' => $_POST['rating']));
 				}
 				$added = true;
 				if(in_array($_COOKIE['uid'], $booksArray->books[$_POST['bookid']]->toread)){
@@ -28,9 +29,9 @@
 			if($_POST['title'] && $_POST['author'] && $_POST['rating']){
 				(!$_POST['cover']) ? $cover = 'covers/no-book.jpg' : $cover = $_POST['cover'];
 				if($_POST['comment']){
-					$bookobj = array('id' => count($booksArray->books), 'title' => $_POST['title'],'author' => $_POST['author'],'cover' => $cover,'readers' => array(array('uid' => $_COOKIE['uid'], 'rating' => $_POST['rating'], 'comment' => $_POST['comment'],'commentrating' => 0)),'toread' => array(), 'averagerating' => $_POST['rating']);
+					$bookobj = array('id' => count($booksArray->books), 'title' => $_POST['title'],'author' => $_POST['author'],'cover' => $cover,'readers' => array(array('uid' => $_COOKIE['uid'], 'date' => $today, 'rating' => $_POST['rating'], 'comment' => $_POST['comment'],'commentrating' => 0)),'toread' => array(), 'averagerating' => $_POST['rating']);
 				}else{
-					$bookobj = array('id' => count($booksArray->books), 'title' => $_POST['title'],'author' => $_POST['author'],'cover' => $cover,'readers' => array(array('uid' => $_COOKIE['uid'], 'rating' => $_POST['rating'])),'toread' => array(), 'averagerating' => $_POST['rating']);
+					$bookobj = array('id' => count($booksArray->books), 'title' => $_POST['title'],'author' => $_POST['author'],'cover' => $cover,'readers' => array(array('uid' => $_COOKIE['uid'], 'date' => $today, 'rating' => $_POST['rating'])),'toread' => array(), 'averagerating' => $_POST['rating']);
 				}
 				array_push($booksArray->books, $bookobj);
 				$added = true;

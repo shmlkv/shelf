@@ -73,6 +73,7 @@
                             <img src="'.$userObj->pic.'" alt="">
                             <div class="comment-head">
                               <h4>'.$userObj->fio.'</h4>
+                              <date>'.$booksjson->books[$k]->readers[$a]->date.'</date>
                               <div class="comment-head-rating"><span class="icon-thumbs-up"></span> '.$booksjson->books[$k]->readers[$a]->commentrating.' <span class="icon-thumbs-down"></span></div>
                             </div>
                             <div class="comment-text">
