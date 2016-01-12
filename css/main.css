@@ -81,6 +81,7 @@ header a{
 	text-align: center;
 	padding: 0 20px 20px;
 	max-width: 184px;
+	vertical-align: top;
 }
 .book-block a{
 	text-decoration: none;
@@ -89,7 +90,8 @@ header a{
 	max-width: 184px;
 }
 .book-block img{
-	max-width: 144px;
+	width: 144px;
+	height: 225px;
 }
 .book-block span.title, span.author{
 	display: block;
@@ -217,4 +219,9 @@ a.btn{
 	border-radius: 3px;
 	margin: 5px;
 	display: inline-block;
+}
+info{
+	border-bottom: 1px solid rgb(70, 80, 88);
+	display: block;
+	padding: 7px;
 }

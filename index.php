@@ -33,12 +33,24 @@
     $file = file_get_contents("database/books.json");
     $json = json_decode($file);
     echo '<div id="content">
-            <div class="wrap">
-              <div class="tabs">
-                <a href="" class="tab">Прочитанные</a>
-                <a href="" class="tab">Желаемые</a>
-                <a href="" class="tab">tab</a>
-              </div>';
+            <div class="wrap">';
+            echo '<div class="wantto">
+            <info style="margin-bottom: 20px">Хотите прочитать</info>';
+        for($i = 0; $i <count($json->books); $i++){
+          for($k = 0; $k<count($json->books[$i]->toread); $k++){
+            if ($_COOKIE['uid'] == $json->books[$i]->toread[$k]){
+              echo '<div class="book-block">';
+                  echo '<a href="book.php?book=',$json->books[$i]->id,'">';
+                    echo '<img src="',$json->books[$i]->cover,'" alt="">';
+                    echo '<span class="title">',$json->books[$i]->title,'</span>';
+                    echo '<span class="author">',$json->books[$i]->author,  '</span>';
+                  echo'</a>';
+              echo '</div>';
+            }
+          }
+        }
+        echo '</div>';
+        echo '<info style="margin-bottom: 20px">Прочитали</info>';
         for($i = 0; $i <count($json->books); $i++){
           for($k = 0; $k<count($json->books[$i]->readers); $k++){
             if ($_COOKIE['uid'] == $json->books[$i]->readers[$k]->uid){

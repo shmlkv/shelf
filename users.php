@@ -38,16 +38,33 @@
             }
           }
         }
-        echo '<div class="comment">
+        echo '<div class="comment" style="margin-bottom: 20px">
                 <img src="'.$userobj->pic.'" alt="">
                 <div class="comment-head">
-                  <a class="comment-head-name" >'.$userobj->fio.'</a></div>
+                  <a class="comment-head-name">'.$userobj->fio.'</a></div>
                 <div class="comment-text">
-                  <p>Рейтинг: '.$userobj->rating.'</p>
-                  <p>Книг прочитал: '.$booksread.'</p>
-                  <p>Книг хочет прочитать: '.$bookstoread.'</p>
+                  <info>Рейтинг: '.$userobj->rating.'</info>
+                  <info>Книг хочет прочитать: '.$bookstoread.'</info>
+                  <info>Книг прочитал: '.$booksread.'</info>
                 </div>
               </div>';
+               echo '<div class="wantto">
+            <info style="margin-bottom: 20px">Хочет прочитать</info>';
+        for($i = 0; $i <count($booksjson->books); $i++){
+          for($k = 0; $k<count($booksjson->books[$i]->toread); $k++){
+            if ($GET['user'] == $booksjson->books[$i]->toread[$k]){
+              echo '<div class="book-block">';
+                  echo '<a href="book.php?book=',$booksjson->books[$i]->id,'">';
+                    echo '<img src="',$booksjson->books[$i]->cover,'" alt="">';
+                    echo '<span class="title">',$booksjson->books[$i]->title,'</span>';
+                    echo '<span class="author">',$booksjson->books[$i]->author,  '</span>';
+                  echo'</a>';
+              echo '</div>';
+            }
+          }
+        }
+        echo '</div>';
+        echo '<info style="margin-bottom: 20px">Прочитал</info>';
         for($i = 0; $i <count($booksjson->books); $i++){
           for($j = 0; $j<count($booksjson->books[$i]->readers); $j++){
             if ($_GET['user']  == $booksjson->books[$i]->readers[$j]->uid){

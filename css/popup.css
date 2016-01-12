@@ -41,6 +41,9 @@ body{
 	border: 1px solid #20232A;
 	color: white;
 }
+input[type="text"]:disabled {
+    background: rgb(70, 80, 88);
+}
 .popup-comment{
 	padding-bottom: 60px !important;
 }
