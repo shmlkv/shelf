@@ -8,7 +8,7 @@
 						<input type="text" name="title" placeholder="Название" autofocus required>
 						<input type="text" name="author" placeholder="Автор" autofocus required>
 						<input type="text" name="comment" placeholder="Ваш комментарий о книге" class="popup-comment">
-						<input type="text" name="cover" placeholder="url картинки">
+						<input type="text" name="cover" placeholder="url картинки (прости, брат, но пока только так)">
 						<span class="text-center">Оценка</span>
 						<input type="range" name="rating" min="0" max="10" step="1" value="5"> 
 						<input type="hidden" name="uid" value="'.$_COOKIE['uid'].'">

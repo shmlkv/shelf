@@ -41,7 +41,7 @@
         echo '<div class="comment">
                 <img src="'.$userobj->pic.'" alt="">
                 <div class="comment-head">
-                  <h4>'.$userobj->fio.'</h4></div>
+                  <a class="comment-head-name" >'.$userobj->fio.'</a></div>
                 <div class="comment-text">
                   <p>Рейтинг: '.$userobj->rating.'</p>
                   <p>Книг прочитал: '.$booksread.'</p>
@@ -66,10 +66,11 @@
       for($i = 0; $i<count($usersjson->users); $i++){
         $userobj = $usersjson->users[$i];
         echo '<div class="comment">
-                <a class="dontdecorate" href="users.php?user='.$userobj->uid.'">
+                <a  href="users.php?user='.$userobj->uid.'">
                 <img src="'.$userobj->pic.'" alt="">
                 <div class="comment-head">
-                  <h4>'.$userobj->fio.'</h4></div>
+                  <a class="comment-head-name" href="users.php?user='.$userobj->uid.'">'.$userobj->fio.'</a>
+                </div>
                 <div class="comment-text">
                   <p>Рейтинг: '.$userobj->rating.'</p>
                 </div>

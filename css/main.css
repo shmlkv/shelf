@@ -7,13 +7,17 @@
 	box-sizing: border-box;
 }
 body{
-	background: #afa8a8;
-	font-family: "HelveticaRegular";
+	/* background: #afa8a8; */
+	background: #20232A;
+	color: white;
+	font-family: 'Roboto', sans-serif;
+
 }
 header{
 	position: fixed;
 	min-height: 50px;
-	background: rgba(32, 38, 41, .8);
+	/* background: rgba(32, 38, 41, .8); */
+	background: #2B2F3A;
 	margin: 0 auto;
 	width: 100%;
 	top:0;
@@ -65,10 +69,11 @@ header a{
 }
 #content .wrap{
 	max-width: 960px;
-	background: white;
+	/* background: white; */
+	background: #20232A;
 	margin-top: 70px;
 	padding: 20px;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	/* box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
 }
 .book-block{
 	box-sizing: border-box;
@@ -79,7 +84,8 @@ header a{
 }
 .book-block a{
 	text-decoration: none;
-	color: black;
+	/* color: black; */
+	color: white;
 	max-width: 184px;
 }
 .book-block img{
@@ -87,19 +93,19 @@ header a{
 }
 .book-block span.title, span.author{
 	display: block;
-	font-weight: 400;
+	font-weight: 200;
 
 	text-align: left;
 }
 .book-block span.title{
 	font-size: 14px;
-	font-weight: 500;
-	padding-top: 5px;
+	font-weight: 200;
+	padding: 5px 0;
 }
 .book-block span.author{
 	font-size: 12px;
-	color: #A1A1A1;
-
+	/* color: #A1A1A1; */
+	color: #858C97;
 }
 .book-img{
 	max-width: 300px;
@@ -153,12 +159,15 @@ h4{
 	display: block;
 	float: left;
 }
-.comment-head h4{
-	display: inline-block;
-	padding: 0 10px;
-}
 .comment-head-rating{
 	float: right;
+}
+a.comment-head-name {
+	display: inline-block;
+	padding: 0 8px;
+	text-decoration: none;
+	color: white;
+	font-size: 1.1em;
 }
 .comment-text {
 	padding-left: 51px;
@@ -171,7 +180,8 @@ h4{
 }
 a.dontdecorate{
 	text-decoration: none;
-	color: black;
+	/* color: black; */
+	color: white
 }
 footer{
 	background: #333;
@@ -198,4 +208,13 @@ footer a{
 	.comment-text{
 		padding: 99px 13px 6px 13px;
 	}
+}
+a.btn{
+	padding: 8px 10px;
+	color: white;
+	text-decoration: none;
+	background: rgb(70, 80, 88);
+	border-radius: 3px;
+	margin: 5px;
+	display: inline-block;
 }

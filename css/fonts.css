@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
     font-family: "HelveticaRegular";
     src: url("../fonts/HelveticaRegular/HelveticaRegular.eot");
     src: url("../fonts/HelveticaRegular/HelveticaRegular.eot?#iefix")format("embedded-opentype"),
@@ -6,7 +6,8 @@
     url("../fonts/HelveticaRegular/HelveticaRegular.ttf") format("truetype");
     font-style: normal;
     font-weight: normal;
-}
+} */
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500&subset=latin,cyrillic);
 @font-face {
     font-family: 'icomoon';
     src: url('../fonts/icons/icomoon.eot?uu1ul9');
