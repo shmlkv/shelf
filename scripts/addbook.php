@@ -16,6 +16,13 @@
 					array_push($booksArray->books[$_POST['bookid']]->readers,  array('uid' => $_COOKIE['uid'], 'rating' => $_POST['rating']));
 				}
 				$added = true;
+				if(in_array($_COOKIE['uid'], $booksArray->books[$_POST['bookid']]->toread)){
+					for($i = 0; $i<count($booksArray->books[$_POST['bookid']]->toread); $i++){
+						if($booksArray->books[$_POST['bookid']]->toread[$i] == $_COOKIE['uid']){
+							unset($booksArray->books[$_POST['bookid']]->toread[$i]);
+						}
+					}
+				}
 			}
 		}else{
 			if($_POST['title'] && $_POST['author'] && $_POST['rating']){
