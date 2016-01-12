@@ -7,14 +7,14 @@
 </head>
 <body>
 <?php
-	include 'modules/header.php';
+  include 'modules/header.php';
   $usersfile = file_get_contents("database/users.json");
   $usersjson = json_decode($usersfile);
   for($i = 0; $i <count($usersjson->users); $i++){
-      if ($_COOKIE['uid'] === $usersjson->users[$i]->uid){
-        $userobj = $usersjson->users[$i];
-      }
+    if ($_COOKIE['uid'] === $usersjson->users[$i]->uid){
+      $userobj = $usersjson->users[$i];
     }
+  }
 	echo '<div id="content">';
       echo '<div class="wrap">';
       echo '<div class="comment">

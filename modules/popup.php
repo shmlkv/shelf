@@ -16,13 +16,12 @@
 					</form>
 				</div>
 			</div>
-		</div>'
-	if($GET['book']){
+		</div>';
+	if($_GET['book']){
 		$booksfile = file_get_contents("database/books.json");
-    	$booksjson = json_decode($booksfile);
-
-        $bookobj = $booksjson->books[$GET['book']];
-        
+		$booksjson = json_decode($booksfile);
+		$bookobj = $booksjson->books[$_GET['book']];
+	
 		echo '<div id="addthisbook" class="overlay">
 				<div class="popup">
 					<h2 class="center">Добавление книги</h2>
@@ -34,7 +33,7 @@
 							<input type="text" name="comment" placeholder="Ваш комментарий о книге" class="popup-comment">
 							<span class="text-center">Оценка</span>
 							<input type="range" name="rating" min="0" max="10" step="1" value="5"> 
-							<input type="hidden" name="bookid" value="'.$GET['book'].'">
+							<input type="hidden" name="bookid" value="'.$bookobj->id.'">
 							<input type="submit">
 						</form>
 					</div>

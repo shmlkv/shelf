@@ -43,7 +43,7 @@
                   <p>Людей хотят прочитать книгу: '.count($booksjson->books[$k]->toread).'</p>
                   <p>Cредний рейтинг: '.$booksjson->books[$k]->averagerating.'</p>';
                   $idreadedbook = false;
-                  for($i = 0; $i<count($booksjson->books[$k]->readers[$i]); $i++){
+                  for($i = 0; $i<count($booksjson->books[$k]->readers); $i++){
                       if($_COOKIE['uid'] === $booksjson->books[$k]->readers[$i]->uid){
                         $idreadedbook = true;
                       }
@@ -62,22 +62,25 @@
                   }
 
                   echo '<div id="comments">';
-                  for($a = 0; $a<count($booksjson->books[$k]->comments); $a++){
-                    for($l = 0; $l<count($usersjson->users); $l++){
-                      if($usersjson->users[$l]->uid == $booksjson->books[$k]->comments[$a]->uid){
-                        $userObj = $usersjson->users[$l];
+                  for($a = 0; $a<count($booksjson->books[$k]->readers); $a++){
+                      for($l = 0; $l<count($usersjson->users); $l++){
+                        if($usersjson->users[$l]->uid == $booksjson->books[$k]->readers[$a]->uid){
+                          $userObj = $usersjson->users[$l];
+                        }
                       }
-                    }
-                    echo '<div class="comment">
+                      if($booksjson->books[$k]->readers[$a]->comment){
+                        echo '<div class="comment">
                             <img src="'.$userObj->pic.'" alt="">
                             <div class="comment-head">
                               <h4>'.$userObj->fio.'</h4>
-                              <div class="comment-head-rating"><span class="icon-thumbs-up"></span> '.$booksjson->books[$k]->comments[$a]->rating.' <span class="icon-thumbs-down"></span></div>
+                              <div class="comment-head-rating"><span class="icon-thumbs-up"></span> '.$booksjson->books[$k]->readers[$a]->commentrating.' <span class="icon-thumbs-down"></span></div>
                             </div>
                             <div class="comment-text">
-                              <p>'.$booksjson->books[$k]->comments[$a]->comment.'</p>
+                              <p>'.$booksjson->books[$k]->readers[$a]->comment.'</p>
                             </div>
                           </div>';
+                      }
+                    
                   }
             echo '</div>';
           echo '</div>';
