@@ -1,5 +1,5 @@
 <?php
-	echo '<div id="addbook" class="overlay">
+	echo '<div id="addnewbook" class="overlay">
 			<div class="popup">
 				<h2 class="center">Добавление книги</h2>
 				<a class="close" href="#">&times;</a>
@@ -9,7 +9,7 @@
 						<input type="text" name="author" placeholder="Автор" autofocus required>
 						<input type="text" name="comment" placeholder="Ваш комментарий о книге" class="popup-comment">
 						<input type="text" name="cover" placeholder="url картинки">
-						<span class="text-center">Рейтинг</span>
+						<span class="text-center">Оценка</span>
 						<input type="range" name="rating" min="0" max="10" step="1" value="5"> 
 						<input type="hidden" name="uid" value="'.$_COOKIE['uid'].'">
 						<input type="submit">
@@ -17,5 +17,29 @@
 				</div>
 			</div>
 		</div>'
+	if($GET['book']){
+		$booksfile = file_get_contents("database/books.json");
+    	$booksjson = json_decode($booksfile);
+
+        $bookobj = $booksjson->books[$GET['book']];
+        
+		echo '<div id="addthisbook" class="overlay">
+				<div class="popup">
+					<h2 class="center">Добавление книги</h2>
+					<a class="close" href="#">&times;</a>
+					<div id="content">
+						<form action="scripts/addbook.php" method="post">
+							<input type="text" name="title" placeholder="'.$bookobj->title.'" disabled="disabled">
+							<input type="text" name="author" placeholder="'.$bookobj->author.'" disabled="disabled">
+							<input type="text" name="comment" placeholder="Ваш комментарий о книге" class="popup-comment">
+							<span class="text-center">Оценка</span>
+							<input type="range" name="rating" min="0" max="10" step="1" value="5"> 
+							<input type="hidden" name="bookid" value="'.$GET['book'].'">
+							<input type="submit">
+						</form>
+					</div>
+				</div>
+			</div>';
+	}
  ?>
 <!--  <input type="file" name="file"> -->

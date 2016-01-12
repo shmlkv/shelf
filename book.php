@@ -51,15 +51,16 @@
 
                   if(!$idreadedbook){
                     if (in_array($_COOKIE['uid'], $booksjson->books[$k]->toread)) {
+                      echo '<p><a href="#addthisbook" class="addbook">[+] Прочитал</a></p>';
                       echo '<p><a href="scripts/toread.php?book='.$booksjson->books[$k]->id.'" class="addbook">[х] Не хочу прочитать</a></p>';
                     }else{
+                      echo '<p><a href="#addthisbook" class="addbook">[+] Прочитал</a></p>';
                       echo '<p><a href="scripts/toread.php?book='.$booksjson->books[$k]->id.'" class="addbook">[+] Хочу прочитать</a></p>';
                     }
                   }else{
                      echo '<p><a href="" class="addbook">Вы читали эту книгу</a></p>';
                   }
-                  
-                  //}
+
                   echo '<div id="comments">';
                   for($a = 0; $a<count($booksjson->books[$k]->comments); $a++){
                     for($l = 0; $l<count($usersjson->users); $l++){
