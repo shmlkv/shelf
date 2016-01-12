@@ -44,7 +44,7 @@
 			$statsFile = file_get_contents("../database/stats.json");
 			$stastArray = json_decode($statsFile);
 			$stastArray->books = count($booksArray->books);
-			fwrite(fopen('../database/stats.json', 'w'), json_encode($stastArray, JSON_PRETTY_PRINT));
+			fwrite(fopen('../database/stats.json', 'w'), json_encode($stastArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
 
 		}
 		

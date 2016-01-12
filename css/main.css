@@ -88,13 +88,18 @@ header a{
 .book-block span.title, span.author{
 	display: block;
 	font-weight: 400;
+
+	text-align: left;
 }
 .book-block span.title{
-	font-size: 18px;
+	font-size: 14px;
 	font-weight: 500;
+	padding-top: 5px;
 }
 .book-block span.author{
-	font-size: 14px;
+	font-size: 12px;
+	color: #A1A1A1;
+
 }
 .book-img{
 	max-width: 300px;

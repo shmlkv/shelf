@@ -44,9 +44,9 @@
             if ($_COOKIE['uid'] == $json->books[$i]->readers[$k]->uid){
               echo '<div class="book-block">';
                   echo '<a href="book.php?book=',$json->books[$i]->id,'">';
+                    echo '<img src="',$json->books[$i]->cover,'" alt="">';
                     echo '<span class="title">',$json->books[$i]->title,'</span>';
                     echo '<span class="author">',$json->books[$i]->author,  '</span>';
-                    echo '<img src="',$json->books[$i]->cover,'" alt="">';
                   echo'</a>';
               echo '</div>';
             }

@@ -23,9 +23,9 @@
       for($i = 1; $i <count($booksjson->books); $i++){
         echo '<div class="book-block">';
             echo '<a href="book.php?book=',$booksjson->books[$i]->id,'">';
+              echo '<img src="',$booksjson->books[$i]->cover,'" alt="">';
               echo '<span class="title">',$booksjson->books[$i]->title,'</span>';
               echo '<span class="author">',$booksjson->books[$i]->author,  '</span>';
-              echo '<img src="',$booksjson->books[$i]->cover,'" alt="">';
             echo'</a>';
         echo '</div>';
       }
@@ -72,7 +72,7 @@
                         echo '<div class="comment">
                             <img src="'.$userObj->pic.'" alt="">
                             <div class="comment-head">
-                              <h4>'.$userObj->fio.'</h4>
+                              <h4><a href="users.php?user='.$userObj->uid.'" class="dontdecorate">'.$userObj->fio.'</a></h4>
                               <date>'.$booksjson->books[$k]->readers[$a]->date.'</date>
                               <div class="comment-head-rating"><span class="icon-thumbs-up"></span> '.$booksjson->books[$k]->readers[$a]->commentrating.' <span class="icon-thumbs-down"></span></div>
                             </div>

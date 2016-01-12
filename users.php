@@ -53,9 +53,9 @@
             if ($_GET['user']  == $booksjson->books[$i]->readers[$j]->uid){
               echo '<div class="book-block">';
                   echo '<a href="book.php?book=',$booksjson->books[$i]->id,'">';
+                  echo '<img src="', $booksjson->books[$i]->cover,'" alt="">';
                   echo '<span class="title">',$booksjson->books[$i]->title,'</span>';
                   echo '<span class="author">',$booksjson->books[$i]->author,  '</span>';
-                  echo '<img src="', $booksjson->books[$i]->cover,'" alt="">';
                 echo'</a>';
               echo '</div>';
             }
