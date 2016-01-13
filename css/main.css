@@ -242,6 +242,12 @@ a.btn{
 	margin: 5px;
 	display: inline-block;
 }
+a.delete-book{
+	margin-left: -11px;
+	border: 1px solid #37464D;
+	border-radius: 0 3px 3px 0;
+	padding: 7px 9px;
+}
 info{
 	border-bottom: 1px solid rgb(70, 80, 88);
 	display: block;

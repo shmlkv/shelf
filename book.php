@@ -68,7 +68,8 @@
                       echo '<a title="Хочу прочитать" class="btn" href="scripts/toread.php?book='.$booksjson->books[$k]->id.'" class="addbook"><span class="icon-heart"></span>Хочу прочитать</a></p>';
                     }
                   }else{
-                     echo '<a class="btn" href="" class="addbook"><span class="icon-book"></span>Вы читали эту книгу, ваша оценка <span class="bold">'.$mybookrate.'</span></a>';
+                     echo '<a class="btn" href="" class="addbook"><span class="icon-book"></span>Вы читали эту книгу, ваша оценка <span class="bold">'.$mybookrate.'</span></a>
+                     <a href="scripts/addbook.php?bookid='.$booksjson->books[$k]->id.'&delete=true" title="Удалить" class="delete-book btn">X</a>';
                   }
           echo '</div>';
 
