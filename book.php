@@ -9,6 +9,9 @@
 </head>
 <body>
 <?php
+function sortbyaveragerating($a, $b){
+            return strcmp($b->averagerating, $a->averagerating);
+      }
   include 'modules/header.php';
   if (isset($_COOKIE['log'])) {
     $booksfile = file_get_contents("database/books.json");
@@ -20,12 +23,14 @@
     echo '<div id="content">';
       echo '<div class="wrap">';
     if(empty($_GET['book'])){
-      for($i = 1; $i <count($booksjson->books); $i++){
+      usort($booksjson->books, "sortbyaveragerating");
+      for($i = 0; $i <count($booksjson->books); $i++){
         echo '<div class="book-block">';
             echo '<a href="book.php?book=',$booksjson->books[$i]->id,'">';
               echo '<img src="',$booksjson->books[$i]->cover,'" alt="">';
               echo '<span class="title">',$booksjson->books[$i]->title,'</span>';
-              echo '<span class="author">',$booksjson->books[$i]->author,  '</span>';
+              echo '<span class="author">',$booksjson->books[$i]->author,  ' - ',$booksjson->books[$i]->averagerating,  '</span>';
+
             echo'</a>';
         echo '</div>';
       }
@@ -58,7 +63,6 @@
                         $mybookrate = $booksjson->books[$k]->readers[$i]->rating;
                       }
                   }
-
                   if(!$idreadedbook){
                     if (in_array($_COOKIE['uid'], $booksjson->books[$k]->toread)) {
                       echo '<p><a title="Прочитал" class="btn" href="#addthisbook" class="addbook"><span class="icon-book"></span> Прочитал</a>';

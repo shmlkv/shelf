@@ -80,6 +80,7 @@
         }
       }else{
       echo '<div class="users">';
+      usort($usersjson->users, "sortbyrating");
       for($i = 0; $i<count($usersjson->users); $i++){
         $userobj = $usersjson->users[$i];
         echo '<div class="comment">
@@ -102,6 +103,9 @@
      echo '</div>';
       echo '</div>';
 	include 'modules/footer.php';
+  function sortbyrating($a, $b){
+            return strcmp($b->rating, $a->rating);
+  }
 ?>
 
 </body>

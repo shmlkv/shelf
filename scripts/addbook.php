@@ -15,6 +15,15 @@
 					}
 					$booksArray->books[$_GET['bookid']]->averagerating = $newrating / $i;
 
+					$usersFile = file_get_contents("../database/users.json");
+					$usersArray = json_decode($usersFile);
+					for($i = 0; $i<count($usersArray->users); $i++){
+						if($usersArray->users[$i]->uid == $_COOKIE['uid']){
+							$usersArray->users[$i]->books = $usersArray->users[$i]->books - 1;
+						}
+					}
+					fwrite(fopen('../database/users.json', 'w'), json_encode($usersArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
+
 					fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
 
 					header('Location: ' . $_SERVER['HTTP_REFERER']);
