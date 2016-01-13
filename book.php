@@ -23,6 +23,7 @@ function sortbyaveragerating($a, $b){
     echo '<div id="content">';
       echo '<div class="wrap">';
     if(empty($_GET['book'])){
+      array_splice($booksjson->books, 0, 1);
       usort($booksjson->books, "sortbyaveragerating");
       for($i = 0; $i <count($booksjson->books); $i++){
         echo '<div class="book-block">';
@@ -35,7 +36,7 @@ function sortbyaveragerating($a, $b){
         echo '</div>';
       }
     }else{
-      for($k = 0; $k<count($booksjson->books); $k++){
+      for($k = 1; $k<count($booksjson->books); $k++){
         if ($_GET['book'] == $booksjson->books[$k]->id){
           echo '<div class="book-img">
                   <img class="book-img" src="'.$booksjson->books[$k]->cover.'" alt="">

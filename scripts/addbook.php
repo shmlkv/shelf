@@ -51,11 +51,12 @@
 					}
 				}
 				$added = true;
-				$newrating;
+				$newrating = $_POST['rating'];
 				for($i = 0; $i<count($booksArray->books[$_POST['bookid']]->readers); $i++){
 					$newrating  = $newrating + $booksArray->books[$_POST['bookid']]->readers[$i]->rating;
+					$items = $i;
 				}
-				$booksArray->books[$_POST['bookid']]->averagerating = $newrating / $i;
+				$booksArray->books[$_POST['bookid']]->averagerating = $newrating / ($items+1);
 			}
 		}else{
 			if($_POST['title'] && $_POST['author'] && $_POST['rating']){
@@ -71,16 +72,13 @@
 			
 		}
 		if($added){
-
 			fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
 
 			$statsFile = file_get_contents("../database/stats.json");
 			$stastArray = json_decode($statsFile);
 			$stastArray->books = count($booksArray->books);
 			fwrite(fopen('../database/stats.json', 'w'), json_encode($stastArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
-		
 		}
-		
 		header('Location: ' . $_SERVER['HTTP_REFERER']);
 	}
 ?>
