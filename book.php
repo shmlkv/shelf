@@ -36,34 +36,46 @@
                   <img class="book-img" src="'.$booksjson->books[$k]->cover.'" alt="">
                 </div>';
           echo '<div class="book-info">
-                  <h2>'.$booksjson->books[$k]->title.'</h2>
-                  <h3>'.$booksjson->books[$k]->author.'</h3>
-                  <p>'.$booksjson->books[$k]->desc.'</p>
-                  <p>Людей прочитало книгу: '.count($booksjson->books[$k]->readers).'</p>
-                  <p>Людей хотят прочитать книгу: '.count($booksjson->books[$k]->toread).'</p>
-                  <p>Cредний рейтинг: '.$booksjson->books[$k]->averagerating.'</p>';
+                  <div class="block">
+                    <span class="title">'.$booksjson->books[$k]->title.'</span>
+                    <span class="author">'.$booksjson->books[$k]->author.'</span>
+                  </div>
+                  <div class="block">
+                    <a title="Прочитавшие" href="" class="btn inline addbook"><span class="icon-people"></span> '.count($booksjson->books[$k]->readers).'</a>
+                    <a title="Желающие прочитать" href="" class="btn inline addbook"><span class="icon-bookmarks"></span> '.count($booksjson->books[$k]->toread).'</a>
+                    <a title="Рейтинг" href="" class="btn inline addbook"><span class="icon-stats-bars"></span> '.$booksjson->books[$k]->averagerating.'</a>
+                  </div>';
+                  if($booksjson->books[$k]->desc){
+                    echo '<div class="block">
+                            <span class="bold inline">Описание:</span>
+                            <p>'.$booksjson->books[$k]->desc.'</p>
+                          </div>';
+                  }
                   $idreadedbook = false;
                   for($i = 0; $i<count($booksjson->books[$k]->readers); $i++){
                       if($_COOKIE['uid'] === $booksjson->books[$k]->readers[$i]->uid){
                         $idreadedbook = true;
+                        $mybookrate = $booksjson->books[$k]->readers[$i]->rating;
                       }
                   }
 
                   if(!$idreadedbook){
                     if (in_array($_COOKIE['uid'], $booksjson->books[$k]->toread)) {
-                      echo '<p><a class="btn" href="#addthisbook" class="addbook">[+] Прочитал</a></p>';
-                      echo '<p><a class="btn" href="scripts/toread.php?book='.$booksjson->books[$k]->id.'" class="addbook">[х] Не хочу прочитать</a></p>';
+                      echo '<p><a title="Прочитал" class="btn" href="#addthisbook" class="addbook"><span class="icon-book"></span> Прочитал</a>';
+                      echo '<a title="Не хочу читать" class="btn" href="scripts/toread.php?book='.$booksjson->books[$k]->id.'" class="addbook"><span class="icon-heart-broken"></span>Не хочу читать</a></p>';
                     }else{
-                      echo '<p><a class="btn" href="#addthisbook" class="addbook">[+] Прочитал</a></p>';
-                      echo '<p><a class="btn" href="scripts/toread.php?book='.$booksjson->books[$k]->id.'" class="addbook">[+] Хочу прочитать</a></p>';
+                      echo '<p><a title="Прочитал" class="btn" href="#addthisbook" class="addbook"><span class="icon-book"></span>Прочитал</a>';
+                      echo '<a title="Хочу прочитать" class="btn" href="scripts/toread.php?book='.$booksjson->books[$k]->id.'" class="addbook"><span class="icon-heart"></span>Хочу прочитать</a></p>';
                     }
                   }else{
-                     echo '<a class="btn" href="" class="addbook">Вы читали эту книгу</a>';
+                     echo '<a class="btn" href="" class="addbook"><span class="icon-book"></span>Вы читали эту книгу, ваша оценка <span class="bold">'.$mybookrate.'</span></a>';
                   }
-
-                  
           echo '</div>';
-          echo '<div id="comments">';
+
+          echo '<div id="comments">
+                <div class="block">
+                <info>Коментарии</info>
+                </div>';
                   for($a = 0; $a<count($booksjson->books[$k]->readers); $a++){
                       for($l = 0; $l<count($usersjson->users); $l++){
                         if($usersjson->users[$l]->uid == $booksjson->books[$k]->readers[$a]->uid){
@@ -83,7 +95,6 @@
                             </div>
                           </div>';
                       }
-                    
                   }
             echo '</div>';
           

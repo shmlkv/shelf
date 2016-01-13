@@ -52,7 +52,7 @@
             <info style="margin-bottom: 20px">Хочет прочитать</info>';
         for($i = 0; $i <count($booksjson->books); $i++){
           for($k = 0; $k<count($booksjson->books[$i]->toread); $k++){
-            if ($GET['user'] == $booksjson->books[$i]->toread[$k]){
+            if ($_GET['user'] === $booksjson->books[$i]->toread[$k]){
               echo '<div class="book-block">';
                   echo '<a href="book.php?book=',$booksjson->books[$i]->id,'">';
                     echo '<img src="',$booksjson->books[$i]->cover,'" alt="">';

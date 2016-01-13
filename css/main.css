@@ -109,6 +109,18 @@ header a{
 	/* color: #A1A1A1; */
 	color: #858C97;
 }
+.book-info span.title,
+.book-info span.author{
+	padding: 5px 0;
+}
+.book-info span.title{
+	font-size: 35px;
+}
+.book-info span.author{
+	font-size: 20px;
+	/* color: #A1A1A1; */
+	color: #858C97;
+}
 .book-img{
 	max-width: 300px;
 	display: inline-block;
@@ -152,6 +164,7 @@ h4{
 	display: block;
 	width: 100%;
 	min-height: 80px;
+	margin: 10px 0;
 }
 .comment img{
 	width: 50px;
@@ -199,7 +212,16 @@ footer a{
 	color: white;
 	text-decoration: none;
 }
-
+.inline{
+	display: inline-block !important;
+}
+span.bold{
+	font-weight: 600;
+}
+.block{
+	display: block;
+	padding: 7px 0;
+}
 @media(max-width:1024px){
 	.nav ul li{
 		padding-right: 5px;

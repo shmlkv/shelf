@@ -21,7 +21,6 @@
 		$booksfile = file_get_contents("database/books.json");
 		$booksjson = json_decode($booksfile);
 		$bookobj = $booksjson->books[$_GET['book']];
-	
 		echo '<div id="addthisbook" class="overlay">
 				<div class="popup">
 					<h2 class="center">Добавление книги</h2>
