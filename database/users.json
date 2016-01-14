@@ -4,8 +4,8 @@
             "uid": "121935185",
             "fio": "Andrey Shmelkov",
             "pic": "https:\/\/pp.vk.me\/c421330\/v421330185\/368e\/ERPmb5Ho04I.jpg",
-            "rating": "1",
-            "books": 6
+            "rating": 17,
+            "books": 17
         },
         {
             "uid": "1",
@@ -18,22 +18,22 @@
             "uid": "104534912",
             "fio": "\u041c\u0438\u0448\u0430 \u041b\u0435\u0440\u043c\u0430\u043d",
             "pic": "https:\/\/pp.vk.me\/c628822\/v628822912\/459e2\/_2axQ8A5BUI.jpg",
-            "rating": "8",
-            "books": "0"
+            "rating": "1",
+            "books": "1"
         },
         {
             "uid": "151805674",
             "fio": "\u0414\u043c\u0438\u0442\u0440\u0438\u0439 \u041b\u0443\u043a\u0430\u0448\u043e\u0432",
             "pic": "https:\/\/pp.vk.me\/c633322\/v633322674\/a71e\/GTSz5a4OrY0.jpg",
-            "rating": "3",
+            "rating": "1",
             "books": "1"
         },
         {
             "uid": "51916034",
             "fio": "Zhenya Korol",
             "pic": "http:\/\/cs624726.vk.me\/v624726034\/42c2a\/M0vDc_oKhpo.jpg",
-            "rating": "5",
-            "books": "1"
+            "rating": "2",
+            "books": "2"
         }
     ]
 }

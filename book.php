@@ -18,9 +18,6 @@
 </head>
 <body>
 <?php
-  function sortbyaveragerating($a, $b){
-    return strcmp($b->averagerating, $a->averagerating);
-  }
   include 'modules/header.php';
   if (isset($_COOKIE['log'])) {
     $usersfile = file_get_contents("database/users.json");
@@ -30,14 +27,15 @@
       echo '<div class="wrap">';
     if(empty($_GET['book'])){
       array_splice($booksjson->books, 0, 1);
-      usort($booksjson->books, "sortbyaveragerating");
+      usort($booksjson->books, function($a, $b){
+        return ($b->averagerating - $a->averagerating);
+      });
       for($i = 0; $i <count($booksjson->books); $i++){
         echo '<div class="book-block">';
             echo '<a href="book.php?book=',$booksjson->books[$i]->id,'">';
               echo '<img src="',$booksjson->books[$i]->cover,'" alt="">';
               echo '<span class="title">',$booksjson->books[$i]->title,'</span>';
               echo '<span class="author">',$booksjson->books[$i]->author,  ' - ',$booksjson->books[$i]->averagerating,  '</span>';
-
             echo'</a>';
         echo '</div>';
       }

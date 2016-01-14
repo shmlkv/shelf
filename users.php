@@ -26,10 +26,9 @@
 	echo '<div id="content">';
       echo '<div class="wrap">';
       if($_GET['user']){
-
         $booksfile = file_get_contents("database/books.json");
         $booksjson = json_decode($booksfile);
-
+        
         for($k = 0; $k<count($usersjson->users); $k++){
           if($_GET['user'] == $usersjson->users[$k]->uid){
             $userobj = $usersjson->users[$k];
@@ -91,7 +90,9 @@
         }
       }else{
       echo '<div class="users">';
-      usort($usersjson->users, "sortbyrating");
+      usort($usersjson->users, function($a, $b){
+        return ($b->rating - $a->rating);
+      });
       for($i = 0; $i<count($usersjson->users); $i++){
         $userobj = $usersjson->users[$i];
         echo '<div class="comment">
@@ -113,9 +114,6 @@
     echo '</div>';
   include 'modules/popup.php';
 	include 'modules/footer.php';
-  function sortbyrating($a, $b){
-            return strcmp($b->rating, $a->rating);
-  }
 ?>
 <script src="scripts/main.js"></script>
 </body>

@@ -28,6 +28,7 @@
 					for($i = 0; $i<count($usersArray->users); $i++){
 						if($usersArray->users[$i]->uid == $_COOKIE['uid']){
 							$usersArray->users[$i]->books = $usersArray->users[$i]->books - 1;
+							$usersArray->users[$i]->rating = $usersArray->users[$i]->rating - 1;
 						}
 					}
 					fwrite(fopen('../database/users.json', 'w'), json_encode($usersArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
@@ -68,22 +69,26 @@
 
 		}else{
 			if($_POST['title'] && $_POST['author'] && $_POST['rating']){
-				(!$_POST['cover']) ? $cover = 'covers/no-book.jpg' : $cover = $_POST['cover'];
-				if($_POST['comment']){
-					$bookobj = array('id' => count($booksArray->books), 'title' => $_POST['title'],'author' => $_POST['author'],'cover' => $cover,'readers' => array(array('uid' => $_COOKIE['uid'], 'date' => $today, 'rating' => $_POST['rating'], 'comment' => $_POST['comment'],'commentrating' => 0)),'toread' => array(), 'averagerating' => $_POST['rating']);
+				  $path = '../covers/';
+				  if (!@copy($_FILES['cover']['tmp_name'], $path . count($booksArray->books).'.png')){
+				  	echo 'error loading file';
+					exit();
 				}else{
-					$bookobj = array('id' => count($booksArray->books), 'title' => $_POST['title'],'author' => $_POST['author'],'cover' => $cover,'readers' => array(array('uid' => $_COOKIE['uid'], 'date' => $today, 'rating' => $_POST['rating'])),'toread' => array(), 'averagerating' => $_POST['rating']);
+					if($_POST['comment']){
+						$bookobj = array('id' => count($booksArray->books), 'title' => $_POST['title'],'author' => $_POST['author'],'cover' => 'covers/'.count($booksArray->books).'.png','readers' => array(array('uid' => $_COOKIE['uid'], 'date' => $today, 'rating' => $_POST['rating'], 'comment' => $_POST['comment'],'commentrating' => 0)),'toread' => array(), 'averagerating' => $_POST['rating']);
+					}else{
+						$bookobj = array('id' => count($booksArray->books), 'title' => $_POST['title'],'author' => $_POST['author'],'cover' => 'covers/'.count($booksArray->books).'.png','readers' => array(array('uid' => $_COOKIE['uid'], 'date' => $today, 'rating' => $_POST['rating'])),'toread' => array(), 'averagerating' => $_POST['rating']);
+					}
+					array_push($booksArray->books, $bookobj);
+					$added = true;
 				}
-				array_push($booksArray->books, $bookobj);
-				$added = true;
-				
 			}
-			
 		}
 		if($added){
 			for($i = 0; $i<count($usersArray->users); $i++){
 						if($usersArray->users[$i]->uid == $_COOKIE['uid']){
 							$usersArray->users[$i]->books = $usersArray->users[$i]->books + 1;
+							$usersArray->users[$i]->rating = $usersArray->users[$i]->rating + 1;
 						}
 				}
 				fwrite(fopen('../database/users.json', 'w'), json_encode($usersArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
