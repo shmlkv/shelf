@@ -32,6 +32,15 @@
     
     $file = file_get_contents("database/books.json");
     $json = json_decode($file);
+    $userbooksarray = array();
+    //books of user
+    for($i = 0; $i <count($json->books); $i++){
+          for($k = 0; $k<count($json->books[$i]->readers); $k++){
+            if ($_COOKIE['uid'] == $json->books[$i]->readers[$k]->uid){
+              array_push($userbooksarray, array('id' => $json->books[$i]->id, 'title' =>$json->books[$i]->title, 'author' => $json->books[$i]->author, 'cover' => $json->books[$i]->cover, 'date' =>  $json->books[$i]->readers[$k]->date));
+            }
+          }
+        }
     echo '<div id="content">
             <div class="wrap">';
             echo '<div class="wantto">
@@ -51,18 +60,19 @@
         }
         echo '</div>';
         echo '<info style="margin-bottom: 20px">Прочитали</info>';
-        for($i = 0; $i <count($json->books); $i++){
-          for($k = 0; $k<count($json->books[$i]->readers); $k++){
-            if ($_COOKIE['uid'] == $json->books[$i]->readers[$k]->uid){
+        usort($userbooksarray, function($a, $b){
+          $date1 = strtotime($b['date']);
+          $date2 = strtotime($a['date']);
+          return ($date1-$date2);
+        });
+        for($i = 0; $i <count($userbooksarray); $i++){
               echo '<div class="book-block">';
-                  echo '<a href="book.php?book=',$json->books[$i]->id,'">';
-                    echo '<img src="',$json->books[$i]->cover,'" alt="">';
-                    echo '<span class="title">',$json->books[$i]->title,'</span>';
-                    echo '<span class="author">',$json->books[$i]->author,  '</span>';
+                  echo '<a href="book.php?book=',$userbooksarray[$i]['id'],'">';
+                    echo '<img src="',$userbooksarray[$i]['cover'],'" alt="">';
+                    echo '<span class="title">',$userbooksarray[$i]['title'],'</span>';
+                    echo '<span class="author">',$userbooksarray[$i]['author'],  '</span>';
                   echo'</a>';
               echo '</div>';
-            }
-          }
         }
       echo '</div>
         </div>';

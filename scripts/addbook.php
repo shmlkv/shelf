@@ -1,6 +1,6 @@
 <?php
 	if(isset($_COOKIE['uid'])){
-		$today = date("j.m.y");
+		$today = date("Y-m-d\TH:i:sO");
 		$booksFile = file_get_contents("../database/books.json");
 		$booksArray = json_decode($booksFile);
 
