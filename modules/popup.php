@@ -25,7 +25,7 @@ echo '<div class="popup" data-popup="popup-addbook">
 		echo '<div class="popup" data-popup="popup-addthisbook">
     			<div class="popup-inner">
 					<h2 class="center">Добавление книги</h2>
-					<a class="close" href="#">&times;</a>
+					<a class="close" data-popup-close="popup-addthisbook" href="#">&times;</a>
 					<div id="content">
 						<form action="scripts/addbook.php" method="post">
 							<input type="text" name="title" placeholder="'.$bookobj->title.'" disabled="disabled">

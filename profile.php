@@ -29,4 +29,5 @@
       echo '</div>';
 	include 'modules/footer.php';
 ?>
+<script src="scripts/main.js"></script>
 </body>

@@ -1,17 +1,28 @@
 <!DOCTYPE html>
+<?php
+  $usersfile = file_get_contents("database/users.json");
+  $usersjson = json_decode($usersfile);
+  if (isset($_GET['user'])){
+    for($k = 0; $k<count($usersjson->users); $k++){
+          if($_GET['user'] == $usersjson->users[$k]->uid){
+             $title = $usersjson->users[$k]->fio;
+          }
+        }
+   
+  }else{
+    $title = 'Все пользователи';
+  }
+  
+?>
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-  <title>Пользователи</title>
+  <title><?=$title?></title>
   <link rel="stylesheet" href="css/main.css">
   <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?34"></script>
 </head>
 <body>
 <?php
   include 'modules/header.php';
-
-  $usersfile = file_get_contents("database/users.json");
-  $usersjson = json_decode($usersfile);
-
 	echo '<div id="content">';
       echo '<div class="wrap">';
       if($_GET['user']){
@@ -106,5 +117,5 @@
             return strcmp($b->rating, $a->rating);
   }
 ?>
-
+<script src="scripts/main.js"></script>
 </body>

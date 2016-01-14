@@ -27,4 +27,5 @@
   include 'modules/popup.php';
 	include 'modules/footer.php';
 ?>
+<script src="scripts/main.js"></script>
 </body>

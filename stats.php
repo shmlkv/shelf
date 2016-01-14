@@ -10,7 +10,6 @@
 ?>
 <div id="content">
   <div class="wrap">
-  <a href="#" data-popup-open="popup-addbook">asd</a>
     <h2 class="text-center">Статистика</h2>
     <?php
 
@@ -25,10 +24,8 @@
     ?>
   </div>
 </div>  
-<script src="scripts/jquery.js"></script>
 <script src="scripts/main.js"></script>
 <?php
-  
   include 'modules/footer.php';
   include 'modules/popup.php';
 ?>

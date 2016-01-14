@@ -82,7 +82,7 @@
   
   include 'modules/footer.php';
 ?>
-    
+<script src="scripts/main.js"></script>
 </div> 
 </body>
 </html>

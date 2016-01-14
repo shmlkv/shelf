@@ -3,9 +3,10 @@ echo '<header>
         <div class="wrap">
           <div class="nav">
             <ul class="left">
-              <li class="bold"><a href=""><span class="icon-books"></span>Книжная полка</a></li>
-              <li><a href="">Пользователи</a></li>
-              <li><a href="">Книги</a></li>
+              <li class="bold"><a href="index.php"><span class="icon-books"></span>Книжная полка</a></li>
+              <li><a href="index.php">Главная</a></li>
+              <li><a href="users.php">Пользователи</a></li>
+              <li><a href="book.php">Книги</a></li>
               <li><a href="celebrities.php">Знаменитости</a></li>
             </ul>';
 if (isset($_COOKIE['log'])) {

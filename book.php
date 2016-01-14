@@ -1,7 +1,16 @@
 <!DOCTYPE html>
+<?
+  $booksfile = file_get_contents("database/books.json");
+  $booksjson = json_decode($booksfile);
+  if (isset($_GET['book'])){
+    $title = $booksjson->books[$_GET['book']]->title;
+  }else{
+    $title = 'Все книги';
+  }
+?>
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-  <title>Книга</title>
+  <title><?=$title?></title>
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/foundation.min.css">
   <link rel="stylesheet" href="css/foundstiling.css">
@@ -9,14 +18,11 @@
 </head>
 <body>
 <?php
-function sortbyaveragerating($a, $b){
-            return strcmp($b->averagerating, $a->averagerating);
-      }
+  function sortbyaveragerating($a, $b){
+    return strcmp($b->averagerating, $a->averagerating);
+  }
   include 'modules/header.php';
   if (isset($_COOKIE['log'])) {
-    $booksfile = file_get_contents("database/books.json");
-    $booksjson = json_decode($booksfile);
-
     $usersfile = file_get_contents("database/users.json");
     $usersjson = json_decode($usersfile);
 
@@ -38,6 +44,7 @@ function sortbyaveragerating($a, $b){
     }else{
       for($k = 1; $k<count($booksjson->books); $k++){
         if ($_GET['book'] == $booksjson->books[$k]->id){
+          $title = $booksjson->books[$k]->title;
           echo '<div class="book-img">
                   <img class="book-img" src="'.$booksjson->books[$k]->cover.'" alt="">
                 </div>';
@@ -117,6 +124,7 @@ function sortbyaveragerating($a, $b){
         VK.init({apiId: 5197194}); //второй
         VK.Widgets.Auth("vk_auth", {width: "300px",authUrl: '/login.php'});
     </script>
-</div> 
+</div>
+<script src="scripts/main.js"></script>
 </body>
 </html>

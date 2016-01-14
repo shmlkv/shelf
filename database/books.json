@@ -111,12 +111,15 @@
                     "uid": "151805674",
                     "date": "13.01.16",
                     "rating": "5"
+                },
+                {
+                    "uid": "121935185",
+                    "date": "14.01.16",
+                    "rating": "5"
                 }
             ],
-            "toread": [
-                "121935185"
-            ],
-            "averagerating": "10"
+            "toread": [],
+            "averagerating": 6.67
         },
         {
             "id": 7,
@@ -132,10 +135,17 @@
                     "commentrating": 0
                 }
             ],
-            "toread": [
-                "121935185"
-            ],
-            "averagerating": "9"
+            "toread": [],
+            "averagerating": 9
+        },
+        {
+            "id": 8,
+            "title": "as",
+            "author": "asd",
+            "cover": "covers\/no-book.jpg",
+            "readers": [],
+            "toread": [],
+            "averagerating": 0
         }
     ]
 }
