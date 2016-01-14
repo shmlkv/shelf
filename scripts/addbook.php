@@ -72,6 +72,7 @@
 			
 		}
 		if($added){
+			
 			fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
 
 			$statsFile = file_get_contents("../database/stats.json");

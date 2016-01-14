@@ -67,6 +67,9 @@ header a{
 .nav ul li a:hover{
 	background: rgba(30, 30, 30, .2);
 }
+#content{
+    min-height: 80vh;
+}
 #content .wrap{
 	max-width: 960px;
 	/* background: white; */
@@ -199,11 +202,6 @@ a.dontdecorate{
 	color: white
 }
 footer{
-	background: #333;
-	bottom: 0px;
-	position: relative;
-	left: 0;
-	right: 0;
 	padding: 20px;
 	color: wheat;
 	margin-top: 40px;

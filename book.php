@@ -66,10 +66,10 @@ function sortbyaveragerating($a, $b){
                   }
                   if(!$idreadedbook){
                     if (in_array($_COOKIE['uid'], $booksjson->books[$k]->toread)) {
-                      echo '<p><a title="Прочитал" class="btn" href="#addthisbook" class="addbook"><span class="icon-book"></span> Прочитал</a>';
+                      echo '<p><a title="Прочитал" class="btn"href="#" data-popup-open="popup-addthisbook" class="addbook"><span class="icon-book"></span> Прочитал</a>';
                       echo '<a title="Не хочу читать" class="btn" href="scripts/toread.php?book='.$booksjson->books[$k]->id.'" class="addbook"><span class="icon-heart-broken"></span>Не хочу читать</a></p>';
                     }else{
-                      echo '<p><a title="Прочитал" class="btn" href="#addthisbook" class="addbook"><span class="icon-book"></span>Прочитал</a>';
+                      echo '<p><a title="Прочитал" class="btn" href="#" data-popup-open="popup-addthisbook" class="addbook"><span class="icon-book"></span>Прочитал</a>';
                       echo '<a title="Хочу прочитать" class="btn" href="scripts/toread.php?book='.$booksjson->books[$k]->id.'" class="addbook"><span class="icon-heart"></span>Хочу прочитать</a></p>';
                     }
                   }else{

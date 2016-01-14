@@ -98,10 +98,9 @@
       echo '</div>';
     }
       
-     
-    
-     echo '</div>';
-      echo '</div>';
+    echo '</div>';
+    echo '</div>';
+  include 'modules/popup.php';
 	include 'modules/footer.php';
   function sortbyrating($a, $b){
             return strcmp($b->rating, $a->rating);
