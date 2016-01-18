@@ -87,6 +87,7 @@
                 <div class="block">
                 <info>Коментарии</info>
                 </div>';
+                 $nocomments = true;
                   for($a = 0; $a<count($booksjson->books[$k]->readers); $a++){
                       for($l = 0; $l<count($usersjson->users); $l++){
                         if($usersjson->users[$l]->uid == $booksjson->books[$k]->readers[$a]->uid){
@@ -94,6 +95,7 @@
                         }
                       }
                       if($booksjson->books[$k]->readers[$a]->comment){
+                         $nocomments = false;
                         echo '<div class="comment">
                             <img src="'.$userObj->pic.'" alt="">
                             <div class="comment-head">
@@ -105,9 +107,10 @@
                               <p>'.$booksjson->books[$k]->readers[$a]->comment.'</p>
                             </div>
                           </div>';
-                      }else{
-                        echo 'Тут ещё нет комментариев';
                       }
+                  }
+                  if($nocomments){
+                    echo 'Тут ещё нет комментариев';
                   }
             echo '</div>';
           

@@ -60,42 +60,54 @@
               </div>';
                echo '<div class="wantto">
             <info style="margin-bottom: 20px">Хочет прочитать</info>';
-            $userbooksarray = array();
+            $userreadedbooksarray = array();
+          for($i = 0; $i <count($booksjson->books); $i++){
+            for($k = 0; $k<count($booksjson->books[$i]->readers); $k++){
+               if ($_GET['user'] == $booksjson->books[$i]->readers[$k]->uid){
+                array_push($userreadedbooksarray, array('id' => $booksjson->books[$i]->id, 'title' =>$booksjson->books[$i]->title, 'author' => $booksjson->books[$i]->author, 'cover' => $booksjson->books[$i]->cover, 'date' =>  $booksjson->books[$i]->readers[$k]->date));
+               }
+              }
+          }
+
+          $userwantedbooksarray = array();
          for($i = 0; $i <count($booksjson->books); $i++){
-          for($k = 0; $k<count($booksjson->books[$i]->readers); $k++){
-              if ($_GET['user'] == $booksjson->books[$i]->readers[$k]->uid){
-                array_push($userbooksarray, array('id' => $booksjson->books[$i]->id, 'title' =>$booksjson->books[$i]->title, 'author' => $booksjson->books[$i]->author, 'cover' => $booksjson->books[$i]->cover, 'date' =>  $booksjson->books[$i]->readers[$k]->date));
+          for($k = 0; $k<count($booksjson->books[$i]->toread); $k++){
+              if ($_GET['user'] == $booksjson->books[$i]->toread[$k]){
+                array_push($userwantedbooksarray, array('id' => $booksjson->books[$i]->id, 'title' =>$booksjson->books[$i]->title, 'author' => $booksjson->books[$i]->author, 'cover' => $booksjson->books[$i]->cover, 'date' =>  $booksjson->books[$i]->readers[$k]->date));
               }
             }
           }
-        usort($userbooksarray, function($a, $b){
+          
+
+        usort($userreadedbooksarray, function($a, $b){
           $date1 = strtotime($b['date']);
           $date2 = strtotime($a['date']);
           return ($date1-$date2);
         }); 
-        for($i = 0; $i <count($userbooksarray); $i++){
+        usort($userwantedbooksarray, function($a, $b){
+          $date1 = strtotime($b['date']);
+          $date2 = strtotime($a['date']);
+          return ($date1-$date2);
+        }); 
+        for($i = 0; $i <count($userwantedbooksarray); $i++){
               echo '<div class="book-block">';
-                  echo '<a href="book.php?book=',$userbooksarray[$i]['id'],'">';
-                    echo '<img src="',$userbooksarray[$i]['cover'],'" alt="">';
-                    echo '<span class="title">',$userbooksarray[$i]['title'],'</span>';
-                    echo '<span class="author">',$userbooksarray[$i]['author'],  '</span>';
+                  echo '<a href="book.php?book=',$userwantedbooksarray[$i]['id'],'">';
+                    echo '<img src="',$userwantedbooksarray[$i]['cover'],'" alt="">';
+                    echo '<span class="title">',$userwantedbooksarray[$i]['title'],'</span>';
+                    echo '<span class="author">',$userwantedbooksarray[$i]['author'],  '</span>';
                   echo'</a>';
               echo '</div>';
         }
         echo '</div>';
         echo '<info style="margin-bottom: 20px">Прочитал</info>';
-        for($i = 0; $i <count($booksjson->books); $i++){
-          for($j = 0; $j<count($booksjson->books[$i]->readers); $j++){
-            if ($_GET['user']  == $booksjson->books[$i]->readers[$j]->uid){
+        for($i = 0; $i <count($userreadedbooksarray); $i++){
               echo '<div class="book-block">';
-                  echo '<a href="book.php?book=',$booksjson->books[$i]->id,'">';
-                  echo '<img src="', $booksjson->books[$i]->cover,'" alt="">';
-                  echo '<span class="title">',$booksjson->books[$i]->title,'</span>';
-                  echo '<span class="author">',$booksjson->books[$i]->author,  '</span>';
+                  echo '<a href="book.php?book=',$userreadedbooksarray[$i]['id'],'">';
+                  echo '<img src="', $userreadedbooksarray[$i]['cover'],'" alt="">';
+                  echo '<span class="title">',$userreadedbooksarray[$i]['title'],'</span>';
+                  echo '<span class="author">',$userreadedbooksarray[$i]['author'],  '</span>';
                 echo'</a>';
               echo '</div>';
-            }
-          }
         }
       }else{
       echo '<div class="users">';

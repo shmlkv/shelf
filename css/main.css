@@ -44,10 +44,10 @@ header a{
 	display: inline-block;
 	padding: 16px 0;
 }
-.nav ul li.bold{
+.nav ul li.logo{
 	background: #1e1e1e;
 }
-.nav ul li.bold:hover{
+.nav ul li.logo:hover{
 	background: #121212;
 	border: none;
 }
@@ -245,4 +245,33 @@ info{
 	border-bottom: 1px solid rgb(70, 80, 88);
 	display: block;
 	padding: 7px;
+}
+
+@media screen and (max-width: 1100px) {
+	ul.right, ul.left, .left, .right{
+		float: none;
+	}
+	header ul li a{
+		width: 100%;
+	}
+	header{
+		width: 100%;
+	}
+	ul{
+		text-align: center;
+	}
+	.nav ul li a {
+		padding: 5px;
+	}
+	.nav ul li  {
+		padding: 4px
+	}
+	ul li a{
+		font-size: .9em;
+	}
+	ul li.logo{
+		width: 100%;
+		text-align: center;
+		padding: 10px;
+	}
 }

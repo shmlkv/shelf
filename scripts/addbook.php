@@ -79,7 +79,10 @@
 					$newrating  = $newrating + $booksArray->books[$_POST['bookid']]->readers[$i]->rating;
 					$items = $i;
 				}
+				
 				$booksArray->books[$_POST['bookid']]->averagerating = round($newrating / ($items+1),2);
+
+				array_splice($booksArray->books[$_POST['bookid']]->toread, $_COOKIE['uid'], 1);
 			}
 		}
 
@@ -109,7 +112,7 @@
 				}
 				fwrite(fopen('../database/users.json', 'w'), json_encode($usersArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
 			}
-			fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
+			fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray, JSON_PRETTY_PRINT));
 		}
 
 		header('Location: ' . $_SERVER['HTTP_REFERER']);
