@@ -60,18 +60,27 @@
               </div>';
                echo '<div class="wantto">
             <info style="margin-bottom: 20px">Хочет прочитать</info>';
-        for($i = 0; $i <count($booksjson->books); $i++){
-          for($k = 0; $k<count($booksjson->books[$i]->toread); $k++){
-            if ($_GET['user'] === $booksjson->books[$i]->toread[$k]){
-              echo '<div class="book-block">';
-                  echo '<a href="book.php?book=',$booksjson->books[$i]->id,'">';
-                    echo '<img src="',$booksjson->books[$i]->cover,'" alt="">';
-                    echo '<span class="title">',$booksjson->books[$i]->title,'</span>';
-                    echo '<span class="author">',$booksjson->books[$i]->author,  '</span>';
-                  echo'</a>';
-              echo '</div>';
+            $userbooksarray = array();
+         for($i = 0; $i <count($booksjson->books); $i++){
+          for($k = 0; $k<count($booksjson->books[$i]->readers); $k++){
+              if ($_GET['user'] == $booksjson->books[$i]->readers[$k]->uid){
+                array_push($userbooksarray, array('id' => $booksjson->books[$i]->id, 'title' =>$booksjson->books[$i]->title, 'author' => $booksjson->books[$i]->author, 'cover' => $booksjson->books[$i]->cover, 'date' =>  $booksjson->books[$i]->readers[$k]->date));
+              }
             }
           }
+        usort($userbooksarray, function($a, $b){
+          $date1 = strtotime($b['date']);
+          $date2 = strtotime($a['date']);
+          return ($date1-$date2);
+        }); 
+        for($i = 0; $i <count($userbooksarray); $i++){
+              echo '<div class="book-block">';
+                  echo '<a href="book.php?book=',$userbooksarray[$i]['id'],'">';
+                    echo '<img src="',$userbooksarray[$i]['cover'],'" alt="">';
+                    echo '<span class="title">',$userbooksarray[$i]['title'],'</span>';
+                    echo '<span class="author">',$userbooksarray[$i]['author'],  '</span>';
+                  echo'</a>';
+              echo '</div>';
         }
         echo '</div>';
         echo '<info style="margin-bottom: 20px">Прочитал</info>';

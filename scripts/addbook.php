@@ -1,4 +1,5 @@
 <?php
+	$_SESSION['comment_add']='yes';
 	if(isset($_COOKIE['uid'])){
 		$today = date("Y-m-d\TH:i:sO");
 		$booksFile = file_get_contents("../database/books.json");
@@ -33,7 +34,7 @@
 					}
 					fwrite(fopen('../database/users.json', 'w'), json_encode($usersArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
 					fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
-
+					$_SESSION['added'] = true;
 					header('Location: ' . $_SERVER['HTTP_REFERER']);
 				}
 			}
@@ -94,6 +95,7 @@
 				fwrite(fopen('../database/users.json', 'w'), json_encode($usersArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
 			fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
 			}
+		$_SESSION['added'] = true;
 		header('Location: ' . $_SERVER['HTTP_REFERER']);
 	}
 ?>

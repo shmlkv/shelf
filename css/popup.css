@@ -1,12 +1,14 @@
-.popup {
+.popup, .popup-message {
     width:100%;
     height:100%;
-    display:none;
     position:fixed;
     top:0px;
     left:0px;
 }
-.popup-inner {
+.popup{
+    display:none;
+}
+.popup-inner, .popup-message-inner {
     max-width:500px;
     padding:40px;
     margin: 20px auto;

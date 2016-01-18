@@ -20,4 +20,5 @@ function onload()
         e.preventDefault();
     });
 });
+    $('.popup-message').delay(1000).fadeOut(); 
 }
