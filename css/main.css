@@ -11,7 +11,7 @@ body{
 	background: #20232A;
 	color: white;
 	font-family: 'Roboto', sans-serif;
-
+	min-width: 500px;
 }
 header{
 	position: fixed;
@@ -224,11 +224,6 @@ span.bold{
 	.nav ul li{
 		padding-right: 5px;
 		padding-left: 5px;
-	}
-}
-@media(max-width:768px){
-	.comment-text{
-		padding: 99px 13px 6px 13px;
 	}
 }
 a.btn{

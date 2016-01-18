@@ -72,10 +72,10 @@
                   if(!$idreadedbook){
                     if (in_array($_COOKIE['uid'], $booksjson->books[$k]->toread)) {
                       echo '<p><a title="Прочитал" class="btn"href="#" data-popup-open="popup-addthisbook" class="addbook"><span class="icon-book"></span> Прочитал</a>';
-                      echo '<a title="Не хочу читать" class="btn" href="scripts/toread.php?book='.$booksjson->books[$k]->id.'" class="addbook"><span class="icon-heart-broken"></span>Не хочу читать</a></p>';
+                      echo '<a title="Не хочу читать" class="btn" href="scripts/addbook.php?want=true&book='.$booksjson->books[$k]->id.'" class="addbook"><span class="icon-heart-broken"></span>Не хочу читать</a></p>';
                     }else{
                       echo '<p><a title="Прочитал" class="btn" href="#" data-popup-open="popup-addthisbook" class="addbook"><span class="icon-book"></span>Прочитал</a>';
-                      echo '<a title="Хочу прочитать" class="btn" href="scripts/toread.php?book='.$booksjson->books[$k]->id.'" class="addbook"><span class="icon-heart"></span>Хочу прочитать</a></p>';
+                      echo '<a title="Хочу прочитать" class="btn" href="scripts/addbook.php?want=true&book='.$booksjson->books[$k]->id.'" class="addbook"><span class="icon-heart"></span>Хочу прочитать</a></p>';
                     }
                   }else{
                      echo '<a class="btn" href="" class="addbook"><span class="icon-book"></span>Вы читали эту книгу, ваша оценка <span class="bold">'.$mybookrate.'</span></a>
@@ -98,13 +98,15 @@
                             <img src="'.$userObj->pic.'" alt="">
                             <div class="comment-head">
                               <a class="comment-head-name" href="users.php?user='.$userObj->uid.'" class="dontdecorate">'.$userObj->fio.'</a>
-                              <date>'.$booksjson->books[$k]->readers[$a]->date.'</date>
+                              <date>'.date_format(date_create($booksjson->books[$k]->readers[$a]->date), "d.m.Y").'</date>
                               <div class="comment-head-rating"><span class="icon-thumbs-up"></span> '.$booksjson->books[$k]->readers[$a]->commentrating.' <span class="icon-thumbs-down"></span></div>
                             </div>
                             <div class="comment-text">
                               <p>'.$booksjson->books[$k]->readers[$a]->comment.'</p>
                             </div>
                           </div>';
+                      }else{
+                        echo 'Тут ещё нет комментариев';
                       }
                   }
             echo '</div>';

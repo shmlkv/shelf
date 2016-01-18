@@ -1,14 +1,27 @@
 <?php
-	$_SESSION['comment_add']='yes';
 	if(isset($_COOKIE['uid'])){
 		$today = date("Y-m-d\TH:i:sO");
+
 		$booksFile = file_get_contents("../database/books.json");
 		$booksArray = json_decode($booksFile);
 
 		$usersFile = file_get_contents("../database/users.json");
 		$usersArray = json_decode($usersFile);
-		$userbookexist = false;
-		if($_GET['delete']){ 
+		
+
+		// Хочу прочитать \ не хочу прочитать
+		if (isset($_GET['book']) && $_GET['want']) {
+			if (!in_array($_COOKIE['uid'], $booksArray->books[$_GET['book']]->toread)) {
+				array_push($booksArray->books[$_GET['book']]->toread, $_COOKIE['uid']);
+			}else{
+				$booksArray->books[$_GET['book']]->toread = array_diff($booksArray->books[$_GET['book']]->toread, array($_COOKIE['uid']));
+			}
+			
+			$added = true;
+		}
+
+		//Удаление книги
+		if($_GET['delete'] && isset($_GET['bookid'])){ 
 			for($a = 0; $a<count($booksArray->books[$_GET['bookid']]->readers); $a++){
 				if($booksArray->books[$_GET['bookid']]->readers[$a]->uid == $_COOKIE['uid']){
 					array_splice($booksArray->books[$_GET['bookid']]->readers, $a, 1);
@@ -23,7 +36,6 @@
 						$booksArray->books[$_GET['bookid']]->averagerating = 0;
 					}
 					
-
 					$usersFile = file_get_contents("../database/users.json");
 					$usersArray = json_decode($usersFile);
 					for($i = 0; $i<count($usersArray->users); $i++){
@@ -34,13 +46,15 @@
 					}
 					fwrite(fopen('../database/users.json', 'w'), json_encode($usersArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
 					fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
-					$_SESSION['added'] = true;
+					$_SESSION['msg'] = 'Вы удалили книгу';
 					header('Location: ' . $_SERVER['HTTP_REFERER']);
 				}
 			}
 		}
-		
+
+		// Добавление существующей книги
 		if($_POST['bookid']){
+			$userbookexist = false;
 			for($a = 0; $a<count($booksArray->books[$_POST['bookid']]->readers); $a++){
 				if($booksArray->books[$_POST['bookid']]->readers[$a]->uid == $_COOKIE['uid']){
 					$userbookexist = true;
@@ -67,35 +81,37 @@
 				}
 				$booksArray->books[$_POST['bookid']]->averagerating = round($newrating / ($items+1),2);
 			}
+		}
 
-		}else{
-			if($_POST['title'] && $_POST['author'] && $_POST['rating']){
-				  $path = '../covers/';
-				  if (!@copy($_FILES['cover']['tmp_name'], $path . count($booksArray->books).'.png')){
-				  	echo 'error loading file';
-					exit();
+		//Добавление новой книги
+		if($_POST['title'] && $_POST['author'] && $_POST['rating']){
+			if (!@copy($_FILES['cover']['tmp_name']. '../covers/' . count($booksArray->books).'.png')){
+				echo 'error loading file';
+				exit();
+			}else{
+				if($_POST['comment']){
+					$bookobj = array('id' => count($booksArray->books), 'title' => $_POST['title'],'author' => $_POST['author'],'cover' => 'covers/'.count($booksArray->books).'.png','readers' => array(array('uid' => $_COOKIE['uid'], 'date' => $today, 'rating' => $_POST['rating'], 'comment' => $_POST['comment'],'commentrating' => 0)),'toread' => array(), 'averagerating' => $_POST['rating']);
 				}else{
-					if($_POST['comment']){
-						$bookobj = array('id' => count($booksArray->books), 'title' => $_POST['title'],'author' => $_POST['author'],'cover' => 'covers/'.count($booksArray->books).'.png','readers' => array(array('uid' => $_COOKIE['uid'], 'date' => $today, 'rating' => $_POST['rating'], 'comment' => $_POST['comment'],'commentrating' => 0)),'toread' => array(), 'averagerating' => $_POST['rating']);
-					}else{
-						$bookobj = array('id' => count($booksArray->books), 'title' => $_POST['title'],'author' => $_POST['author'],'cover' => 'covers/'.count($booksArray->books).'.png','readers' => array(array('uid' => $_COOKIE['uid'], 'date' => $today, 'rating' => $_POST['rating'])),'toread' => array(), 'averagerating' => $_POST['rating']);
-					}
-					array_push($booksArray->books, $bookobj);
-					$added = true;
+					$bookobj = array('id' => count($booksArray->books), 'title' => $_POST['title'],'author' => $_POST['author'],'cover' => 'covers/'.count($booksArray->books).'.png','readers' => array(array('uid' => $_COOKIE['uid'], 'date' => $today, 'rating' => $_POST['rating'])),'toread' => array(), 'averagerating' => $_POST['rating']);
 				}
+				array_push($booksArray->books, $bookobj);
+				$added = true;
 			}
 		}
+		
 		if($added){
-			for($i = 0; $i<count($usersArray->users); $i++){
-						if($usersArray->users[$i]->uid == $_COOKIE['uid']){
-							$usersArray->users[$i]->books = $usersArray->users[$i]->books + 1;
-							$usersArray->users[$i]->rating = $usersArray->users[$i]->rating + 1;
-						}
+			if(!isset($_GET['want'])){
+				for($i = 0; $i<count($usersArray->users); $i++){
+					if($usersArray->users[$i]->uid == $_COOKIE['uid']){
+						$usersArray->users[$i]->books = $usersArray->users[$i]->books + 1;
+						$usersArray->users[$i]->rating = $usersArray->users[$i]->rating + 1;
+					}
 				}
 				fwrite(fopen('../database/users.json', 'w'), json_encode($usersArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
-			fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
 			}
-		$_SESSION['added'] = true;
+			fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
+		}
+
 		header('Location: ' . $_SERVER['HTTP_REFERER']);
 	}
 ?>
