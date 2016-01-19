@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?
+<?php
   $booksfile = file_get_contents("database/books.json");
   $booksjson = json_decode($booksfile);
   if (isset($_GET['book'])){

@@ -1,12 +1,12 @@
 <?php
 
-if(isset($_SESSION['added'])){
+if($_SESSION['msg']){
 	echo '<div class="popup-message">
 			<div class="popup-message-inner">
-				<h2 class="center">Книга добавлена</h2>
+				<h2 class="center" style="text-align:center;font-size:1.2em;">'.$_SESSION['msg'].'</h2>
 			</div>
 		</div>';
-	$_SESSION['added'] = false;
+	$_SESSION['msg'] = false;
 }
 echo '<div class="popup dropzone" data-popup="popup-addbook">
     	<div class="popup-inner">

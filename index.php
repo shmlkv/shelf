@@ -64,7 +64,7 @@
           $date1 = strtotime($b['date']);
           $date2 = strtotime($a['date']);
           return ($date1-$date2);
-        });
+        }); 
         for($i = 0; $i <count($userbooksarray); $i++){
               echo '<div class="book-block">';
                   echo '<a href="book.php?book=',$userbooksarray[$i]['id'],'">';
@@ -89,7 +89,7 @@
             VK.Widgets.Auth("vk_auth", {width: "300px",authUrl: "login.php"});
           </script>';
   } 
-  
+
   include 'modules/footer.php';
 ?>
 <script src="scripts/main.js"></script>

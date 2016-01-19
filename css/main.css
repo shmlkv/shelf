@@ -14,13 +14,14 @@ body{
 	min-width: 500px;
 }
 header{
-	position: fixed;
+	/* position: fixed;
+	top:0; */
 	min-height: 50px;
 	/* background: rgba(32, 38, 41, .8); */
 	background: #2B2F3A;
 	margin: 0 auto;
 	width: 100%;
-	top:0;
+	
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 header a{
@@ -74,7 +75,8 @@ header a{
 	max-width: 960px;
 	/* background: white; */
 	background: #20232A;
-	margin-top: 70px;
+	/* margin-top: 70px; */
+	 margin-top: 20px;
 	padding: 20px;
 	/* box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
 }
@@ -125,7 +127,7 @@ header a{
 	color: #858C97;
 }
 .book-img{
-	max-width: 300px;
+	width: 250px;
 	display: inline-block;
 }
 .book-info{
@@ -209,12 +211,14 @@ footer{
 footer a{
 	color: white;
 	text-decoration: none;
+	padding: 5px 10px;
 }
 .inline{
 	display: inline-block !important;
 }
 span.bold{
-	font-weight: 600;
+	text-decoration: underline;
+	padding-bottom: 10px;
 }
 .block{
 	display: block;

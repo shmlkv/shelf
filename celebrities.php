@@ -12,16 +12,16 @@
       $json = json_decode($file);
       echo '<div id="content">
               <div class="wrap">';
-          echo '<info style="margin-bottom: 20px">Books of celebrities</info>';
-          for($i = 1; $i <count($json->books); $i++){
-                echo '<div class="book-block">';
-                    echo '<a href="book.php?book=',$json->books[$i]->id,'">';
-                      echo '<img src="',$json->books[$i]->cover,'" alt="">';
-                      echo '<span class="title">',$json->books[$i]->title,'</span>';
-                      echo '<span class="author">',$json->books[$i]->author,  '</span>';
-                    echo'</a>';
-                echo '</div>';
-          }
+          //echo '<info style="margin-bottom: 20px">Books of celebrities</info>';
+          //for($i = 1; $i <count($json->books); $i++){
+          //      echo '<div class="book-block">';
+          //          echo '<a href="book.php?book=',$json->books[$i]->id,'">';
+          //            echo '<img src="',$json->books[$i]->cover,'" alt="">';
+          //            echo '<span class="title">',$json->books[$i]->title,'</span>';
+          //            echo '<span class="author">',$json->books[$i]->author,  '</span>';
+          //          echo'</a>';
+          //      echo '</div>';
+          //}
         echo '</div>
           </div>';
   include 'modules/popup.php';

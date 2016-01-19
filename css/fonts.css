@@ -44,12 +44,14 @@
 }
 .icon-thumbs-up:before {
     content: "\e904";
+    color: grey;
 }
 .icon-chevron-down:before {
     content: "\e905";
 }
 .icon-thumbs-down:before {
     content: "\e906";
+     color: grey;
 }
 .icon-plus:before {
     content: "\e902";
