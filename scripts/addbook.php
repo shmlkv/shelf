@@ -1,5 +1,4 @@
 <?php
-session_start();
 	if(isset($_COOKIE['uid'])){
 		$today = date("Y-m-d\TH:i:sO");
 
@@ -52,7 +51,7 @@ session_start();
 			}
 		}
 		// Добавление существующей книги
-		if($_POST['bookid']){
+		if(isset($_POST['bookid']) && isset($_POST['rating']) ){
 			$userbookexist = false;
 			for($a = 0; $a<count($booksArray->books[$_POST['bookid']]->readers); $a++){
 				if($booksArray->books[$_POST['bookid']]->readers[$a]->uid == $_COOKIE['uid']){
@@ -100,6 +99,12 @@ session_start();
 				$_SESSION['msg'] = 'Книга была добавлена на вашу полку';
 				$added = true;
 			}
+		}
+
+		// Редактирование описания
+		if($_POST['action'] = 'edit_desc' && isset($_POST['data']) ){
+			$booksArray->books[$_POST['bookid']]->desc = $_POST['data'];
+			fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray, JSON_PRETTY_PRINT));
 		}
 		if($added){
 			if(!isset($_GET['want'])){

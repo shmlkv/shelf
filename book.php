@@ -59,8 +59,19 @@
                   if($booksjson->books[$k]->desc){
                     echo '<div class="block">
                             <span class="bold inline">Описание:</span>
-                            <p>'.$booksjson->books[$k]->desc.'</p>
-                          </div>';
+                            <p';
+                    if ($_COOKIE['uid'] == '121935185' || '151805674'){
+                      echo ' contenteditable="plaintext-only" id="editor" >';
+                    }
+                    echo $booksjson->books[$k]->desc.'</p></div>';
+                    if($_COOKIE['uid'] == '121935185' || '151805674'){
+                      echo '<button class="btn inline addbook" id="save" style="display:block !important" value="'.$_GET['book'].'">Save description</button>';
+                    }
+                  }elseif($_COOKIE['uid'] == '121935185' || '151805674' && $booksjson->books[$k]->desc){
+                   echo '<div class="block">
+                            <span class="bold inline">Описание:</span>
+                            <p contenteditable="plaintext-only" id="editor" >Пусто(ну так добавь)</p></div>
+                            <button class="btn inline addbook" id="save" style="display:block !important" value="'.$_GET['book'].'">Save description</button>';
                   }
                   $idreadedbook = false;
                   for($i = 0; $i<count($booksjson->books[$k]->readers); $i++){
