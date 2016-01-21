@@ -12,8 +12,6 @@
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
   <title><?=$title?></title>
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/foundation.min.css">
-  <link rel="stylesheet" href="css/foundstiling.css">
   <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?34"></script>  
 </head>
 <body>
@@ -52,22 +50,22 @@
                     <span class="author">'.$booksjson->books[$k]->author.'</span>
                   </div>
                   <div class="block">
-                    <a title="Прочитавшие" href="" class="btn inline addbook"><span class="icon-people"></span> '.count($booksjson->books[$k]->readers).'</a>
-                    <a title="Желающие прочитать" href="" class="btn inline addbook"><span class="icon-bookmarks"></span> '.count($booksjson->books[$k]->toread).'</a>
-                    <a title="Рейтинг" href="" class="btn inline addbook"><span class="icon-stats-bars"></span> '.$booksjson->books[$k]->averagerating.'</a>
+                    <a title="Прочитавшие книгу" href="" class="btn inline addbook"><span class="icon-people"></span>Прочитало: <b>'.count($booksjson->books[$k]->readers).'</b></a>
+                    <a title="Желающие прочитать" href="" class="btn inline addbook"><span class="icon-bookmarks"></span>Желают прочитать: <b>'.count($booksjson->books[$k]->toread).'</b></a>
+                    <a title="Рейтинг" href="" class="btn inline addbook"><span class="icon-stats-bars"></span>Рейтинг: <b>'.$booksjson->books[$k]->averagerating.'</b></a>
                   </div>';
                   if($booksjson->books[$k]->desc){
                     echo '<div class="block">
                             <span class="bold inline">Описание:</span>
                             <p';
-                    if ($_COOKIE['uid'] == '121935185' || '151805674'){
-                      echo ' contenteditable="plaintext-only" id="editor" >';
+                    if (($_COOKIE['uid'] == '121935185') || ($_COOKIE['uid'] == '151805674')){
+                      echo ' contenteditable="plaintext-only" id="editor">';
                     }
                     echo $booksjson->books[$k]->desc.'</p></div>';
-                    if($_COOKIE['uid'] == '121935185' || '151805674'){
+                    if(($_COOKIE['uid'] == '121935185') || ($_COOKIE['uid'] == '151805674')){
                       echo '<button class="btn inline addbook" id="save" style="display:block !important" value="'.$_GET['book'].'">Save description</button>';
                     }
-                  }elseif($_COOKIE['uid'] == '121935185' || '151805674' && $booksjson->books[$k]->desc){
+                  }elseif((($_COOKIE['uid'] == '121935185') || ($_COOKIE['uid'] == '151805674')) && empty($booksjson->books[$k]->desc)){
                    echo '<div class="block">
                             <span class="bold inline">Описание:</span>
                             <p contenteditable="plaintext-only" id="editor" >Пусто(ну так добавь)</p></div>

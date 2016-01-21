@@ -30,6 +30,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+.book-info [class^="icon-"], [class*=" icon-"] {
+    vertical-align: middle;
+}
 .icon-people:before {
     content: "\e90c";
 }
