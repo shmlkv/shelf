@@ -10,11 +10,11 @@
 		
 
 		// Хочу прочитать \ не хочу прочитать
-		if (isset($_GET['book']) && $_GET['want']) {
-			if (!in_array($_COOKIE['uid'], $booksArray->books[$_GET['book']]->toread)) {
-				array_push($booksArray->books[$_GET['book']]->toread, $_COOKIE['uid']);
+		if (isset($_POST['book']) && $_POST['want']) {
+			if (!in_array($_COOKIE['uid'], $booksArray->books[$_POST['book']]->toread)) {
+				array_push($booksArray->books[$_POST['book']]->toread, $_COOKIE['uid']);
 			}else{
-				$booksArray->books[$_GET['book']]->toread = array_diff($booksArray->books[$_GET['book']]->toread, array($_COOKIE['uid']));
+				$booksArray->books[$_POST['book']]->toread = array_diff($booksArray->books[$_POST['book']]->toread, array($_COOKIE['uid']));
 			}
 			$added = true;
 		}
@@ -104,6 +104,35 @@
 		// Редактирование описания
 		if($_POST['action'] = 'edit_desc' && isset($_POST['data']) ){
 			$booksArray->books[$_POST['bookid']]->desc = $_POST['data'];
+			fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray, JSON_PRETTY_PRINT));
+		}
+
+		if($_POST['action'] = 'like' && isset($_POST['book']) && isset($_POST['uid'])){
+			for($i = 0; $i<count($booksArray->books[$_POST['book']]->readers); $i++){
+				if(($booksArray->books[$_POST['book']]->readers[$i]->uid == $_POST['uid'])){
+					for($j = 0; $j<count($booksArray->books[$_POST['book']]->readers[$j]->commentlikes); $j++){
+						if($booksArray->books[$_POST['book']]->readers[$j]->commentlikes[$j]->uid == $_COOKIE['uid']){
+							if($_POST['opinion'] == false){
+								$booksArray->books[$_POST['book']]->readers[$j]->commentlikes[$j]->opinion = $_POST['opinion'];
+								$booksArray->books[$_POST['book']]->readers[$i]->commentrating = $booksArray->books[$_POST['book']]->readers[$i]->commentrating - 1;
+							} // WTF
+							if($_POST['opinion'] == true){
+								$booksArray->books[$_POST['book']]->readers[$j]->commentlikes[$j]->opinion = $_POST['opinion'];
+								$booksArray->books[$_POST['book']]->readers[$i]->commentrating = $booksArray->books[$_POST['book']]->readers[$i]->commentrating + 1;
+							}
+							$likeexist = true;
+						}
+					}
+					if(!$likeexist){
+						array_push($booksArray->books[$_POST['book']]->readers[$i]->commentlikes, array('uid' => $_COOKIE['uid'], 'opinion' => $_POST['opinion']));
+						if($_POST['opinion']){
+							$booksArray->books[$_POST['book']]->readers[$i]->commentrating = $booksArray->books[$_POST['book']]->readers[$i]->commentrating + 1;
+						}else{
+							$booksArray->books[$_POST['book']]->readers[$i]->commentrating = $booksArray->books[$_POST['book']]->readers[$i]->commentrating - 1;
+						}
+					}
+				}
+			}
 			fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray, JSON_PRETTY_PRINT));
 		}
 		if($added){

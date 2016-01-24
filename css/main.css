@@ -288,7 +288,7 @@ button{
 	cursor: pointer;
 }
 button:disabled:hover{
-	cursor: not-allowed
+	cursor: not-allowed;
 }
 a.delete-book{
 	margin-left: -11px;

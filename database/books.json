@@ -130,7 +130,13 @@
                     "date": "13.01.16",
                     "rating": "9",
                     "comment": "\u041d\u043e\u0440\u043c",
-                    "commentrating": 0
+                    "commentrating": 1,
+                    "commentlikes": [
+                        {
+                            "uid": "121935185",
+                            "opinion": "false"
+                        }
+                    ]
                 }
             ],
             "toread": [],
@@ -305,9 +311,7 @@
             "cover": "covers\/18.png",
             "desc": "\u041f\u0443\u0441\u0442\u043e(\u043d\u0443 \u0442\u0430\u043a \u0434\u043e\u0431\u0430\u0432\u044c)",
             "readers": [],
-            "toread": [
-                "121935185"
-            ],
+            "toread": [],
             "averagerating": 0
         }
     ]

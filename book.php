@@ -77,7 +77,7 @@
                   }
               }
               if(!$idreadedbook){
-                if (in_array($_COOKIE['uid'], $booksjson->books[$k]->toread)) {
+                if (in_array($_COOKIE['uid'], $booksjson->books[$k]->toread)){
                   echo '<p><button title="Прочитал" class="btn addbook" href="#" data-popup-open="popup-addthisbook"><span class="icon-book"></span> Прочитал</button>';
                   echo '<button id="fav" value="'.$booksjson->books[$k]->id.'" title="Не хочу читать" class="btn addbook"><span class="icon-heart-broken"></span>Не хочу читать</button></p>';
                 }elseif(!isset($_COOKIE['log'])){
@@ -106,12 +106,12 @@
                   }
                   if($booksjson->books[$k]->readers[$a]->comment){
                      $nocomments = false;
-                    echo '<div class="comment">
+                    echo '<div class="comment" value="'.$userObj->uid.'">
                         <img src="'.$userObj->pic.'" alt="">
                         <div class="comment-head">
                           <a class="comment-head-name" href="users.php?user='.$userObj->uid.'" class="dontdecorate">'.$userObj->fio.'</a>
                           <date>'.date_format(date_create($booksjson->books[$k]->readers[$a]->date), "d.m.Y").'</date>
-                          <div class="comment-head-rating"><span class="icon-thumbs-up"></span> '.$booksjson->books[$k]->readers[$a]->commentrating.' <span class="icon-thumbs-down"></span></div>
+                          <div class="comment-head-rating"><span class="icon-thumbs-up opinion" id="like"></span> '.$booksjson->books[$k]->readers[$a]->commentrating.' <span class="icon-thumbs-down opinion" id="dislike"></span></div>
                         </div>
                         <div class="comment-text">
                           <p>'.$booksjson->books[$k]->readers[$a]->comment.'</p>

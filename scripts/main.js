@@ -50,7 +50,7 @@ function onload(){
         $.ajax({
             url: 'scripts/addbook.php',
             type: 'post',
-            data: {data: $edit, action: 'edit_desc', bookid: $book},
+            data: {action: 'edit_desc', data: $edit, bookid: $book},
             datatype: 'html',
             success: function(rsp){
                     window.location.reload();
@@ -61,10 +61,32 @@ function onload(){
     $('#fav').on('click', function(e)  {
         //$ss =;
         $book = $('#fav').attr('value');
+
         $.ajax({
             url: 'scripts/addbook.php',
-            type: 'get',
+            type: 'post',
             data: {want: true, book: $book},
+            datatype: 'html',
+            success: function(rsp){
+                    window.location.reload();
+                }
+        });
+    });
+
+     $('.opinion').on('click', function(e)  {
+        $book = $('#fav').attr('value');
+        $uid = $('.comment').attr('value');
+
+        if($(this).is("#like")){
+            $opinion = true;
+        }
+        if($(this).is("#dislike")){
+            $opinion = false;
+        }
+        $.ajax({
+            url: 'scripts/addbook.php',
+            type: 'post',
+            data: {action: 'like', book: $book, uid: $uid, opinion:  $opinion},
             datatype: 'html',
             success: function(rsp){
                     window.location.reload();
