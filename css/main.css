@@ -270,7 +270,7 @@ span.bold{
 		padding-left: 5px;
 	}
 }
-a.btn{
+a.btn, button.btn{
 	padding: 8px 10px;
 	color: white;
 	text-decoration: none;
@@ -278,6 +278,17 @@ a.btn{
 	border-radius: 3px;
 	margin: 5px;
 	display: inline-block;
+}
+button.btn{
+	padding: 13px;
+	font-size: 1.05em;
+}
+button{
+	border: none;
+	cursor: pointer;
+}
+button:disabled:hover{
+	cursor: not-allowed
 }
 a.delete-book{
 	margin-left: -11px;

@@ -24,7 +24,11 @@ function onload(){
 
     $('.popup-message').delay(1000).fadeOut(); 
     
-    
+   //$('#desc').on('click', function(e)  {
+   //    if ( $("#desc").has("#editor") ) {
+   //        $('<button class="btn inline addbook" id="save" style="display:block !important" value="22">Save description</button></div>').insertAfter($("#desc"));
+   //    }
+   //});
     $('#save').on('click', function(e)  {
         $edit = $('#editor').html();
         //$ss =;
@@ -39,6 +43,37 @@ function onload(){
                 }
         });
     });
+    $('#save').on('click', function(e)  {
+        $edit = $('#editor').html();
+        //$ss =;
+        $book = $('#save').attr('value');
+        $.ajax({
+            url: 'scripts/addbook.php',
+            type: 'post',
+            data: {data: $edit, action: 'edit_desc', bookid: $book},
+            datatype: 'html',
+            success: function(rsp){
+                    window.location.reload();
+                }
+        });
+    });
+
+    $('#fav').on('click', function(e)  {
+        //$ss =;
+        $book = $('#fav').attr('value');
+        $.ajax({
+            url: 'scripts/addbook.php',
+            type: 'get',
+            data: {want: true, book: $book},
+            datatype: 'html',
+            success: function(rsp){
+                    window.location.reload();
+                }
+        });
+    });
+
+
+    //scripts/addbook.php?want=true&book=
 
     $("#search_box").keyup(function(I){
         // определяем какие действия нужно делать при нажатии на клавиатуру
