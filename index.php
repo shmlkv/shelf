@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
@@ -8,7 +9,6 @@
 <body>
 <?php
   include 'modules/header.php';
-
   $userexist=false;
   if (isset($_COOKIE['log'])) {
     $usersfile = file_get_contents("database/users.json");

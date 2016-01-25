@@ -56,6 +56,7 @@
                   <info>Рейтинг: '.$userobj->rating.'</info>
                   <info>Книг хочет прочитать: '.$bookstoread.'</info>
                   <info>Книг прочитал: '.$booksread.'</info>
+                  <info><a href="https://vk.com/id'.$userobj->uid.'" class="icon-vk"></a></info>
                 </div>
               </div>';
                echo '<div class="wantto">

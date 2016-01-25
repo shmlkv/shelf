@@ -21,7 +21,6 @@ header{
 	background: #2B2F3A;
 	margin: 0 auto;
 	width: 100%;
-	
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 header a{
@@ -29,14 +28,17 @@ header a{
 }
 header form{
 	padding-left:5px;
-	padding-right: 5px
+	padding-right: 5px;
 }
 header form input{
 	border: 1px solid white;
 	color: white;
-	padding: 3px 9px;
+	padding: 1px 9px;
 	background: rgba(70, 80, 88, .8);
 	position: relative;
+}
+header form input:active{
+	border: none;
 }
 #search_advice_wrapper{
             width: 182px;
@@ -83,7 +85,7 @@ header form input{
 .nav ul li{
 	color: white;
 	display: inline-block;
-	padding: 15px 0;
+	padding: 16px 0;
 }
 .nav ul li.logo{
 	background: #1e1e1e;
@@ -118,7 +120,7 @@ header form input{
 	/* margin-top: 70px; */
 	 margin-top: 20px;
 	padding: 20px;
-	/* box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
+	/* box-shadow:; */
 }
 .book-block{
 	box-sizing: border-box;
@@ -133,6 +135,7 @@ header form input{
 	/* color: black; */
 	color: white;
 	max-width: 184px;
+	position: relative;
 }
 .book-block img{
 	width: 144px;
@@ -165,6 +168,16 @@ header form input{
 	font-size: 20px;
 	/* color: #A1A1A1; */
 	color: #858C97;
+}
+mark{
+	position: absolute;
+	box-shadow: inset 4px 2px 36px rgba(0,0,0,1);
+	bottom: 3px;
+	right: 0;
+	padding: 6px 9px;
+	color: white;
+	border-radius: 9px 0 0 0;
+	background: none;
 }
 .book-img{
 	width: 250px;

@@ -1,4 +1,4 @@
-<?php
+<?php  session_start();
 	if(isset($_COOKIE['uid'])){
 		$today = date("Y-m-d\TH:i:sO");
 
@@ -11,11 +11,17 @@
 
 		// Хочу прочитать \ не хочу прочитать
 		if (isset($_POST['book']) && $_POST['want']) {
+			echo 'ajax fix';
+			$_SESSION['msg'] = 'Книга была добавлена в желаемое';
 			if (!in_array($_COOKIE['uid'], $booksArray->books[$_POST['book']]->toread)) {
 				array_push($booksArray->books[$_POST['book']]->toread, $_COOKIE['uid']);
+				$_SESSION['msg'] = 'Книга была добавлена в желаемое';
 			}else{
 				$booksArray->books[$_POST['book']]->toread = array_diff($booksArray->books[$_POST['book']]->toread, array($_COOKIE['uid']));
+				$_SESSION['msg'] = 'Книга была убрана из желаемого';
 			}
+			fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray, JSON_PRETTY_PRINT));
+			header('Location: ' . $_SERVER['HTTP_REFERER']);
 			$added = true;
 		}
 
@@ -86,10 +92,10 @@
 
 		//Добавление новой книги
 		if($_POST['title'] && $_POST['author'] && $_POST['rating']){
-			if (!@copy($_FILES['cover']['tmp_name']. '../covers/' . count($booksArray->books).'.png')){
-				echo 'error loading file';
-				exit();
-			}else{
+			$uploaddir = '../covers/';//<----This is all I changed
+			$uploadfile = $uploaddir . basename(count($booksArray->books).'.png');
+
+			if (move_uploaded_file($_FILES['cover']['tmp_name'], $uploadfile)) {
 				if($_POST['comment']){
 					$bookobj = array('id' => count($booksArray->books), 'title' => $_POST['title'],'author' => $_POST['author'],'cover' => 'covers/'.count($booksArray->books).'.png','readers' => array(array('uid' => $_COOKIE['uid'], 'date' => $today, 'rating' => $_POST['rating'], 'comment' => $_POST['comment'],'commentrating' => 0)),'toread' => array(), 'averagerating' => $_POST['rating']);
 				}else{
@@ -98,15 +104,21 @@
 				array_push($booksArray->books, $bookobj);
 				$_SESSION['msg'] = 'Книга была добавлена на вашу полку';
 				$added = true;
+			} else {
+				echo "Possible file upload attack!\n";
 			}
 		}
 
 		// Редактирование описания
 		if($_POST['action'] = 'edit_desc' && isset($_POST['data']) ){
-			$booksArray->books[$_POST['bookid']]->desc = $_POST['data'];
+			echo 'ajax fix';
+			$_SESSION['msg'] = 'Описание было отредактировано';
+			$booksArray->books[$_POST['bookid']]->desc = str_replace(array("<div>", "</div>"), " ", $_POST['data']);
 			fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray, JSON_PRETTY_PRINT));
+			
 		}
 
+		// Лайки
 		if($_POST['action'] = 'like' && isset($_POST['book']) && isset($_POST['uid'])){
 			for($i = 0; $i<count($booksArray->books[$_POST['book']]->readers); $i++){
 				if(($booksArray->books[$_POST['book']]->readers[$i]->uid == $_POST['uid'])){

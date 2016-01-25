@@ -42,6 +42,22 @@
 .icon-vk:before {
     content: "\e901";
 }
+
+info a.icon-vk{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+info a.icon-vk:before{
+    color: #5C82AB;
+    text-decoration: none;
+    font-size: 30px;
+    padding-right: 5px;
+    vertical-align: middle;
+}
+info a.icon-vk:hover:before{
+    color: #41678F;
+}
 .icon-chevron-up:before {
     content: "\e903";
 }

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <?php
   $booksfile = file_get_contents("database/books.json");
@@ -30,8 +31,9 @@
       echo '<div class="book-block">';
           echo '<a href="book.php?book=',$booksjson->books[$i]->id,'">';
             echo '<img src="',$booksjson->books[$i]->cover,'" alt="">';
+            echo '<mark>'.$booksjson->books[$i]->averagerating.'</mark>';
             echo '<span class="title">',$booksjson->books[$i]->title,'</span>';
-            echo '<span class="author">',$booksjson->books[$i]->author,  ' - ',$booksjson->books[$i]->averagerating,  '</span>';
+            echo '<span class="author">',$booksjson->books[$i]->author, '</span>';
           echo'</a>';
       echo '</div>';
     }
@@ -126,11 +128,12 @@
       
     }
   }
-    echo'</div>';
+    
+   }
+   echo'</div>';
      echo'</div>';
      include 'modules/footer.php';
      include 'modules/popup.php';
-   }
 ?>
     <script type="text/javascript">
         VK.init({apiId: 5197194}); //второй
