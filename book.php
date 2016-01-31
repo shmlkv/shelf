@@ -1,6 +1,4 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
-<?php
+<?php session_start();
   $booksfile = file_get_contents("database/books.json");
   $booksjson = json_decode($booksfile);
   if (isset($_GET['book'])){
@@ -9,6 +7,7 @@
     $title = 'Все книги';
   }
 ?>
+<!DOCTYPE html>
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
   <title><?=$title?></title>

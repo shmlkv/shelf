@@ -1,5 +1,4 @@
 <?php
-
 if($_SESSION['msg']){
 	echo '<div class="popup-message">
 			<div class="popup-message-inner">

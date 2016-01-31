@@ -7,12 +7,9 @@
 
 		$usersFile = file_get_contents("../database/users.json");
 		$usersArray = json_decode($usersFile);
-		
 
 		// Хочу прочитать \ не хочу прочитать
 		if (isset($_POST['book']) && $_POST['want']) {
-			echo 'ajax fix';
-			$_SESSION['msg'] = 'Книга была добавлена в желаемое';
 			if (!in_array($_COOKIE['uid'], $booksArray->books[$_POST['book']]->toread)) {
 				array_push($booksArray->books[$_POST['book']]->toread, $_COOKIE['uid']);
 				$_SESSION['msg'] = 'Книга была добавлена в желаемое';
@@ -22,7 +19,6 @@
 			}
 			fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray, JSON_PRETTY_PRINT));
 			header('Location: ' . $_SERVER['HTTP_REFERER']);
-			$added = true;
 		}
 
 		//Удаление книги
@@ -147,13 +143,12 @@
 			}
 			fwrite(fopen('../database/books.json', 'w'), json_encode($booksArray, JSON_PRETTY_PRINT));
 		}
+
 		if($added){
-			if(!isset($_GET['want'])){
-				for($i = 0; $i<count($usersArray->users); $i++){
-					if($usersArray->users[$i]->uid == $_COOKIE['uid']){
-						$usersArray->users[$i]->books = $usersArray->users[$i]->books + 1;
-						$usersArray->users[$i]->rating = $usersArray->users[$i]->rating + 1;
-					}
+			for($i = 0; $i<count($usersArray->users); $i++){
+				if($usersArray->users[$i]->uid == $_COOKIE['uid']){
+					$usersArray->users[$i]->books = $usersArray->users[$i]->books + 1;
+					$usersArray->users[$i]->rating = $usersArray->users[$i]->rating + 1;
 				}
 				fwrite(fopen('../database/users.json', 'w'), json_encode($usersArray, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE));
 			}

@@ -73,6 +73,33 @@ header form input:active{
 	margin: 0 auto;
 	max-width:1378px;
 }
+.wrap-profile{
+	background: url(../img/profilebg.png) center 20% !important;
+	margin: 0 auto;
+	min-width: 550px;
+	min-height: 220px;
+}
+
+.profile-img{
+	float: left;
+	margin-right: 20px;
+	height: 180px;
+}
+.wrap-profile info{
+	border-bottom: none;
+}
+.profile-info{
+	
+}
+.wrap-profile .wrap{
+	max-width: 960px;
+	/* background: white; */
+	/* margin-top: 70px; */
+	background: none !important;
+	padding: 20px;
+	margin-top: 0 !important;
+}
+
 .left{
 	float: left;
 }
@@ -227,7 +254,6 @@ h4{
 .comment img{
 	width: 50px;
 	height: 50px;
-	border-radius: 50%;
 	display: inline-block;
 	display: block;
 	float: left;
