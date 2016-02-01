@@ -2,7 +2,7 @@
   $booksfile = file_get_contents("database/books.json");
   $booksjson = json_decode($booksfile);
   if (isset($_GET['book'])){
-    $title = $booksjson->books[$_GET['book']]->title;
+    $title = $booksjson->books[$_GET['book']]->title.' - '.$booksjson->books[$_GET['book']]->author;
   }else{
     $title = 'Все книги';
   }

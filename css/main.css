@@ -11,7 +11,7 @@ body{
 	background: #20232A;
 	color: white;
 	font-family: 'Roboto', sans-serif;
-	min-width: 500px;
+	min-width: 550px;
 }
 header{
 	/* position: fixed;
@@ -74,16 +74,72 @@ header form input:active{
 	max-width:1378px;
 }
 .wrap-profile{
-	background: url(../img/profilebg.png) center 20% !important;
+	background: url(http://33.media.tumblr.com/baaad1dce9bdc7747104604d6ceb5a48/tumblr_inline_nn2bzuzDLr1r1u2bv_500.gif)  center 20% !important;
 	margin: 0 auto;
-	min-width: 550px;
 	min-height: 220px;
 }
 
+.notebook {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.notebook > input {
+    display: none;
+}
+
+.notebook > input + label {
+    display: inline-block;
+    padding: 4px 4px 15px;
+    cursor: pointer;
+    position: relative;
+}
+
+.notebook > input + label:not(:last-of-type) {
+    border-right: none;
+}
+
+.notebook > input + label:hover {
+    /* color: blue; */
+}
+
+.notebook > input + label:last-of-type::after {
+    display: block;
+    /* width: 2000px; */
+    content: "";
+    position: absolute;
+    left: 100%;
+}
+
+.notebook > input:checked + label {
+    font-weight: 700;
+}
+
+.notebook > div {
+    white-space: normal;
+    display: none;
+    border-top: none;
+    margin: 0px;
+    padding-top: 20px;
+    border-top: 1px solid gray;
+}
+
+.notebook > input:nth-of-type(1):checked ~ div:nth-of-type(1),
+.notebook > input:nth-of-type(2):checked ~ div:nth-of-type(2),
+.notebook > input:nth-of-type(3):checked ~ div:nth-of-type(3),
+.notebook > input:nth-of-type(4):checked ~ div:nth-of-type(4) {
+    display: block;
+}
 .profile-img{
 	float: left;
 	margin-right: 20px;
 	height: 180px;
+
+}
+img.profile-img{
+	-webkit-box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.75);
 }
 .wrap-profile info{
 	border-bottom: none;

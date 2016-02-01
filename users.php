@@ -59,22 +59,17 @@
                 </div>
               </div>
             </div>';
-      echo '<div class="wrap">
-                <info style="margin-bottom: 20px">Хочет прочитать</info>';
       $userreadedbooksarray = array();
+      $userwantedbooksarray = array();
       for($i = 0; $i <count($booksjson->books); $i++){
           for($k = 0; $k<count($booksjson->books[$i]->readers); $k++){
             if ($_GET['user'] == $booksjson->books[$i]->readers[$k]->uid){
              array_push($userreadedbooksarray, array('id' => $booksjson->books[$i]->id, 'title' =>$booksjson->books[$i]->title, 'author' => $booksjson->books[$i]->author, 'cover' => $booksjson->books[$i]->cover, 'date' =>  $booksjson->books[$i]->readers[$k]->date));
             }
           }
-      }
-
-      $userwantedbooksarray = array();
-      for($i = 0; $i <count($booksjson->books); $i++){
-          for($k = 0; $k<count($booksjson->books[$i]->toread); $k++){
-            if ($_GET['user'] == $booksjson->books[$i]->toread[$k]){
-              array_push($userwantedbooksarray, array('id' => $booksjson->books[$i]->id, 'title' =>$booksjson->books[$i]->title, 'author' => $booksjson->books[$i]->author, 'cover' => $booksjson->books[$i]->cover, 'date' =>  $booksjson->books[$i]->readers[$k]->date));
+          for($j = 0; $j<count($booksjson->books[$i]->toread); $j++){
+            if ($_GET['user'] == $booksjson->books[$i]->toread[$j]){
+              array_push($userwantedbooksarray, array('id' => $booksjson->books[$i]->id, 'title' =>$booksjson->books[$i]->title, 'author' => $booksjson->books[$i]->author, 'cover' => $booksjson->books[$i]->cover, 'date' =>  $booksjson->books[$i]->readers[$j]->date));
             }
           }
       }
@@ -89,26 +84,41 @@
         $date2 = strtotime($a['date']);
         return ($date1-$date2);
       }); 
-      for($i = 0; $i <count($userwantedbooksarray); $i++){
-        echo '<div class="book-block">
-                <a href="book.php?book=',$userwantedbooksarray[$i]['id'],'">
-                  <img src="',$userwantedbooksarray[$i]['cover'],'" alt="">
-                  <span class="title">',$userwantedbooksarray[$i]['title'],'</span>
-                  <span class="author">',$userwantedbooksarray[$i]['author'],  '</span>
-                </a>
-              </div>';
-      }
 
-      echo '<info style="margin-bottom: 20px">Прочитал</info>';
-      for($i = 0; $i <count($userreadedbooksarray); $i++){
-            echo '<div class="book-block">
-                    <a href="book.php?book=',$userreadedbooksarray[$i]['id'],'">
-                      <img src="', $userreadedbooksarray[$i]['cover'],'" alt="">
-                      <span class="title">',$userreadedbooksarray[$i]['title'],'</span>
-                      <span class="author">',$userreadedbooksarray[$i]['author'],  '</span>
-                    </a>
-                  </div>';
-      }
+      echo '<div class="wrap" style="margin-top:0px;">';
+      echo '<div class="notebook">
+    <input type="radio" name="notebook1" id="notebook1_1" checked
+    ><label for="notebook1_1"><span class="icon-book"></span>Прочитанные ('.count($userreadedbooksarray).')</label
+    ><input type="radio" name="notebook1" id="notebook1_2"
+    ><label for="notebook1_2"><span class="icon-bookmarks"></span>Желаемые ('.count($userwantedbooksarray).')</label
+    ><div>';
+              for($i = 0; $i <count($userreadedbooksarray); $i++){
+                    echo '<div class="book-block">
+                            <a href="book.php?book=',$userreadedbooksarray[$i]['id'],'">
+                              <img src="', $userreadedbooksarray[$i]['cover'],'" alt="">
+                              <span class="title">',$userreadedbooksarray[$i]['title'],'</span>
+                              <span class="author">',$userreadedbooksarray[$i]['author'],  '</span>
+                            </a>
+                          </div>';
+              }
+      echo '</div>
+            <div>';
+            for($i = 0; $i <count($userwantedbooksarray); $i++){
+              echo '<div class="book-block">
+                      <a href="book.php?book=',$userwantedbooksarray[$i]['id'],'">
+                        <img src="',$userwantedbooksarray[$i]['cover'],'" alt="">
+                        <span class="title">',$userwantedbooksarray[$i]['title'],'</span>
+                        <span class="author">',$userwantedbooksarray[$i]['author'],  '</span>
+                      </a>
+                    </div>';
+            }
+      echo '</div>
+              
+            </div>';
+      //<div>вкладка 3</div>echo '<info style="margin-bottom: 20px">Хочет прочитать</info>';
+      
+
+      
     }else{
       echo '<div class="wrap">';//
       echo '<div class="users">';
