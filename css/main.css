@@ -6,9 +6,19 @@
 	margin: 0;
 	box-sizing: border-box;
 }
+.more{
+/* display: none; */
+z-index: 1;
+width: 100%;
+background: black;
+left: 0;
+/* top: 0; */
+position: absolute;
+}
 body{
 	/* background: #afa8a8; */
-	background: #20232A;
+	 background: #20232A;
+	/*background: url(http://learn.jquery.com/jquery-wp-content/themes/jquery/images/bg-footer-noise.jpg);*/
 	color: white;
 	font-family: 'Roboto', sans-serif;
 	min-width: 550px;
@@ -39,7 +49,7 @@ header form input{
 }
 header form input:active{
 	border: none;
-}
+}/* 
 #search_advice_wrapper{
             width: 182px;
             background-color: rgb(80, 80, 114);
@@ -53,7 +63,7 @@ header form input:active{
             position: absolute;
             display: none;
         }
- 
+
         #search_advice_wrapper .advice_variant{
             cursor: pointer;
             padding: 5px;
@@ -68,13 +78,14 @@ header form input:active{
             padding: 5px;
             color:#FEFFBD;
             background-color:#818187;
-        }
+        } */
 .wrap{
 	margin: 0 auto;
 	max-width:1378px;
 }
 .wrap-profile{
-	background: url(http://33.media.tumblr.com/baaad1dce9bdc7747104604d6ceb5a48/tumblr_inline_nn2bzuzDLr1r1u2bv_500.gif)  center 20% !important;
+	/*background: url(http://33.media.tumblr.com/baaad1dce9bdc7747104604d6ceb5a48/tumblr_inline_nn2bzuzDLr1r1u2bv_500.gif)  center 20% !important;*/
+	background: url(http://www.dejurka.ru/wp-content/uploads/2010/03/untitled8.jpg);
 	margin: 0 auto;
 	min-height: 220px;
 }
@@ -145,7 +156,7 @@ img.profile-img{
 	border-bottom: none;
 }
 .profile-info{
-	
+
 }
 .wrap-profile .wrap{
 	max-width: 960px;
@@ -212,6 +223,7 @@ img.profile-img{
 	padding: 0 20px 20px;
 	max-width: 184px;
 	vertical-align: top;
+	position: relative;
 }
 .book-block a{
 	text-decoration: none;
@@ -220,6 +232,69 @@ img.profile-img{
 	max-width: 184px;
 	position: relative;
 }
+
+
+#gird li{
+  list-style: none;
+  transition: .1s;
+  cursor: pointer;
+  display: inline-block;
+}
+#gird li.active{ transform: scale(0.7) rotate(6deg) translateY(30px); }
+#gird li.active:after{
+  content:"×";
+  font-size: 4em;
+  position:absolute;
+  top:-67px;
+  right:0;
+}
+
+#gird li.full{
+    position:relative;
+    width:100%;
+    height:auto;
+    background: #000;
+    margin-bottom: 10px;
+}
+#preview{ display:none; }
+#preview > *{ float:left; }
+#preview .book-info { margin:2%;}
+#preview img{ max-width: 200px;  -webkit-filter: blur(1px) contrast(2.6) grayscale(1) opacity(1);}
+#preview img.book-img::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 0 10px 10px red inset;
+    content: "";
+}
+.links { display: block}
+/*#preview:after{
+  content:"×";
+  font-size: 4em;
+  position:absolute;
+  right:0;
+}*/
+#preview .book-info span.title {
+font-size: 25px;
+}
+#preview .book-info span.author {
+font-size: 15px;
+}   
+#preview .book-info span.desc {
+font-size: 14px;
+}
+@media screen and (max-width: 830px) {
+    #gird li{ width: 33.333%; }
+    #preview img{ max-width:96%; }
+}
+@media screen and (max-width: 650px) {
+    #gird li{ width: 50%; }
+    #preview img{ max-width:96%; }
+}
+
+
 .book-block img{
 	width: 144px;
 	height: 225px;
@@ -227,7 +302,6 @@ img.profile-img{
 .book-block span.title, span.author{
 	display: block;
 	font-weight: 200;
-
 	text-align: left;
 }
 .book-block span.title{
@@ -263,7 +337,7 @@ mark{
 	background: none;
 }
 .book-img{
-	width: 250px;
+	width: 200px;
 	display: inline-block;
 }
 .book-info{

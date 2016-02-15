@@ -5,6 +5,7 @@
   <title>Главная</title>
   <link rel="stylesheet" href="css/main.css">
   <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?34"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <?php

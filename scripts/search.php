@@ -5,7 +5,6 @@ if(!empty($_GET['query'])){
     while($data =$db->fetch_assoc($request)){
         $array[] = $data['name'];
     }
- 
     echo "['".implode("','", $array)."']";
 }
 exit();

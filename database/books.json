@@ -166,15 +166,11 @@
             "author": "\u042d. \u041b. \u0414\u0436\u0435\u0439\u043c\u0441",
             "cover": "covers\/9.png",
             "desc": "",
-            "readers": [
-                {
-                    "uid": "121935185",
-                    "date": "14.01.16",
-                    "rating": "5"
-                }
+            "readers": [],
+            "toread": [
+                "121935185"
             ],
-            "toread": [],
-            "averagerating": "5"
+            "averagerating": 0
         },
         {
             "id": 10,
@@ -310,6 +306,23 @@
             "readers": [],
             "toread": [],
             "averagerating": 0
+        },
+        {
+            "id": 20,
+            "title": "\u041d\u0435\u043c\u0435\u0446\u043a\u0430\u044f \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0444\u0438\u043b\u043e\u0441\u043e\u0444\u0438\u044f",
+            "author": "\u0410. \u0412. \u0413\u0443\u043b\u044b\u0433\u0430",
+            "cover": "covers\/20.png",
+            "readers": [
+                {
+                    "uid": "121935185",
+                    "date": "2016-02-15T19:48:25+0300",
+                    "rating": "9",
+                    "comment": "Too many facts",
+                    "commentrating": 0
+                }
+            ],
+            "toread": [],
+            "averagerating": "9"
         }
     ]
 }

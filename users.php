@@ -7,11 +7,11 @@
              $title = $usersjson->users[$k]->fio;
           }
         }
-   
+
   }else{
     $title = 'Все пользователи';
   }
-  
+
 ?>
 <!DOCTYPE html>
 <head>
@@ -19,6 +19,7 @@
   <title><?=$title?></title>
   <link rel="stylesheet" href="css/main.css">
   <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?34"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <?php
@@ -27,7 +28,7 @@
     if($_GET['user']){
       $booksfile = file_get_contents("database/books.json");
       $booksjson = json_decode($booksfile);
-      
+
       for($k = 0; $k<count($usersjson->users); $k++){
         if($_GET['user'] == $usersjson->users[$k]->uid){
           $userobj = $usersjson->users[$k];
@@ -59,66 +60,94 @@
                 </div>
               </div>
             </div>';
-      $userreadedbooksarray = array();
-      $userwantedbooksarray = array();
+      $readedbooks = array();
+      $wantedbooks = array();
       for($i = 0; $i <count($booksjson->books); $i++){
           for($k = 0; $k<count($booksjson->books[$i]->readers); $k++){
             if ($_GET['user'] == $booksjson->books[$i]->readers[$k]->uid){
-             array_push($userreadedbooksarray, array('id' => $booksjson->books[$i]->id, 'title' =>$booksjson->books[$i]->title, 'author' => $booksjson->books[$i]->author, 'cover' => $booksjson->books[$i]->cover, 'date' =>  $booksjson->books[$i]->readers[$k]->date));
+             array_push($readedbooks, array(
+                'id' => $booksjson->books[$i]->id,
+                'title' =>$booksjson->books[$i]->title,
+                'author' => $booksjson->books[$i]->author,
+                'cover' => $booksjson->books[$i]->cover,
+                'date' =>  $booksjson->books[$i]->readers[$k]->date,
+                'desc' =>  $booksjson->books[$i]->desc,
+                'readers' => count($booksjson->books[$i]->readers),
+                'toread' => count($booksjson->books[$i]->toread),
+                'rating' => $booksjson->books[$i]->averagerating
+              ));
             }
           }
           for($j = 0; $j<count($booksjson->books[$i]->toread); $j++){
             if ($_GET['user'] == $booksjson->books[$i]->toread[$j]){
-              array_push($userwantedbooksarray, array('id' => $booksjson->books[$i]->id, 'title' =>$booksjson->books[$i]->title, 'author' => $booksjson->books[$i]->author, 'cover' => $booksjson->books[$i]->cover, 'date' =>  $booksjson->books[$i]->readers[$j]->date));
+              array_push($wantedbooks, array('id' => $booksjson->books[$i]->id, 'title' =>$booksjson->books[$i]->title, 'author' => $booksjson->books[$i]->author, 'cover' => $booksjson->books[$i]->cover, 'date' =>  $booksjson->books[$i]->readers[$j]->date, 'desc' =>  $booksjson->books[$i]->desc));
             }
           }
       }
 
-      usort($userreadedbooksarray, function($a, $b){
+      usort($readedbooks, function($a, $b){
         $date1 = strtotime($b['date']);
         $date2 = strtotime($a['date']);
         return ($date1-$date2);
-      }); 
-      usort($userwantedbooksarray, function($a, $b){
+      });
+      usort($wantedbooks, function($a, $b){
         $date1 = strtotime($b['date']);
         $date2 = strtotime($a['date']);
         return ($date1-$date2);
-      }); 
+      });
 
-      echo '<div class="wrap" style="margin-top:0px;">';
-      echo '<div class="notebook">
-    <input type="radio" name="notebook1" id="notebook1_1" checked
-    ><label for="notebook1_1"><span class="icon-book"></span>Прочитанные ('.count($userreadedbooksarray).')</label
-    ><input type="radio" name="notebook1" id="notebook1_2"
-    ><label for="notebook1_2"><span class="icon-bookmarks"></span>Желаемые ('.count($userwantedbooksarray).')</label
-    ><div>';
-              for($i = 0; $i <count($userreadedbooksarray); $i++){
-                    echo '<div class="book-block">
-                            <a href="book.php?book=',$userreadedbooksarray[$i]['id'],'">
-                              <img src="', $userreadedbooksarray[$i]['cover'],'" alt="">
-                              <span class="title">',$userreadedbooksarray[$i]['title'],'</span>
-                              <span class="author">',$userreadedbooksarray[$i]['author'],  '</span>
-                            </a>
-                          </div>';
-              }
+      echo '<div class="wrap" style="margin-top:0px;">
+              <div class="notebook">
+                <input type="radio" name="notebook1" id="notebook1_1" checked>
+                <label for="notebook1_1"><span class="icon-book"></span>Прочитанные ('.count($readedbooks).')</label>
+                <input type="radio" name="notebook1" id="notebook1_2">
+                <label for="notebook1_2"><span class="icon-bookmarks"></span>Желаемые ('.count($wantedbooks).')</label>
+              <div>';
+        echo '<div id="preview">
+                    <img src="" class="book-img">
+                  
+                  <div class="book-info">
+                    <span class="title"></span>
+                    <span class="author"></span>
+                    <span class="desc"></span>
+                    <div class="links">
+                        <a title="Прочитавшие книгу" href="" class="btn inline addbook" id="1"><span class="icon-people"></span></a>
+                        <a title="Желающие прочитать" href="" class="btn inline addbook" id="2"><span class="icon-bookmarks"></span></a>
+                        <a title="Рейтинг" href="" class="btn inline addbook" id="3"><span class="icon-stats-bars"></span></a>
+                    </div>
+                    </div>
+              </div>';
+        echo '<ul id="gird">';
+        for($i = 0; $i <count($readedbooks); $i++){
+          echo '<li class="book-block"
+                   data-src="', $readedbooks[$i]['cover'],'" 
+                   data-title="',$readedbooks[$i]['title'],'" 
+                   data-author="',$readedbooks[$i]['author'],'" 
+                   data-desc="',$readedbooks[$i]['desc'],'" 
+                   data-readers="',$readedbooks[$i]['readers'],'" 
+                   data-toread="',$readedbooks[$i]['toread'],'" 
+                   data-rating="',$readedbooks[$i]['rating'],'" 
+                   href="book.php?book=',$readedbooks[$i]['id'],'"
+                >
+                    <img src="', $readedbooks[$i]['cover'],'" alt="">
+                    <span class="title">',$readedbooks[$i]['title'],'</span>
+                    <span class="author">',$readedbooks[$i]['author'],'</span>
+                </li>';
+        }
+        echo '</ul>
+            </div>
+            <div>
+            <ul id="gird">';
+        for($i = 0; $i <count($wantedbooks); $i++){
+          echo '<li class="book-block" data-src="', $wantedbooks[$i]['cover'],'" data-title="',$wantedbooks[$i]['title'],'" data-author="',$wantedbooks[$i]['author'],'" data-desc="',$wantedbooks[$i]['desc'],'" href="book.php?book=',$wantedbooks[$i]['id'],'">
+                    <img src="', $wantedbooks[$i]['cover'],'" alt="">
+                    <span class="title">',$wantedbooks[$i]['title'],'</span>
+                    <span class="author">',$wantedbooks[$i]['author'],'</span>
+                </li>';
+        }
       echo '</div>
-            <div>';
-            for($i = 0; $i <count($userwantedbooksarray); $i++){
-              echo '<div class="book-block">
-                      <a href="book.php?book=',$userwantedbooksarray[$i]['id'],'">
-                        <img src="',$userwantedbooksarray[$i]['cover'],'" alt="">
-                        <span class="title">',$userwantedbooksarray[$i]['title'],'</span>
-                        <span class="author">',$userwantedbooksarray[$i]['author'],  '</span>
-                      </a>
-                    </div>';
-            }
-      echo '</div>
-              
+      </ul>
             </div>';
-      //<div>вкладка 3</div>echo '<info style="margin-bottom: 20px">Хочет прочитать</info>';
-      
-
-      
     }else{
       echo '<div class="wrap">';//
       echo '<div class="users">';
